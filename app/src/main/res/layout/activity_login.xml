@@ -26,7 +26,9 @@
             app:srcCompat="@drawable/logo_splash" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/imgBt_googleaccount"
+            android:layout_marginRight="100dp"
+            android:layout_marginLeft="100dp"
             android:layout_width="match_parent"
             android:layout_height="46dp"
             android:background="@color/Light"
@@ -34,9 +36,11 @@
             android:layout_marginVertical="2dp"/>
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/imgBt_facebookaccount"
+            android:layout_marginRight="100dp"
+            android:layout_marginLeft="100dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="46dp"
             android:background="@color/Light"
             app:srcCompat="@drawable/signinfb"
             android:layout_marginVertical="2dp"/>
