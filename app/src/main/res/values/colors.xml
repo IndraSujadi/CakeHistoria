@@ -2,11 +2,10 @@
 <resources>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
     <color name="Dark">#192235</color>
-    <color name="Bricks">#CA4F13</color>
-    <color name="Cream">#FFCF91</color>
-    <color name="Pastel">#C4ECEB</color>
-    <color name="Light">#F9F7D0</color>
-    <color name="brknwhite">#FCFCFC</color>
+    <color name="primaryBrown">#CA4F13</color>
+    <color name="secondaryBrown">#FFCF91</color>
+    <color name="compBlue">#C4ECEB</color>
+    <color name="Cream">#F9F7D0</color>
+    <color name="Light">#FCFCFC</color>
 </resources>

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Cake.iml" filepath="$PROJECT_DIR$/.idea/Cake.iml" />
       <module fileurl="file://$PROJECT_DIR$/CakeHistoria.iml" filepath="$PROJECT_DIR$/CakeHistoria.iml" group="CakeHistoria" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="CakeHistoria/app" />
     </modules>
