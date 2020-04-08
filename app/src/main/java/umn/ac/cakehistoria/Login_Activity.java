@@ -14,17 +14,7 @@ public class Login_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-      /*  ImageButton google =findViewById(R.id.LoginGoogle);
-        google.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-            }
-        });
-
-       */
-
+        //Ini Hannatassja
 
     }
 }
