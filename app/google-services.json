@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "934185358498",
+    "firebase_url": "https://cake-historia.firebaseio.com",
+    "project_id": "cake-historia",
+    "storage_bucket": "cake-historia.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934185358498:android:823933a5d88e94d9ccf3fb",
+        "android_client_info": {
+          "package_name": "umn.ac.cakehistoria"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "934185358498-binh38ngq6micci04ojduocp4pnrfupu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgXcgxa1ODdkr8uBpsy7qtQQ4hmmd4XHI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "934185358498-binh38ngq6micci04ojduocp4pnrfupu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
