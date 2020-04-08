@@ -22,19 +22,5 @@
             app:srcCompat="@drawable/logo_splash" />
 
 
-        <ImageButton
-            android:id="@+id/LoginGoogle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/Light"
-            app:srcCompat="@drawable/Capture" />
-
-        <ImageButton
-            android:id="@+id/imageButton12"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/Light"
-            app:srcCompat="@drawable/FB5" />
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
