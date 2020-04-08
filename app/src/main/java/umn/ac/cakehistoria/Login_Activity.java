@@ -14,7 +14,7 @@ public class Login_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        ImageButton google =findViewById(R.id.LoginGoogle);
+      /*  ImageButton google =findViewById(R.id.LoginGoogle);
         google.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -22,6 +22,8 @@ public class Login_Activity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+       */
 
 
     }
