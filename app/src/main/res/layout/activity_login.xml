@@ -25,6 +25,22 @@
             android:layout_marginBottom="25dp"
             app:srcCompat="@drawable/logo_splash" />
 
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="@color/Light"
+            app:srcCompat="@drawable/signingoogle"
+            android:layout_marginVertical="2dp"/>
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/Light"
+            app:srcCompat="@drawable/signinfb"
+            android:layout_marginVertical="2dp"/>
+
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
