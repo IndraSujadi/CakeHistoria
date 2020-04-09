@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/brknwhite"
+    android:background="@color/Light"
     tools:context=".Delivery">
 
     <ScrollView
@@ -13,8 +13,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,7 +32,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Receiver's Info"
-                android:textAppearance="@style/TitleText" />
+                android:textAppearance="@style/TitleText"
+                android:layout_marginTop="61dp"/>
 
             <TextView
                 android:id="@+id/subName"
@@ -82,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:text="Receiver's Info"
+                android:text="Receiver's Address"
                 android:textAppearance="@style/TitleText" />
 
             <TextView
@@ -112,7 +116,8 @@
                 android:id="@+id/spinProvinsi"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:background="@drawable/background" />
+                android:background="@drawable/spinner_border"
+                android:layout_marginTop="14dp"/>
 
             <TextView
                 android:id="@+id/subKota"
@@ -121,12 +126,26 @@
                 android:layout_height="wrap_content"
                 android:text="Kota" />
 
+            <Spinner
+                android:id="@+id/spinKota"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/spinner_border"
+                android:layout_marginTop="14dp"/>
+
             <TextView
                 android:id="@+id/subKecamatan"
                 style="@style/SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Kecamatan" />
+
+            <Spinner
+                android:id="@+id/spinKecamatan"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/spinner_border"
+                android:layout_marginTop="14dp"/>
 
             <TextView
                 android:id="@+id/subKodePos"
@@ -137,18 +156,68 @@
 
             <EditText
                 android:id="@+id/edtKodePos"
+                style="@style/InputBox"
                 android:layout_width="140dp"
                 android:layout_height="30dp"
                 android:ems="10"
-                android:inputType="number"
-                style="@style/InputBox"/>
+                android:inputType="number" />
 
             <CheckBox
                 android:id="@+id/checkBox"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
                 android:layout_weight="1"
-                android:text="CheckBox" />
+                android:text="Asuransi Pengiriman"
+                android:fontFamily="@font/gotham_medium"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/subDelivery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DELIVERY PRICE"
+                android:gravity="center"
+                style="@style/SubTitle"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/txtHargaDeliv"
+                android:layout_width="188dp"
+                android:layout_height="34dp"
+                android:text="TextView"
+                android:fontFamily="@font/gotham_bold"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:background="@color/Cream"
+                android:textColor="@color/primaryBrown"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="52dp"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Next"
+                    android:layout_gravity="center"
+                    android:textAlignment="viewEnd"
+                    android:layout_marginRight="9dp"
+                    android:textAppearance="@style/SubTitle"
+                    tools:ignore="RtlCompat" />
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="0"
+                    android:background="@drawable/btn_next" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

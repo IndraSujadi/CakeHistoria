@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">CakeHistoria</string>
     <string name="app_name2">Transaction</string>
+    <string name="Next"><u>NEXT TO PAYMENT</u></string>
 </resources>
