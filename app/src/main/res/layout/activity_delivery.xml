@@ -3,48 +3,153 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/brknwhite"
     tools:context=".Delivery">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="185dp">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginLeft="23dp"
+            android:layout_marginTop="0dp"
             android:layout_marginRight="23dp"
-            android:layout_marginTop="61dp"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Receiver's Info"
-                android:textAppearance="@style/TitleText"/>
+                android:textAppearance="@style/TitleText" />
 
             <TextView
                 android:id="@+id/subName"
+                style="@style/SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name" />
+                android:text="Nama" />
+
+            <EditText
+                android:id="@+id/edtName"
+                style="@style/InputBox"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:ems="10"
+                android:inputType="textPersonName" />
 
             <TextView
                 android:id="@+id/subPhone"
+                style="@style/SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Phone" />
+                android:text="No. Telp" />
+
+
+            <EditText
+                android:id="@+id/edtTelp"
+                style="@style/InputBox"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:ems="10"
+                android:inputType="phone" />
 
             <TextView
                 android:id="@+id/subEmail"
+                style="@style/SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Number" />
+                android:text="E-mail" />
+
+            <EditText
+                android:id="@+id/edtEmail"
+                style="@style/InputBox"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:ems="10"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:id="@+id/Title2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Receiver's Info"
+                android:textAppearance="@style/TitleText" />
+
+            <TextView
+                android:id="@+id/subAlamat"
+                style="@style/SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alamat lengkap :" />
+
+            <EditText
+                android:id="@+id/edtAlamat"
+                style="@style/InputBox"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine" />
+
+            <TextView
+                android:id="@+id/subProvinsi"
+                style="@style/SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Provinsi" />
+
+            <Spinner
+                android:id="@+id/spinProvinsi"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/background" />
+
+            <TextView
+                android:id="@+id/subKota"
+                style="@style/SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kota" />
+
+            <TextView
+                android:id="@+id/subKecamatan"
+                style="@style/SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kecamatan" />
+
+            <TextView
+                android:id="@+id/subKodePos"
+                style="@style/SubTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kode Pos" />
+
+            <EditText
+                android:id="@+id/edtKodePos"
+                android:layout_width="140dp"
+                android:layout_height="30dp"
+                android:ems="10"
+                android:inputType="number"
+                style="@style/InputBox"/>
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_weight="1"
+                android:text="CheckBox" />
+
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

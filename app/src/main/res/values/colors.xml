@@ -8,4 +8,6 @@
     <color name="compBlue">#C4ECEB</color>
     <color name="Cream">#F9F7D0</color>
     <color name="Light">#FCFCFC</color>
+    <color name="brknwhite">#FBFBFB</color>
+    <color name="StrokeColor">#E0E0E0</color>
 </resources>
