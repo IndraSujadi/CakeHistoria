@@ -16,8 +16,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        >
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,187 +26,204 @@
             android:layout_marginRight="23dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/Title"
+            <LinearLayout
+                android:id="@+id/ReceiverInfo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Receiver's Info"
-                android:textAppearance="@style/TitleText"
-                android:layout_marginTop="61dp"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/subName"
-                style="@style/SubTitle"
+                <TextView
+                    android:id="@+id/Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="29dp"
+                    android:text="Receiver's Info"
+                    android:textAppearance="@style/TitleText" />
+
+                <TextView
+                    android:id="@+id/subName"
+                    style="@style/SubTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama" />
+
+                <EditText
+                    android:id="@+id/edtName"
+                    style="@style/InputBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+                <TextView
+                    android:id="@+id/subPhone"
+                    style="@style/SubTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No. Telp" />
+
+                <EditText
+                    android:id="@+id/edtTelp"
+                    style="@style/InputBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:ems="10"
+                    android:inputType="phone" />
+
+                <TextView
+                    android:id="@+id/subEmail"
+                    style="@style/SubTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="E-mail" />
+
+                <EditText
+                    android:id="@+id/edtEmail"
+                    style="@style/InputBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:ems="10"
+                    android:inputType="textEmailAddress" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ReceiverAdress"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nama" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/edtName"
-                style="@style/InputBox"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                <TextView
+                    android:id="@+id/Title2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="Receiver's Address"
+                    android:textAppearance="@style/TitleText" />
 
-            <TextView
-                android:id="@+id/subPhone"
-                style="@style/SubTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="No. Telp" />
+                <TextView
+                    android:id="@+id/subAlamat"
+                    style="@style/SubTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alamat lengkap :" />
 
+                <EditText
+                    android:id="@+id/edtAlamat"
+                    style="@style/InputBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine" />
 
-            <EditText
-                android:id="@+id/edtTelp"
-                style="@style/InputBox"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:ems="10"
-                android:inputType="phone" />
+                <TextView
+                    android:id="@+id/subProvinsi"
+                    style="@style/SubTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Provinsi" />
 
-            <TextView
-                android:id="@+id/subEmail"
-                style="@style/SubTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="E-mail" />
+                <Spinner
+                    android:id="@+id/spinProvinsi"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/spinner_border" />
 
-            <EditText
-                android:id="@+id/edtEmail"
-                style="@style/InputBox"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:ems="10"
-                android:inputType="textEmailAddress" />
+                <TextView
+                    android:id="@+id/subKota"
+                    style="@style/SubTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kota" />
 
-            <TextView
-                android:id="@+id/Title2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="Receiver's Address"
-                android:textAppearance="@style/TitleText" />
+                <Spinner
+                    android:id="@+id/spinKota"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/spinner_border" />
 
-            <TextView
-                android:id="@+id/subAlamat"
-                style="@style/SubTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Alamat lengkap :" />
+                <TextView
+                    android:id="@+id/subKecamatan"
+                    style="@style/SubTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kecamatan" />
 
-            <EditText
-                android:id="@+id/edtAlamat"
-                style="@style/InputBox"
-                android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine" />
+                <Spinner
+                    android:id="@+id/spinKecamatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/spinner_border" />
 
-            <TextView
-                android:id="@+id/subProvinsi"
-                style="@style/SubTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Provinsi" />
+                <TextView
+                    android:id="@+id/subKodePos"
+                    style="@style/SubTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kode Pos" />
 
-            <Spinner
-                android:id="@+id/spinProvinsi"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@drawable/spinner_border"
-                android:layout_marginTop="14dp"/>
+                <EditText
+                    android:id="@+id/edtKodePos"
+                    style="@style/InputBox"
+                    android:layout_width="140dp"
+                    android:layout_height="30dp"
+                    android:ems="10"
+                    android:inputType="number" />
 
-            <TextView
-                android:id="@+id/subKota"
-                style="@style/SubTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Kota" />
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-6.5dp"
+                    android:layout_marginTop="25dp"
 
-            <Spinner
-                android:id="@+id/spinKota"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@drawable/spinner_border"
-                android:layout_marginTop="14dp"/>
-
-            <TextView
-                android:id="@+id/subKecamatan"
-                style="@style/SubTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Kecamatan" />
-
-            <Spinner
-                android:id="@+id/spinKecamatan"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@drawable/spinner_border"
-                android:layout_marginTop="14dp"/>
-
-            <TextView
-                android:id="@+id/subKodePos"
-                style="@style/SubTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Kode Pos" />
-
-            <EditText
-                android:id="@+id/edtKodePos"
-                style="@style/InputBox"
-                android:layout_width="140dp"
-                android:layout_height="30dp"
-                android:ems="10"
-                android:inputType="number" />
-
-            <CheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:layout_weight="1"
-                android:text="Asuransi Pengiriman"
-                android:fontFamily="@font/gotham_medium"
-                android:textSize="12sp"/>
+                    android:layout_weight="1"
+                    android:buttonTint="@color/primaryBrown"
+                    android:fontFamily="@font/gotham_medium"
+                    android:text="Asuransi Pengiriman"
+                    android:textSize="12sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/subDelivery"
+                style="@style/SubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="DELIVERY PRICE"
+                android:layout_marginBottom="10dp"
                 android:gravity="center"
-                style="@style/SubTitle"
-                android:layout_marginBottom="10dp"/>
+                android:text="DELIVERY PRICE" />
 
             <TextView
                 android:id="@+id/txtHargaDeliv"
                 android:layout_width="188dp"
                 android:layout_height="34dp"
-                android:text="TextView"
-                android:fontFamily="@font/gotham_bold"
-                android:gravity="center"
                 android:layout_gravity="center"
                 android:background="@color/Cream"
-                android:textColor="@color/primaryBrown"/>
+                android:fontFamily="@font/gotham_bold"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="@color/primaryBrown" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
                 android:layout_marginTop="52dp"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="9dp"
                     android:layout_weight="1"
                     android:text="@string/Next"
-                    android:layout_gravity="center"
                     android:textAlignment="viewEnd"
-                    android:layout_marginRight="9dp"
                     android:textAppearance="@style/SubTitle"
                     tools:ignore="RtlCompat" />
 

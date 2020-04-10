@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item><layer-list>
+        <item>
+            <shape>
+                <solid android:color="@color/Light" />
+                <stroke
+                    android:width="0.5dp"
+                    android:color="@color/StrokeColor" />
+                <corners
+                    android:radius="5dp" />
+            </shape>
+        </item>
+
+        <item
+            android:height="8dp"
+            android:width="80dp"
+            android:gravity="center"
+            android:right="110dp">
+            <bitmap android:gravity="fill_horizontal|fill_vertical" android:src="@drawable/virtual"/>
+        </item>
+        <item android:right="15dp">
+            <bitmap android:gravity="right|center" android:src="@drawable/arrow_left"/>
+        </item>
+        <item android:left="15dp"
+            android:height="21dp"
+            android:width="64dp"
+            android:gravity="center"
+            android:right="285dp">
+            <bitmap android:gravity="fill_horizontal|fill_vertical" android:src="@drawable/bca"/>
+        </item>
+    </layer-list></item>
+</selector>

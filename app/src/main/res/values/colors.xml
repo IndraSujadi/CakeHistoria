@@ -10,4 +10,7 @@
     <color name="Light">#FCFCFC</color>
 
     <color name="StrokeColor">#E0E0E0</color>
+
+    <color name="grad1">#F49944</color>
+    <color name="grad2">#EEE860</color>
 </resources>

@@ -26,4 +26,15 @@
         <item name="android:layout_marginTop">14dp</item>
     </style>
 
+    <style name="Paragraph">
+        <item name="android:textSize">10sp</item>
+        <item name="android:fontFamily">@font/gotham_light</item>
+        <item name="android:textColor">@color/Dark</item>
+    </style>
+
+    <style name="Harga">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textAlignment">textEnd</item>
+    </style>
+
 </resources>
