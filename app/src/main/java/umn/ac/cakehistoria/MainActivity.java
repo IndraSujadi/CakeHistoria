@@ -1,6 +1,7 @@
 package umn.ac.cakehistoria;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btn_Home = findViewById(R.id.btn_Home);
         ImageButton btn_Order = findViewById(R.id.btn_Order);
         ImageButton btn_Account = findViewById(R.id.btn_Account);
+
 
         final Frag_Home home =new Frag_Home();
         FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 fragmentTransaction.commit();
             }
         });
+
         
 
     }
