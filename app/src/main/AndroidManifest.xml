@@ -9,17 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Delivery"></activity>
-        <activity android:name=".SignUp_Activity" />
-        <activity android:name=".Login_Activity"></activity>
-        <activity android:name=".Splach_Screen">
+        <activity android:name=".Review_Activity"
+            android:theme="@style/Review"
+            android:label="@string/review_toolbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Delivery" />
+        <activity android:name=".SignUp_Activity" />
+        <activity android:name=".Login_Activity" />
+        <activity android:name=".Splach_Screen">
+
+        </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
