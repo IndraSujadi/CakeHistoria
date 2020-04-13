@@ -50,4 +50,9 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="ToolbarTheme" parent="@style/Theme.AppCompat.NoActionBar">
+        <!-- Customize color of navigation drawer icon and back arrow -->
+        <item name="colorControlNormal">@color/ReviewToolbar</item>
+    </style>
+
 </resources>

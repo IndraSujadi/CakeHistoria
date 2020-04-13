@@ -30,6 +30,8 @@ public class Review_Activity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.review_toolbar);
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //untuk add action, harus ke manifest "android:parentActivityName"
+
         // -- Programming Pemberian Rating Bintang Start Here --
 
         star_rate1 = findViewById(R.id.star_rate1);
