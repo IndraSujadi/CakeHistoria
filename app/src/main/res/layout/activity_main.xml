@@ -26,6 +26,7 @@
             android:background="@drawable/background"
             android:orientation="horizontal">
 
+
             <ImageButton
                 android:id="@+id/btn_Home"
                 android:layout_width="wrap_content"
@@ -48,7 +49,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/Light"
-                app:srcCompat="@drawable/user_circle_solid" />
+                app:srcCompat="@drawable/user_circle_solid"/>
         </LinearLayout>
 
     </LinearLayout>

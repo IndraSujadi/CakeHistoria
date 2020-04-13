@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -21,25 +22,29 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btn_Account = findViewById(R.id.btn_Account);
 
 
-        final Frag_Home home =new Frag_Home();
+       /*final Frag_Home home =new Frag_Home();
         FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.Frame,home);
-        fragmentTransaction.commit();
+        fragmentTransaction.commit();*/
 
 
         btn_Home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+
+                Intent i = new Intent(MainActivity.this, home.class);
+                startActivity(i);
+
+                /*FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.Frame,home);
-                fragmentTransaction.commit();
+                fragmentTransaction.commit();*/
             }
         });
 
         btn_Account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Frag_Account account =new Frag_Account();
+                Specific_Category account =new Specific_Category();
                 FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.Frame,account);
                 fragmentTransaction.commit();
