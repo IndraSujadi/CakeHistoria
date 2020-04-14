@@ -2,7 +2,5 @@
     <string name="app_name">CakeHistoria</string>
     <string name="app_name2">Transaction</string>
     <string name="Next"><u>NEXT TO PAYMENT</u></string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="review_toolbar"> Review </string>
 </resources>

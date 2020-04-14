@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="umn.ac.cakehistoria">
+    package="umn.ac.cakehistoria" >
 
     <application
         android:allowBackup="true"
@@ -8,20 +8,30 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme.NoActionBar" >
         <activity android:name=".home">
 
         </activity>
-        <activity android:name=".Delivery" />
-        <activity android:name=".SignUp_Activity" />
-        <activity android:name=".Login_Activity" />
-        <activity android:name=".Splach_Screen" />
-        <activity android:name=".MainActivity" >
+        <activity
+            android:name=".Specific_Review_Activity"
+            android:label="Review"
+            android:theme="@style/Review">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Review_Activity"
+            android:label="@string/review_toolbar"
+            android:theme="@style/Review" >
+        </activity>
+
+        <activity android:name=".Delivery" />
+        <activity android:name=".SignUp_Activity" />
+        <activity android:name=".Login_Activity" />
+        <activity android:name=".Splach_Screen" >
         </activity>
     </application>
 

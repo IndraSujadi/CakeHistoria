@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Review_Activity">
+
+    <include
+        android:id="@+id/review_toolbar"
+        layout="@layout/review_toolbar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <TextView
+                android:id="@+id/txt_Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Birthday Custom Cake"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="30dp"
+                android:textAlignment="center"/>
+
+            <ImageView
+                android:id="@+id/img_cake_pict"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/review_picture_ex" />
+
+            <TextView
+                android:id="@+id/txt_cake_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:background="@drawable/cake_category_background"
+                android:layout_gravity="center"
+                android:text="Birthday"
+                android:layout_marginTop="15dp"
+                />
+
+            <TextView
+                android:id="@+id/txt_instructions1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please kindly leave the rating:"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:textAlignment="center"/>
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp">
+
+                <ImageView
+                    android:id="@+id/star_rate1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/rate_not_clicked_yet"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/star_rate2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/rate_not_clicked_yet"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/star_rate3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/rate_not_clicked_yet"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/star_rate4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/rate_not_clicked_yet"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:id="@+id/star_rate5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/rate_not_clicked_yet"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_instructions2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Also tell your story or testimony with your cake:"
+                android:textStyle="bold"
+                android:layout_marginTop="25dp"
+                android:textAlignment="center"/>
+
+            <EditText
+                android:id="@+id/edt_testimony"
+                android:background="@drawable/edittext_background"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:hint="Write here..."
+                android:textStyle="bold"
+                android:textSize="12.5dp"
+                />
+
+            <Button
+                android:id="@+id/btn_submit_review"
+                android:background="@drawable/button_submit_review"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="25dp"
+                android:text="SUBMIT"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center"/>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</LinearLayout>
