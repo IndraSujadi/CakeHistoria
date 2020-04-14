@@ -10,16 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CakeAdapter extends RecyclerView.Adapter<CakeAdapter.CakeViewHolder> {
 
     Context mCtx;
-    List<Cake_model> cake_modelList;
+    ArrayList<Cake_model> cakeModelArrayList;
 
-    public CakeAdapter(Context mCtx, List<Cake_model> cake_modelList) {
+    public CakeAdapter(Context mCtx, ArrayList<Cake_model> cakeModelArrayList) {
         this.mCtx = mCtx;
-        this.cake_modelList = cake_modelList;
+        this.cakeModelArrayList = cakeModelArrayList;
     }
 
     @NonNull
@@ -32,7 +33,7 @@ public class CakeAdapter extends RecyclerView.Adapter<CakeAdapter.CakeViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CakeViewHolder holder, int position) {
-        Cake_model model = cake_modelList.get(position);
+        final Cake_model model = cakeModelArrayList.get(position);
 
         holder.imgCake.setImageDrawable(mCtx.getResources().getDrawable(model.getImgCake()));
         holder.imgUser.setImageDrawable(mCtx.getResources().getDrawable(model.getImgUser()));
@@ -47,7 +48,7 @@ public class CakeAdapter extends RecyclerView.Adapter<CakeAdapter.CakeViewHolder
     @Override
     public int getItemCount() {
 
-        return cake_modelList.size();
+        return cakeModelArrayList.size();
     }
 
     class CakeViewHolder extends RecyclerView.ViewHolder{

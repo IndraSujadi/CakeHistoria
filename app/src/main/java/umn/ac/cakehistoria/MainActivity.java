@@ -21,11 +21,10 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btn_Order = findViewById(R.id.btn_Order);
         ImageButton btn_Account = findViewById(R.id.btn_Account);
 
-
         final fragHome home =new fragHome();
-        /*FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+        FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.Frame,home);
-        fragmentTransaction.commit();*/
+        fragmentTransaction.commit();
 
 
         btn_Home.setOnClickListener(new View.OnClickListener() {

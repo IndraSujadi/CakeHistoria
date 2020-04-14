@@ -2,22 +2,21 @@ package umn.ac.cakehistoria;
 
 public class Cake_model {
 
-    private int imgCake;
-    private String category;
-    private int likes;
-    private int imgUser;
-    private String namaUser;
-    private int harga;
+    int imgCake;
+    String category;
+    int likes;
+    int imgUser;
+    String namaUser;
+    int harga;
 
-
-    public Cake_model(int imgCake, String category, int likes, int imgUser, String namaUser, int harga) {
+    /*public Cake_model(int imgCake, String category, int likes, int imgUser, String namaUser, int harga) {
         this.imgCake = imgCake;
         this.category = category;
         this.likes = likes;
         this.imgUser = imgUser;
         this.namaUser = namaUser;
         this.harga = harga;
-    }
+    }*/
 
     public int getImgCake() {
         return imgCake;
