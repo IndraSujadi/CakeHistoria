@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btn_Account = findViewById(R.id.btn_Account);
 
 
-       /*final Frag_Home home =new Frag_Home();
-        FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+        final fragHome home =new fragHome();
+        /*FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.Frame,home);
         fragmentTransaction.commit();*/
 
@@ -32,12 +32,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(MainActivity.this, home.class);
-                startActivity(i);
-
-                /*FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+                FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.Frame,home);
-                fragmentTransaction.commit();*/
+                fragmentTransaction.commit();
             }
         });
 
