@@ -53,7 +53,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:fontFamily="@font/gotham_light"/>
 
                 <TextView
                     android:id="@+id/subPhone"
