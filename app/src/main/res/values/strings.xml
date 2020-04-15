@@ -3,4 +3,7 @@
     <string name="app_name2">Transaction</string>
     <string name="Next"><u>NEXT TO PAYMENT</u></string>
     <string name="review_toolbar"> Review </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

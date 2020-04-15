@@ -28,9 +28,9 @@ public class Individual_Item extends Fragment {
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Frag_Account account = new Frag_Account();
+                fragHome home = new fragHome();
                 FragmentTransaction fragmentTransaction= getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.Frame,account);
+                fragmentTransaction.replace(R.id.Frame,home);
                 fragmentTransaction.commit();
 
             }
