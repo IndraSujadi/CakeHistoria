@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item><layer-list>
+        <item
+            android:width="171dp"
+            android:height="24dp"><shape>
+            <stroke android:width="0.6dp" android:color="@color/StrokeColor" />
+            <solid android:color="#FFFFFF"/>
+            <corners android:radius="5dp"/>
+        </shape></item>
+        <item android:width="24dp"
+            android:height="24dp"
+            android:left="150dp"><bitmap android:gravity="fill|right|center" android:src="@drawable/calendar" />
+        </item>
+    </layer-list></item>
+</selector>

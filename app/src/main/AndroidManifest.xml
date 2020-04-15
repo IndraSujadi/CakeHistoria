@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".Create_order"></activity>
         <activity android:name=".OrderDone_Activity" />
         <activity android:name=".Payment_Activity" />
         <activity
@@ -30,8 +31,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
