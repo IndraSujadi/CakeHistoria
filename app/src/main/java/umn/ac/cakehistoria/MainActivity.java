@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         btn_Account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Specific_Category account =new Specific_Category();
+                Frag_Account account =new Frag_Account();
                 FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.Frame,account);
                 fragmentTransaction.commit();

@@ -112,6 +112,7 @@
                     android:textColor="@color/primaryBrown" />
 
                 <Button
+                    android:id="@+id/btnDetail"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_marginTop="10dp"
@@ -121,6 +122,7 @@
                     android:textSize="8dp" />
 
                 <Button
+                    android:id="@+id/btnOrder_similar"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_marginTop="5dp"

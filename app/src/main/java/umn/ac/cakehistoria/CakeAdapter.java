@@ -4,10 +4,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -43,6 +45,15 @@ public class CakeAdapter extends RecyclerView.Adapter<CakeAdapter.CakeViewHolder
         holder.namaUser.setText(model.getNamaUser());
         holder.harga.setText(String.valueOf(model.getHarga()));
 
+        holder.btnDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity = (AppCompatActivity)v.getContext();
+                Individual_Item individualItem = new Individual_Item();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.Frame,individualItem).addToBackStack(null).commit();
+            }
+        });
+
     }
 
     @Override
@@ -55,6 +66,7 @@ public class CakeAdapter extends RecyclerView.Adapter<CakeAdapter.CakeViewHolder
 
         ImageView imgCake, imgUser;
         TextView catergory, likes, namaUser, harga;
+        Button btnOrder_similar, btnDetail;
 
         public CakeViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -66,6 +78,8 @@ public class CakeAdapter extends RecyclerView.Adapter<CakeAdapter.CakeViewHolder
             namaUser = itemView.findViewById(R.id.txt_namaUser);
             harga = itemView.findViewById(R.id.txtHarga);
 
+            btnDetail = itemView.findViewById(R.id.btnDetail);
+            btnOrder_similar = itemView.findViewById(R.id.btnOrder_similar);
         }
     }
 }

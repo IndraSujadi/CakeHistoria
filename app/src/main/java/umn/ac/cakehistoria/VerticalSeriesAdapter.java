@@ -1,6 +1,7 @@
 package umn.ac.cakehistoria;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,11 +9,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class VerticalSeriesAdapter extends RecyclerView.Adapter<VerticalSeriesAdapter.SeriesViewHolder> {
 
@@ -49,12 +57,11 @@ public class VerticalSeriesAdapter extends RecyclerView.Adapter<VerticalSeriesAd
         holder.seeMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Specific_Category specificCategory = new Specific_Category();
-                FragmentTransaction fragmentTransaction= getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.Frame,specificCategory);
-                fragmentTransaction.commit();*/
+                AppCompatActivity activity = (AppCompatActivity)v.getContext();
+                Specific_Category specificCategory = new Specific_Category();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.Frame,specificCategory).addToBackStack(null).commit();
 
-                Toast.makeText(mCtx,"Maaf belom tau Caranya, bantu cari boleh kok, Thankyou",Toast.LENGTH_LONG).show();
+                //Toast.makeText(mCtx,"Maaf belom tau Caranya, bantu cari boleh kok, Thankyou",Toast.LENGTH_LONG).show();
             }
         });
 
