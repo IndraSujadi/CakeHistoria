@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<item><layer-list>
+    <item
+        android:height="34dp"
+        android:width="34dp"
+        ><shape>
+        <padding android:top="6.5dp" android:left="6dp"/>
+        <solid android:color="@color/Light"/>
+        <corners android:radius="8dp"/>
+    </shape></item>
+    <item android:height="23.02dp"
+        android:width="22dp"
+
+        ><bitmap android:gravity="fill|center" android:src="@drawable/heart_specific" />
+    </item>
+</layer-list></item>
+</selector>
