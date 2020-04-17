@@ -54,6 +54,15 @@ public class CakeAdapter extends RecyclerView.Adapter<CakeAdapter.CakeViewHolder
             }
         });
 
+        holder.btnOrder_similar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity = (AppCompatActivity)v.getContext();
+                Frag_Account account = new Frag_Account();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.Frame,account).addToBackStack(null).commit();
+            }
+        });
+
     }
 
     @Override

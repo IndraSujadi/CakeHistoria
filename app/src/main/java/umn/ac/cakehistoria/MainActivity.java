@@ -37,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btn_Order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, Create_order.class);
+                startActivity(i);
+            }
+        });
+
         btn_Account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

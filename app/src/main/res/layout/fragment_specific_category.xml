@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Specific_Category">
+    tools:context=".Specific_Category"
+    android:layout_marginBottom="50dp">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
