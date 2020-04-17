@@ -21,7 +21,7 @@ public class Splach_Screen extends Activity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-                    startActivity(new Intent(Splach_Screen.this, MainActivity.class));
+                    startActivity(new Intent(Splach_Screen.this, Login_Activity.class));
                     finish();
                 }
             }

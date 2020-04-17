@@ -19,38 +19,49 @@
         android:layout_alignParentBottom="true"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/Bottom_Nav"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="bottom"
             android:background="@drawable/background"
-            android:orientation="horizontal">
+            android:paddingVertical="10dp">
+
+            <LinearLayout
+                android:id="@+id/Bottom_Nav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_Home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/Light"
+                    app:srcCompat="@drawable/home_solid" />
+
+                <ImageButton
+                    android:id="@+id/btn_Order"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/Light"
+                    app:srcCompat="@drawable/btnorder" />
+
+                <ImageButton
+                    android:id="@+id/btn_Account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/Light"
+                    app:srcCompat="@drawable/user_circle_solid"/>
+            </LinearLayout>
 
 
-            <ImageButton
-                android:id="@+id/btn_Home"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Light"
-                app:srcCompat="@drawable/home_solid" />
+        </RelativeLayout>
 
-            <ImageButton
-                android:id="@+id/btn_Order"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Light"
-                app:srcCompat="@drawable/btnorder" />
 
-            <ImageButton
-                android:id="@+id/btn_Account"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:backgroundTint="@color/Light"
-                app:srcCompat="@drawable/user_circle_solid"/>
-        </LinearLayout>
 
     </LinearLayout>
 
