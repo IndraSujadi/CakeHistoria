@@ -6,12 +6,48 @@
     tools:context=".Frag_Account">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="50dp"
-        android:textColor="@color/Cream"
-        android:background="@color/Dark"
-        android:text="ACCOUNT" />
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ACCOUNT"
+            android:textColor="@color/Dark"
+            android:textSize="50dp" />
+
+        <TextView
+            android:id="@+id/NamaUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="30sp"
+            android:textColor="@color/Dark"/>
+
+        <TextView
+            android:id="@+id/EmailUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="30sp"
+            android:textColor="@color/Dark"/>
+
+        <Button
+            android:id="@+id/btnSign_Out"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Sign Out"
+            android:textColor="@color/Light"
+            android:fontFamily="@font/gotham_medium"
+            android:textSize="20sp"
+            android:background="@drawable/bg_button"
+            android:backgroundTint="@color/primaryBrown"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
 
 </FrameLayout>
