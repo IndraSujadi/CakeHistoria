@@ -4,9 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -34,6 +36,24 @@ public class SpecificAdapter extends RecyclerView.Adapter<SpecificAdapter.Specif
         Specific_model model = specific_modelList.get(position);
 
         holder.imgSpecific.setImageDrawable(mCtx.getResources().getDrawable(model.getImgSpec()));
+
+        holder.btnUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity = (AppCompatActivity)v.getContext();
+                fragHome home = new fragHome();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.Frame,home).addToBackStack(null).commit();
+            }
+        });
+
+        holder.btnOrder_similar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatActivity activity = (AppCompatActivity)v.getContext();
+                Frag_Account account = new Frag_Account();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.Frame,account).addToBackStack(null).commit();
+            }
+        });
     }
 
     @Override
@@ -44,11 +64,14 @@ public class SpecificAdapter extends RecyclerView.Adapter<SpecificAdapter.Specif
     class SpecificViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imgSpecific;
+        Button btnUser,btnOrder_similar;
 
         public SpecificViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imgSpecific = itemView.findViewById(R.id.imgSpesific);
+            btnUser = itemView.findViewById(R.id.btnUser);
+            btnOrder_similar = itemView.findViewById(R.id.btnOrder_similars);
         }
     }
 }

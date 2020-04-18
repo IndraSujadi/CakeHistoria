@@ -43,30 +43,12 @@
             app:srcCompat="@drawable/signinfb"
             android:layout_marginBottom="10dp"/>
 
-        <LinearLayout
+        <ProgressBar
+            android:visibility="invisible"
+            android:id="@+id/pBar_Login"
+            style="?android:attr/progressBarStyle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Don't have an account yet?"
-                android:layout_weight="1"
-                android:textAlignment="textEnd"/>
-
-            <TextView
-                android:id="@+id/txt_SignUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" Sign Up."
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:layout_weight="1"
-                android:textAlignment="textStart"/>
-        </LinearLayout>
+            android:layout_height="wrap_content" />
 
 
     </LinearLayout>

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Specific_Category">
+    tools:context=".Specific_Category"
+    android:layout_marginBottom="50dp">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -18,46 +19,49 @@
             android:layout_height="match_parent"
             android:background="@drawable/background"
             android:backgroundTint="@color/Light"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingVertical="10dp"
+            android:paddingLeft="15dp">
 
             <ImageView
                 android:id="@+id/imgBack"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/balik" />
+                android:layout_marginRight="10dp"
+                android:src="@drawable/balik"/>
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/top_nav"
-                android:layout_width="318dp"
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignParentBottom="false"
-                android:layout_marginLeft="15dp"
-                android:paddingTop="10dp">
+                android:layout_marginRight="160dp">
 
                 <TextView
                     android:id="@+id/txtWelcome"
-                    android:layout_width="282dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/gotham_bold"
                     android:text="@string/app_name"
                     android:textColor="@color/Dark"
                     android:textSize="25dp" />
-            </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+            </RelativeLayout>
+
 
             <ImageButton
                 android:id="@+id/imageButton3"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:background="@color/Light"
+                android:scaleType="fitEnd"
                 android:src="@drawable/heart2" />
 
             <ImageButton
                 android:id="@+id/imageButton4"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
