@@ -13,199 +13,215 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginLeft="23dp"
             android:layout_marginRight="23dp"
-            android:layout_marginLeft="23dp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/Dark"
-                android:fontFamily="@font/gotham_bold"
-                android:text="Your Cake"
-                android:textSize="18sp"
-                android:gravity="center"
                 android:layout_marginTop="41dp"
                 android:layout_marginBottom="3dp"
-                />
+                android:fontFamily="@font/gotham_bold"
+                android:gravity="center"
+                android:text="Your Cake"
+                android:textColor="@color/Dark"
+                android:textSize="18sp" />
 
-            <ScrollView
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/pagerView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="250dp"
+                android:layout_marginLeft="-23dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="-23dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    />
-            </ScrollView>
+
+            </androidx.viewpager.widget.ViewPager>
 
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Category"
-                android:gravity="center"
-                android:textSize="12sp"
-                android:textColor="@color/Dark"
+                android:layout_marginTop="22dp"
                 android:fontFamily="@font/gotham_medium"
-                android:layout_marginTop="22dp"/>
+                android:gravity="center"
+                android:text="Category"
+                android:textColor="@color/Dark"
+                android:textSize="12sp" />
 
             <Spinner
                 android:id="@+id/spinCategory"
                 android:layout_width="261dp"
                 android:layout_height="35dp"
-                android:layout_marginTop="14dp"
                 android:layout_gravity="center"
-                android:background="@drawable/spinner_border"
-                android:autofillHints="Choose One"/>
+                android:layout_marginTop="14dp"
+                android:autofillHints="Choose One"
+                android:background="@drawable/spinner_border" />
 
-            <ScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="27dp">
+                android:orientation="horizontal"
+                >
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" />
-            </ScrollView>
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="left|center"
+                    app:srcCompat="@drawable/left" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/pagerChoice"
+                    android:layout_width="325dp"
+                    android:layout_gravity="center"
+                    android:layout_height="328dp"
+                    android:layout_marginTop="2dp"/>
+
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="end|center"
+                    app:srcCompat="@drawable/right" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Additional Figures"
                 android:layout_marginTop="50dp"
-                android:textAppearance="@style/SubTitle"
                 android:gravity="center"
-                />
+                android:text="Additional Figures"
+                android:textAppearance="@style/SubTitle" />
 
             <TextView
                 android:id="@+id/textView21"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_marginTop="12dp"
+                android:gravity="center"
                 android:text="Upload the figure image that you want to attached in your cake to0"
-                android:textAppearance="@style/Paragraph"/>
+                android:textAppearance="@style/Paragraph" />
 
             <Button
                 android:id="@+id/button3"
-                android:layout_marginTop="20dp"
                 android:layout_width="83dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
-                android:text="Upload"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/brown_button"
                 android:fontFamily="@font/gotham_medium"
-                android:textSize="10sp"
-                android:textColor="@color/Light"/>
+                android:text="Upload"
+                android:textColor="@color/Light"
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/textView22"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Additional Text"
+                android:layout_marginTop="35dp"
                 android:gravity="center"
-                android:textAppearance="@style/SubTitle"
-                android:layout_marginTop="35dp"/>
+                android:text="Additional Text"
+                android:textAppearance="@style/SubTitle" />
 
             <TextView
                 android:id="@+id/textView23"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="will be written on top of the cake"
-                android:textAppearance="@style/Paragraph"
                 android:layout_marginTop="10dp"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:text="will be written on top of the cake"
+                android:textAppearance="@style/Paragraph" />
 
             <EditText
                 android:id="@+id/editText"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_marginTop="13dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Type here..."
-                android:textColorHint="#828282"
                 android:background="@drawable/background"
+                android:ems="10"
                 android:fontFamily="@font/gotham_medium"
-                android:textSize="11sp"
-                android:paddingLeft="10dp"/>
+                android:hint="Type here..."
+                android:inputType="textPersonName"
+                android:paddingLeft="10dp"
+                android:textColorHint="#828282"
+                android:textSize="11sp" />
 
             <TextView
                 android:id="@+id/textView24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Special Orders"
                 android:layout_marginTop="35dp"
                 android:gravity="center"
-                android:textAppearance="@style/SubTitle"/>
+                android:text="Special Orders"
+                android:textAppearance="@style/SubTitle" />
 
             <EditText
                 android:id="@+id/editText2"
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/background"
                 android:ems="10"
                 android:gravity="start|top"
-                android:inputType="textMultiLine"
-                android:layout_marginTop="14dp"
-                android:background="@drawable/background"/>
+                android:inputType="textMultiLine" />
 
             <TextView
                 android:id="@+id/textView25"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="When you want the cake should be ready?"
                 android:layout_marginTop="35dp"
                 android:gravity="center"
-                android:textAppearance="@style/SubTitle"/>
+                android:text="When you want the cake should be ready?"
+                android:textAppearance="@style/SubTitle" />
 
             <TextView
                 android:id="@+id/textView26"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:gravity="center"
                 android:text="The cake could be ready min. 2 workdays"
-                android:textAppearance="@style/Paragraph"
-                android:layout_marginTop="12dp"/>
+                android:textAppearance="@style/Paragraph" />
 
             <EditText
                 android:id="@+id/editText3"
                 android:layout_width="171dp"
                 android:layout_height="24dp"
-                android:ems="10"
-                android:inputType="date"
-                android:layout_marginTop="12dp"
                 android:layout_gravity="center"
-                android:background="@drawable/bg_date"/>
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_date"
+                android:ems="10"
+                android:inputType="date" />
 
             <CheckBox
                 android:id="@+id/checkBox2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Include lettercard"
                 android:layout_gravity="center"
-                android:textAppearance="@style/SubTitle"
+                android:layout_marginTop="35dp"
                 android:buttonTint="@color/primaryBrown"
-                android:layout_marginTop="35dp"/>
+                android:text="Include lettercard"
+                android:textAppearance="@style/SubTitle" />
 
             <EditText
                 android:id="@+id/editText4"
-                android:layout_marginTop="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/background"
                 android:ems="10"
+                android:fontFamily="@font/gotham_light_italic"
                 android:gravity="start|top"
                 android:hint="Type your message here and we will write it on lettercard. If you want to write the letter by yourself, just make this box empty"
                 android:inputType="textMultiLine"
-                android:background="@drawable/background"
-                android:padding="16dp"
-                android:fontFamily="@font/gotham_light_italic"
                 android:lineSpacingExtra="5dp"
-                android:textAppearance="@style/Paragraph"/>
+                android:padding="16dp"
+                android:textAppearance="@style/Paragraph" />
 
             <TextView
                 android:id="@+id/subDelivery"
@@ -232,10 +248,10 @@
                 android:id="@+id/textView29"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Include Packaging"
-                android:gravity="center"
                 android:layout_marginTop="6dp"
-                android:textAppearance="@style/Paragraph"/>
+                android:gravity="center"
+                android:text="Include Packaging"
+                android:textAppearance="@style/Paragraph" />
 
             <LinearLayout
                 android:layout_width="match_parent"

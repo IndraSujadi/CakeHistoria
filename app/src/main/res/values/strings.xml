@@ -5,6 +5,14 @@
     <string name="review_toolbar"> Review </string>
     <string name="deliv"><u>NEXT TO DELIVERY</u></string>
 
+    <string name="Sponge"><b>Sponge:</b> This is the brief explanation of sponge cake material. Lorem ipsum dolor sit
+        amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Pellentesque habitant morbi tristique senectus.</string>
+
+    <string name="Butter"><b>Butter:</b> This is the brief explanation of butter cake material. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Sed risus ultricies tristique nulla aliquet enim tortor at.</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
