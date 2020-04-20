@@ -55,4 +55,13 @@
         <item name="colorControlNormal">@color/ReviewToolbar</item>
     </style>
 
+    <style name="buttonpager">
+        <item name="android:layout_width">83dp</item>
+        <item name="android:layout_height">23dp</item>
+        <item name="android:background">@drawable/btn_cake_type</item>
+        <item name="android:fontFamily">@font/gotham_medium</item>
+        <item name="android:textColor">@color/primaryBrown</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
 </resources>

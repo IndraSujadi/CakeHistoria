@@ -28,11 +28,9 @@
                 app:srcCompat="@drawable/brownish" />
 
             <Button
-                android:id="@+id/button7"
-                android:layout_width="83dp"
-                android:layout_height="23dp"
+                android:id="@+id/btn_brownish"
                 android:text="Button"
-                android:background="@drawable/btn_cake_type"/>
+                style="@style/buttonpager"/>
 
             <ImageView
                 android:id="@+id/imageView12"
@@ -41,10 +39,9 @@
                 app:srcCompat="@drawable/reddish" />
 
             <Button
-                android:id="@+id/button8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Button" />
+                android:id="@+id/btn_reddish"
+                android:text="Button"
+                style="@style/buttonpager"/>
 
             <ImageView
                 android:id="@+id/imageView13"
@@ -54,9 +51,8 @@
 
             <Button
                 android:id="@+id/button9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="Button"
+                style="@style/buttonpager"/>
         </LinearLayout>
 
         <LinearLayout
