@@ -23,15 +23,26 @@
             android:layout_marginBottom="25dp"
             app:srcCompat="@drawable/logo_splash" />
 
-        <ImageButton
-            android:id="@+id/imgBt_googleaccount"
-            android:layout_marginRight="100dp"
-            android:layout_marginLeft="100dp"
+<!--        <ImageButton-->
+<!--            android:id="@+id/imgBt_googleaccount"-->
+<!--            android:layout_marginRight="100dp"-->
+<!--            android:layout_marginLeft="100dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="46dp"-->
+<!--            android:background="@color/Light"-->
+<!--            app:srcCompat="@drawable/signingoogle"-->
+<!--            android:layout_marginBottom="10dp"/>-->
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/google_button"
             android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:background="@color/Light"
-            app:srcCompat="@drawable/signingoogle"
-            android:layout_marginBottom="10dp"/>
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:text="Text"
+            android:layout_alignParentTop="true"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="75dp"
+            android:textSize="18sp" />
 
         <ImageButton
             android:id="@+id/imgBt_facebookaccount"

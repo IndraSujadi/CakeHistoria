@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +20,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,6 +34,7 @@ public class Login_Activity extends AppCompatActivity {
     ImageButton btn_GoogleLogin,btn_FBLogin;
     ProgressBar progressBar;
 
+
     FirebaseAuth mAuth;
     GoogleSignInClient mGoogleSignInClient;
     int GOOGLE_SIGN_IN = 0;
@@ -40,7 +44,7 @@ public class Login_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        btn_GoogleLogin = findViewById(R.id.imgBt_googleaccount);
+        //        btn_GoogleLogin = findViewById(R.id.imgBt_googleaccount);
         btn_FBLogin = findViewById(R.id.imgBt_facebookaccount);
         progressBar = findViewById(R.id.pBar_Login);
         mAuth = FirebaseAuth.getInstance();
@@ -52,19 +56,37 @@ public class Login_Activity extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
 
-        btn_GoogleLogin.setOnClickListener(new View.OnClickListener() {
+        // ----------------- GOOGLE SIGN IN BUTTON -------------------------------
+        SignInButton googleButton = (SignInButton) findViewById(R.id.google_button);
+        googleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
-                    case R.id.imgBt_googleaccount:
+                    case R.id.google_button:
                         Login();
                         break;
                 }
             }
         });
 
+        for (int i = 0; i < googleButton.getChildCount(); i++) {
+            View v = googleButton.getChildAt(i);
 
-
+            if (v instanceof TextView)
+            {
+                TextView tv = (TextView) v;
+                tv.setTextSize(14);
+                tv.setTypeface(null, Typeface.NORMAL);
+                tv.setText("Sign in with Google");
+                tv.setTextColor(Color.parseColor("#5e5e5e"));
+//                tv.setBackgroundDrawable(getResources().getDrawable(
+//                        R.drawable.ic_launcher));
+                tv.setSingleLine(true);
+//                tv.setPadding(15, 15, 15, 15);
+                return;
+            }
+        }
+        // ----------------- GOOGLE SIGN IN BUTTON -------------------------------
     }
 
     private void Login() {
