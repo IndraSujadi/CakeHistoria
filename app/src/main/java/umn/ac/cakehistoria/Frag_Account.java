@@ -21,12 +21,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class Frag_Account extends Fragment {
 
     TextView NamaUser, EmailUser;
     Button btnSign_Out;
+
+    FirebaseAuth mAuth;
 
     GoogleSignInClient mGoogleSignInClient;
 
@@ -45,16 +48,12 @@ public class Frag_Account extends Fragment {
         NamaUser = view.findViewById(R.id.NamaUser);
         EmailUser = view.findViewById(R.id.EmailUser);
         btnSign_Out = view.findViewById(R.id.btnSign_Out);
+        mAuth = FirebaseAuth.getInstance();
 
         btnSign_Out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.btnSign_Out:
-                        signOut();
-                        break;
-                }
-
+                signOut();
             }
         });
 
@@ -78,7 +77,7 @@ public class Frag_Account extends Fragment {
                 .addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(getContext(),"Sign Out Berhasil",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "See you later",Toast.LENGTH_LONG).show();
                         getActivity().finish();
                     }
                 });
