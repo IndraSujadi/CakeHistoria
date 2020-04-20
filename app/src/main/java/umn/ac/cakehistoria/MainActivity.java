@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
+
         // Tunjuk Button
         ImageButton btn_Home = findViewById(R.id.btn_Home);
         ImageButton btn_Order = findViewById(R.id.btn_Order);

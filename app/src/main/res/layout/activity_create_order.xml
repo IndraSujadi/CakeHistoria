@@ -107,8 +107,22 @@
                 android:text="Upload the figure image that you want to attached in your cake to0"
                 android:textAppearance="@style/Paragraph" />
 
+
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btnSelect"
+                android:layout_width="83dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/brown_button"
+                android:backgroundTint="@color/Dark"
+                android:fontFamily="@font/gotham_medium"
+                android:text="Select"
+                android:textColor="@color/Light"
+                android:textSize="10sp" />
+
+            <Button
+                android:id="@+id/btnUpload"
                 android:layout_width="83dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
@@ -118,6 +132,8 @@
                 android:text="Upload"
                 android:textColor="@color/Light"
                 android:textSize="10sp" />
+
+
 
             <TextView
                 android:id="@+id/textView22"

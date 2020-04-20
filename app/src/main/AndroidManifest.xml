@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".Create_order">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".OrderDone_Activity" />
         <activity android:name=".Payment_Activity" />
@@ -26,11 +31,7 @@
         <activity android:name=".Delivery" />
         <activity android:name=".Login_Activity" />
         <activity android:name=".Splach_Screen" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".MainActivity">
 
