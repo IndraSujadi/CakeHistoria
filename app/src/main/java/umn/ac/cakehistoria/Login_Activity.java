@@ -34,10 +34,11 @@ public class Login_Activity extends AppCompatActivity {
     ImageButton btn_GoogleLogin,btn_FBLogin;
     ProgressBar progressBar;
 
-
     FirebaseAuth mAuth;
     GoogleSignInClient mGoogleSignInClient;
     int GOOGLE_SIGN_IN = 0;
+
+    FirebaseAuth.AuthStateListener fbAuthStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,16 @@ public class Login_Activity extends AppCompatActivity {
         btn_FBLogin = findViewById(R.id.imgBt_facebookaccount);
         progressBar = findViewById(R.id.pBar_Login);
         mAuth = FirebaseAuth.getInstance();
+
+        fbAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser fbUser = mAuth.getCurrentUser();
+                if(fbUser != null){
+                    updateUI(fbUser);
+                }
+            }
+        };
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -88,7 +99,6 @@ public class Login_Activity extends AppCompatActivity {
         }
         // ----------------- GOOGLE SIGN IN BUTTON -------------------------------
     }
-
     private void Login() {
         progressBar.setVisibility(View.VISIBLE);
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -112,7 +122,6 @@ public class Login_Activity extends AppCompatActivity {
             //startActivity(i);
             progressBar.setVisibility(View.INVISIBLE);
             FirebaseGoogleAuth(account);
-
 
         }catch (ApiException e ) {
             Toast.makeText(Login_Activity.this,"Sign In Failed",Toast.LENGTH_LONG).show();
@@ -144,11 +153,21 @@ public class Login_Activity extends AppCompatActivity {
             String email = user.getEmail();
             String photo = String.valueOf(user.getPhotoUrl());
 
+            Toast.makeText(Login_Activity.this, "Hello, "+ name,Toast.LENGTH_SHORT).show();
             Intent i = new Intent(Login_Activity.this, MainActivity.class);
             startActivity(i);
         } else {
+            Intent i = new Intent(this, Login_Activity.class);
             Toast.makeText(this,"Login Gagal",Toast.LENGTH_LONG).show();
         }
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(fbAuthStateListener);
+//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+    }
+
 
 }

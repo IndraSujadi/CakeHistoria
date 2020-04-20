@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">CakeHistoria</string>
-    <string name="app_name2">Transaction</string>
     <string name="Next"><u>NEXT TO PAYMENT</u></string>
     <string name="review_toolbar"> Review </string>
     <string name="deliv"><u>NEXT TO DELIVERY</u></string>
@@ -14,5 +13,4 @@
         Sed risus ultricies tristique nulla aliquet enim tortor at.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

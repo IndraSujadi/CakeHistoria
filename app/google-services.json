@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "934185358498-spbdru4j008n5oksk7fhkv7ua7qsaaep.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "umn.ac.cakehistoria",
+            "certificate_hash": "f1e57fed7b3ee0cdf5b608a16185cae1a64ed055"
+          }
+        },
+        {
+          "client_id": "934185358498-hahgcmqsbblu2ptk5m9kvv39sjb55c2a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "umn.ac.cakehistoria",
+            "certificate_hash": "8bc18fb17dbe6d798fc1613c1bafdb716e34dc0c"
+          }
+        },
+        {
           "client_id": "934185358498-binh38ngq6micci04ojduocp4pnrfupu.apps.googleusercontent.com",
           "client_type": 3
         }

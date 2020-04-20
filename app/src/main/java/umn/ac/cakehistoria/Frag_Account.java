@@ -1,6 +1,9 @@
 package umn.ac.cakehistoria;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.icu.util.ValueIterator;
 import android.net.Uri;
 import android.os.Bundle;
@@ -73,13 +76,41 @@ public class Frag_Account extends Fragment {
     }
 
     private void signOut() {
-        mGoogleSignInClient.signOut()
-                .addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(getContext(), "See you later",Toast.LENGTH_LONG).show();
-                        getActivity().finish();
-                    }
-                });
+        AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+        dialog.setTitle("Logout");
+        dialog.setMessage("Are you sure you want to leave?");
+        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                mGoogleSignInClient.signOut()
+                        .addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(getContext(), "See you later",Toast.LENGTH_LONG).show();
+                                Intent i = new Intent(getActivity(), Login_Activity.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                                        Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(i);
+                                getActivity().finish();
+                            }
+                        });
+
+                mAuth.getInstance().signOut();
+                Intent i = new Intent(getActivity(),
+                        Login_Activity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+                getActivity().finish();
+            }
+        });
+        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        dialog.show();
     }
 }
