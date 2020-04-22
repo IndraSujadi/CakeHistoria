@@ -25,13 +25,15 @@
             android:name=".Review_Activity"
             android:label="@string/review_toolbar"
             android:theme="@style/Review" />
-        <activity android:name=".Delivery" />
-        <activity android:name=".Login_Activity">
+        <activity android:name=".Delivery" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Login_Activity">
+
         </activity>
         <activity android:name=".Splach_Screen">
         </activity>
