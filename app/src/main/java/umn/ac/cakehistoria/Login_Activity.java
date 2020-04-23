@@ -23,12 +23,19 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Login_Activity extends AppCompatActivity {
 
@@ -41,6 +48,8 @@ public class Login_Activity extends AppCompatActivity {
 
     FirebaseAuth.AuthStateListener fbAuthStateListener;
 
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +59,7 @@ public class Login_Activity extends AppCompatActivity {
         btn_FBLogin = findViewById(R.id.imgBt_facebookaccount);
         progressBar = findViewById(R.id.pBar_Login);
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         fbAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -150,9 +160,20 @@ public class Login_Activity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
+            String UID = user.getUid();
             String name = user.getDisplayName();
             String email = user.getEmail();
             String photo = String.valueOf(user.getPhotoUrl());
+
+            Map<String, Object> dataUser = new HashMap<>();
+            //dataUser.put("UID",UID);
+            dataUser.put("Nama", name);
+            dataUser.put("Email",email);
+
+            DocumentReference documentReference = db.collection("User").document(UID);
+            documentReference.set(dataUser);
+
+            db.collection("User").document(UID).set(dataUser);
 
             Toast.makeText(Login_Activity.this, "Hello, "+ name,Toast.LENGTH_SHORT).show();
             Intent i = new Intent(Login_Activity.this, MainActivity.class);
@@ -167,7 +188,7 @@ public class Login_Activity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(fbAuthStateListener);
-       GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+       //GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
 
     }
 
