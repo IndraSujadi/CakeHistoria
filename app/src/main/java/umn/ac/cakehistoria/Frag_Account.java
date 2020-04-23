@@ -18,6 +18,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.firebase.auth.FirebaseAuth;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -64,15 +67,16 @@ public class Frag_Account extends Fragment {
         if (account != null) {
             String personName = account.getDisplayName();
             String personEmail = account.getEmail();
-            /*String personGivenName = account.getGivenName();
+            String personGivenName = account.getGivenName();
             String personFamilyName = account.getFamilyName();
             String personID = account.getId();
-            Uri personPhoto = account.getPhotoUrl();*/
+            Uri personPhoto = account.getPhotoUrl();
 
             NamaUser.setText(personName);
             EmailUser.setText(personEmail);
         }
         return view;
+
     }
 
     private void signOut() {

@@ -31,12 +31,13 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class Login_Activity extends AppCompatActivity {
-    ImageButton btn_GoogleLogin,btn_FBLogin;
+
+    ImageButton btn_FBLogin;
     ProgressBar progressBar;
 
     FirebaseAuth mAuth;
     GoogleSignInClient mGoogleSignInClient;
-    int GOOGLE_SIGN_IN = 0;
+    int GOOGLE_SIGN_IN = 12;
 
     FirebaseAuth.AuthStateListener fbAuthStateListener;
 
@@ -45,7 +46,7 @@ public class Login_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //        btn_GoogleLogin = findViewById(R.id.imgBt_googleaccount);
+
         btn_FBLogin = findViewById(R.id.imgBt_facebookaccount);
         progressBar = findViewById(R.id.pBar_Login);
         mAuth = FirebaseAuth.getInstance();
@@ -166,7 +167,8 @@ public class Login_Activity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(fbAuthStateListener);
-//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+       GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+
     }
 
 

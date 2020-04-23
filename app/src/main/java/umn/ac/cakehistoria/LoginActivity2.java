@@ -13,7 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
+/*import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -25,13 +25,13 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.GoogleAuthProvider;*/
 
 public class LoginActivity2 extends AppCompatActivity {
     String TAG = "LoginActivity";
     ProgressBar progressBar;
 
-    GoogleSignInClient googleSignInClient;
+    /*GoogleSignInClient googleSignInClient;
     int GOOGLE_SIGN_IN = 1001;
 
     FirebaseAuth firebaseAuth;
@@ -41,7 +41,7 @@ public class LoginActivity2 extends AppCompatActivity {
     FirebaseAuth.AuthStateListener fbAuthStateListener;
 
     // Check if user is signed-in (non-null) and update UI accordingly.
-    FirebaseUser currentUser;
+    FirebaseUser currentUser;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class LoginActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_login2);
 
         // ----------------- GOOGLE SIGN IN BUTTON -------------------------------
-        SignInButton googleButton = (SignInButton) findViewById(R.id.google_button);
+        /*SignInButton googleButton = (SignInButton) findViewById(R.id.google_button);
         googleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,14 +78,14 @@ public class LoginActivity2 extends AppCompatActivity {
 //                tv.setPadding(15, 15, 15, 15);
                 return;
             }
-        }
+        }*/
         // ----------------- GOOGLE SIGN IN BUTTON -------------------------------
 
 
 
     }
 
-    private void configureGoogleClient() {
+    /*private void configureGoogleClient() {
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -189,7 +189,7 @@ public class LoginActivity2 extends AppCompatActivity {
         } else {
             Toast.makeText(this,"Login Gagal",Toast.LENGTH_LONG).show();
         }
-    }
+    }*/
 
 
 }
