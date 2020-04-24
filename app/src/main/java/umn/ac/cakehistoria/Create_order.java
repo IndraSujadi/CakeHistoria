@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -27,6 +28,7 @@ import umn.ac.cakehistoria.pagerchoice.pagerchoice_adapter;
 public class Create_order extends AppCompatActivity {
 
     Button btnUpload,btnSelect;
+    ImageButton btnNext_toDelivery;
     FirebaseStorage storage;
     StorageReference storageReference;
     public Uri imgUri;
@@ -48,6 +50,7 @@ public class Create_order extends AppCompatActivity {
 
         btnUpload = findViewById(R.id.btnUpload);
         btnSelect = findViewById(R.id.btnSelect);
+        btnNext_toDelivery = findViewById(R.id.btnNext_toDelivery);
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference("Images");
@@ -69,6 +72,14 @@ public class Create_order extends AppCompatActivity {
                 } else {
                     uploadImage();
                 }
+            }
+        });
+
+        btnNext_toDelivery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Create_order.this, Delivery.class);
+                startActivity(i);
             }
         });
 
