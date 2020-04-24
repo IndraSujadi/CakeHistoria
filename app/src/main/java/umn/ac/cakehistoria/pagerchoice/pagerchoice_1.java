@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,7 +19,6 @@ import umn.ac.cakehistoria.R;
 
 public class pagerchoice_1 extends Fragment implements View.OnClickListener {
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -26,6 +26,7 @@ public class pagerchoice_1 extends Fragment implements View.OnClickListener {
 
         view.findViewById(R.id.sponge).setOnClickListener(this);
         view.findViewById(R.id.butter).setOnClickListener(this);
+
         return view;
     }
 
@@ -44,7 +45,6 @@ public class pagerchoice_1 extends Fragment implements View.OnClickListener {
                 break;
         }
     }
-
 
 
 

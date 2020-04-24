@@ -1,11 +1,16 @@
 package umn.ac.cakehistoria.pagerchoice;
 
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import umn.ac.cakehistoria.PagerView_1;
 import umn.ac.cakehistoria.PagerView_2;
+import umn.ac.cakehistoria.R;
 
 public class pagerchoice_adapter extends FragmentPagerAdapter {
     private static int NUM_ITEMS = 7;
