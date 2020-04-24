@@ -169,6 +169,7 @@ public class Login_Activity extends AppCompatActivity {
             //dataUser.put("UID",UID);
             dataUser.put("Nama", name);
             dataUser.put("Email",email);
+            dataUser.put("Photo", photo);
 
             DocumentReference documentReference = db.collection("User").document(UID);
             documentReference.set(dataUser);

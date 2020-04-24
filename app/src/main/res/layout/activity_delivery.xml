@@ -125,131 +125,133 @@
                     android:layout_height="wrap_content"
                     android:text="Provinsi" />
 
-                <AutoCompleteTextView
-                    android:id="@+id/autoProvinsi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="PROVINSI"/>
-
-                <!--<Spinner
+                <Spinner
                     android:id="@+id/spinProvinsi"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="14dp"
-                    android:background="@drawable/spinner_border" /> -->
-
-                <TextView
-                    android:id="@+id/subKota"
-                    style="@style/SubTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Kota" />
-
-                <AutoCompleteTextView
-                    android:id="@+id/autoKota"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="KOTA"/>
-
-
-                <!-- <Spinner
-                    android:id="@+id/spinKota"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="14dp"
-                    android:background="@drawable/spinner_border" /> -->
-
-                <TextView
-                    android:id="@+id/subKecamatan"
-                    style="@style/SubTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Kecamatan" />
-
-
-               <Spinner
-                    android:id="@+id/spinKecamatan"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="14dp"
                     android:background="@drawable/spinner_border" />
 
                 <TextView
-                    android:id="@+id/subKodePos"
+                    android:id="@+id/subKota"
                     style="@style/SubTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Kode Pos" />
+                    android:text="Kabupaten/Kota" />
 
-                <EditText
-                    android:id="@+id/edtKodePos"
-                    style="@style/InputBox"
-                    android:layout_width="140dp"
-                    android:layout_height="30dp"
-                    android:ems="10"
-                    android:inputType="number" />
+                <Spinner
+                   android:id="@+id/spinKota"
+                   android:layout_width="match_parent"
+                   android:layout_height="30dp"
+                   android:layout_marginTop="14dp"
+                   android:background="@drawable/spinner_border" />
 
-                <CheckBox
-                    android:id="@+id/checkBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="-6.5dp"
-                    android:layout_marginTop="25dp"
+               <TextView
+                   android:id="@+id/subKecamatan"
+                   style="@style/SubTitle"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Kecamatan" />
 
-                    android:layout_weight="1"
-                    android:buttonTint="@color/primaryBrown"
-                    android:fontFamily="@font/gotham_medium"
-                    android:text="Asuransi Pengiriman"
-                    android:textSize="12sp" />
-            </LinearLayout>
 
-            <TextView
-                android:id="@+id/subDelivery"
-                style="@style/SubTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:text="DELIVERY PRICE" />
-
-            <TextView
-                android:id="@+id/txtHargaDeliv"
-                android:layout_width="188dp"
-                android:layout_height="34dp"
-                android:layout_gravity="center"
-                android:background="@color/Cream"
-                android:fontFamily="@font/gotham_bold"
-                android:gravity="center"
-                android:text="TextView"
-                android:textColor="@color/primaryBrown" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="52dp"
-                android:layout_marginBottom="20dp"
-                android:orientation="horizontal">
+              <Spinner
+                   android:id="@+id/spinKecamatan"
+                   android:layout_width="match_parent"
+                   android:layout_height="30dp"
+                   android:layout_marginTop="14dp"
+                   android:background="@drawable/spinner_border" />
 
                 <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/subKelurahan"
+                    style="@style/SubTitle"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="9dp"
-                    android:layout_weight="1"
-                    android:text="@string/Next"
-                    android:textAlignment="viewEnd"
-                    android:textAppearance="@style/SubTitle"
-                    tools:ignore="RtlCompat" />
+                    android:text="Kelurahan" />
 
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_weight="0"
-                    android:background="@drawable/btn_next" />
-            </LinearLayout>
 
-        </LinearLayout>
-    </ScrollView>
+                <Spinner
+                    android:id="@+id/spinKelurahan"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/spinner_border" />
+
+               <TextView
+                   android:id="@+id/subKodePos"
+                   style="@style/SubTitle"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Kode Pos" />
+
+               <EditText
+                   android:id="@+id/edtKodePos"
+                   style="@style/InputBox"
+                   android:layout_width="140dp"
+                   android:layout_height="30dp"
+                   android:ems="10"
+                   android:inputType="number" />
+
+               <CheckBox
+                   android:id="@+id/checkBox"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="-6.5dp"
+                   android:layout_marginTop="25dp"
+
+                   android:layout_weight="1"
+                   android:buttonTint="@color/primaryBrown"
+                   android:fontFamily="@font/gotham_medium"
+                   android:text="Asuransi Pengiriman"
+                   android:textSize="12sp" />
+           </LinearLayout>
+
+           <TextView
+               android:id="@+id/subDelivery"
+               style="@style/SubTitle"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="10dp"
+               android:gravity="center"
+               android:text="DELIVERY PRICE" />
+
+           <TextView
+               android:id="@+id/txtHargaDeliv"
+               android:layout_width="188dp"
+               android:layout_height="34dp"
+               android:layout_gravity="center"
+               android:background="@color/Cream"
+               android:fontFamily="@font/gotham_bold"
+               android:gravity="center"
+               android:text="TextView"
+               android:textColor="@color/primaryBrown" />
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginTop="52dp"
+               android:layout_marginBottom="20dp"
+               android:orientation="horizontal">
+
+               <TextView
+                   android:id="@+id/textView9"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:layout_marginRight="9dp"
+                   android:layout_weight="1"
+                   android:text="@string/Next"
+                   android:textAlignment="viewEnd"
+                   android:textAppearance="@style/SubTitle"
+                   tools:ignore="RtlCompat" />
+
+               <ImageButton
+                   android:id="@+id/imageButton"
+                   android:layout_width="36dp"
+                   android:layout_height="36dp"
+                   android:layout_weight="0"
+                   android:background="@drawable/btn_next" />
+           </LinearLayout>
+
+       </LinearLayout>
+   </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
