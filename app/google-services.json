@@ -1,29 +1,21 @@
 {
   "project_info": {
-    "project_number": "934185358498",
-    "firebase_url": "https://cake-historia.firebaseio.com",
-    "project_id": "cake-historia",
-    "storage_bucket": "cake-historia.appspot.com"
+    "project_number": "656373345890",
+    "firebase_url": "https://historiacake.firebaseio.com",
+    "project_id": "historiacake",
+    "storage_bucket": "historiacake.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:934185358498:android:823933a5d88e94d9ccf3fb",
+        "mobilesdk_app_id": "1:656373345890:android:415804d1e45104fbaaeb3b",
         "android_client_info": {
           "package_name": "umn.ac.cakehistoria"
         }
       },
       "oauth_client": [
         {
-          "client_id": "934185358498-spbdru4j008n5oksk7fhkv7ua7qsaaep.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "umn.ac.cakehistoria",
-            "certificate_hash": "f1e57fed7b3ee0cdf5b608a16185cae1a64ed055"
-          }
-        },
-        {
-          "client_id": "934185358498-hahgcmqsbblu2ptk5m9kvv39sjb55c2a.apps.googleusercontent.com",
+          "client_id": "656373345890-8tphiu4phauim5r36mnho4na02cqhrtq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "umn.ac.cakehistoria",
@@ -31,20 +23,20 @@
           }
         },
         {
-          "client_id": "934185358498-binh38ngq6micci04ojduocp4pnrfupu.apps.googleusercontent.com",
+          "client_id": "656373345890-3rffeti0o5ggr3hfsc6ttheof2d0un8l.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCgXcgxa1ODdkr8uBpsy7qtQQ4hmmd4XHI"
+          "current_key": "AIzaSyCMwP3p6iJR4VoFJ-BE75Fjarw4k6Go-fA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "934185358498-binh38ngq6micci04ojduocp4pnrfupu.apps.googleusercontent.com",
+              "client_id": "656373345890-3rffeti0o5ggr3hfsc6ttheof2d0un8l.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

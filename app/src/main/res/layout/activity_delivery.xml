@@ -125,12 +125,18 @@
                     android:layout_height="wrap_content"
                     android:text="Provinsi" />
 
-                <Spinner
+                <AutoCompleteTextView
+                    android:id="@+id/autoProvinsi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="PROVINSI"/>
+
+                <!--<Spinner
                     android:id="@+id/spinProvinsi"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="14dp"
-                    android:background="@drawable/spinner_border" />
+                    android:background="@drawable/spinner_border" /> -->
 
                 <TextView
                     android:id="@+id/subKota"
@@ -139,12 +145,19 @@
                     android:layout_height="wrap_content"
                     android:text="Kota" />
 
-                <Spinner
+                <AutoCompleteTextView
+                    android:id="@+id/autoKota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="KOTA"/>
+
+
+                <!-- <Spinner
                     android:id="@+id/spinKota"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="14dp"
-                    android:background="@drawable/spinner_border" />
+                    android:background="@drawable/spinner_border" /> -->
 
                 <TextView
                     android:id="@+id/subKecamatan"
@@ -153,7 +166,8 @@
                     android:layout_height="wrap_content"
                     android:text="Kecamatan" />
 
-                <Spinner
+
+               <Spinner
                     android:id="@+id/spinKecamatan"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
