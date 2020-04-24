@@ -1,6 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="310dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coating Decoration:"
+        android:fontFamily="@font/gotham_bold"
+        android:layout_gravity="center"
+        android:textColor="@color/Dark"
+        android:textSize="18sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="18dp">
+
+        <ImageView
+            android:id="@+id/imageView19"
+            android:layout_width="83dp"
+            android:layout_height="82dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/one_tier" />
+
+        <ImageView
+            android:id="@+id/imageView20"
+            android:layout_width="83dp"
+            android:layout_height="82dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/multi_tier" />
+
+        <ImageView
+            android:id="@+id/imageView21"
+            android:layout_width="83dp"
+            android:layout_height="82dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/cupcakes" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="14dp">
+
+        <RadioButton
+            android:id="@+id/one"
+            style="@style/customRadioButton"
+            android:layout_marginLeft="11dp"
+            android:checked="true"
+            android:text="One tier"
+
+            />
+
+        <RadioButton
+            android:id="@+id/multi"
+            style="@style/customRadioButton"
+            android:layout_marginLeft="19dp"
+            android:text="Multi-tier"
+
+            />
+
+        <RadioButton
+            android:id="@+id/cupcake"
+            style="@style/customRadioButton"
+            android:layout_marginLeft="21dp"
+            android:text="Cupcake"
+
+            />
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_gravity="center"
+        android:layout_marginTop="27dp"
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gotham_medium"
+        android:textColor="@color/Dark"
+        android:textSize="12sp"
+        android:text="how many tiers?" />
+
+    <Spinner
+        android:id="@+id/spinTiers"
+        android:layout_width="80dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="14dp"
+        android:autofillHints="2"
+        android:background="@drawable/spinner_border" />
+
+</LinearLayout>

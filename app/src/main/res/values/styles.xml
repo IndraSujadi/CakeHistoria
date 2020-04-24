@@ -58,10 +58,64 @@
     <style name="buttonpager">
         <item name="android:layout_width">83dp</item>
         <item name="android:layout_height">23dp</item>
+        <item name="android:layout_marginTop">15dp</item>
         <item name="android:background">@drawable/btn_cake_type</item>
         <item name="android:fontFamily">@font/gotham_medium</item>
         <item name="android:textColor">@color/primaryBrown</item>
         <item name="android:textSize">10sp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    
+    <style name="Margin_color">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">26dp</item>
+    </style>
+
+    <style name="customRadioButton">
+        <item name="android:paddingStart">6dp</item>
+        <item name="android:paddingEnd">6dp</item>
+        <item name="android:layout_width">83dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@drawable/text_checked_state</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:fontFamily">@font/gotham_medium</item>
+        <item name="android:background">@drawable/btn_checked_state</item>
+    </style>
+
+    <style name="customRadioButton2">
+        <item name="android:paddingStart">6dp</item>
+        <item name="android:paddingEnd">6dp</item>
+        <item name="android:layout_width">83dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@drawable/text_checked_state</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:fontFamily">@font/gotham_medium</item>
+        <item name="android:background">@drawable/btn_checked_state</item>
+        <item name="android:layout_marginBottom">27dp</item>
+    </style>
+
+    <style name="customRadioButton4">
+        <item name="android:paddingStart">6dp</item>
+        <item name="android:paddingEnd">6dp</item>
+        <item name="android:layout_width">83dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@drawable/text_checked_state</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:fontFamily">@font/gotham_medium</item>
+        <item name="android:background">@drawable/btn_checked_state</item>
+        <item name="android:layout_marginTop">14dp</item>
+    </style>
+
+    <style name="color_size">
+        <item name="android:layout_width">45dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
     </style>
 
 </resources>

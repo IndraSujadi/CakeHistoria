@@ -64,6 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:layout_marginTop="27dp"
                 >
 
                 <ImageView
@@ -75,9 +76,9 @@
 
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/pagerChoice"
-                    android:layout_width="325dp"
+                    android:layout_width="310dp"
                     android:layout_gravity="center"
-                    android:layout_height="328dp"
+                    android:layout_height="350dp"
                     android:layout_marginTop="2dp"/>
 
                 <ImageView
@@ -104,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:gravity="center"
-                android:text="Upload the figure image that you want to attached in your cake to0"
+                android:text="Upload the figure image that you want to attached in your cake too"
                 android:textAppearance="@style/Paragraph" />
 
 

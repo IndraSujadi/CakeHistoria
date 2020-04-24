@@ -1,29 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="310dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/gotham_bold"
+        android:text="Shapes:"
+        android:textColor="@color/Dark"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="18dp">
+
+        <ImageView
+            android:id="@+id/imageView19"
+            android:layout_width="83dp"
+            android:layout_height="82dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/round" />
+
+        <ImageView
+            android:id="@+id/imageView20"
+            android:layout_width="83dp"
+            android:layout_height="82dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/square" />
+
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="14dp">
+
+        <RadioButton
+            android:id="@+id/round"
+            style="@style/customRadioButton"
+            android:layout_marginLeft="35dp"
+            android:checked="true"
+            android:text="Round"
+
+            />
+
+        <RadioButton
+            android:id="@+id/square"
+            style="@style/customRadioButton"
+            android:layout_marginLeft="73dp"
+            android:text="Square"
+
+            />
+
+    </RadioGroup>
 
     <TextView
         android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_gravity="center"
+        android:fontFamily="@font/gotham_medium"
+        android:text="Size"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/Dark"
+        android:textSize="12sp" />
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <Spinner
+        android:id="@+id/spinSize"
+        android:layout_width="198dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="14dp"
+        android:autofillHints="Choose One"
+        android:background="@drawable/spinner_border" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </TableLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

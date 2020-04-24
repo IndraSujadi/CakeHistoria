@@ -35,10 +35,8 @@ public class pagerchoice_adapter extends FragmentPagerAdapter {
             case 4:
                 return new pagerchoice_5();
             case 5:
-                return new pagerchoice_5();
-            case 6:
                 return new pagerchoice_6();
-            case 7:
+            case 6:
                 return new pagerchoice_7();
             default:
                 return null;

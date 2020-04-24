@@ -1,6 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="310dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coating Decoration:"
+        android:fontFamily="@font/gotham_bold"
+        android:layout_gravity="center"
+        android:textColor="@color/Dark"
+        android:textSize="18sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="18dp">
+
+        <ImageView
+            android:id="@+id/imageView19"
+            android:layout_width="83dp"
+            android:layout_height="82dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/butter_cream" />
+
+        <ImageView
+            android:id="@+id/imageView20"
+            android:layout_width="83dp"
+            android:layout_height="82dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ganache" />
+
+        <ImageView
+            android:id="@+id/imageView21"
+            android:layout_width="83dp"
+            android:layout_height="82dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/fondant" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="14dp">
+
+        <RadioButton
+            android:id="@+id/butter_cream"
+            style="@style/customRadioButton"
+
+            android:layout_marginLeft="11dp"
+            android:checked="true"
+
+            android:text="Butter Cream" />
+
+        <RadioButton
+            android:id="@+id/ganache"
+            style="@style/customRadioButton"
+            android:layout_marginLeft="19dp"
+            android:text="Ganache"
+
+            />
+
+        <RadioButton
+            android:id="@+id/fondant"
+            style="@style/customRadioButton"
+            android:layout_marginLeft="21dp"
+            android:text="Fondant"
+
+            />
+    </RadioGroup>
+</LinearLayout>

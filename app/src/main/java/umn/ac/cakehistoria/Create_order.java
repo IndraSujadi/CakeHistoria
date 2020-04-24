@@ -22,6 +22,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
+import umn.ac.cakehistoria.pagerchoice.pagerchoice_adapter;
+
 public class Create_order extends AppCompatActivity {
 
     Button btnUpload,btnSelect;
@@ -39,6 +41,10 @@ public class Create_order extends AppCompatActivity {
         ViewPager vpPager = (ViewPager)findViewById(R.id.pagerView);
         adapterViewPager = new PagerViewAdapter(getSupportFragmentManager());
         vpPager.setAdapter(adapterViewPager);
+
+        ViewPager vpPager2 = (ViewPager)findViewById(R.id.pagerChoice);
+        adapterViewPager = new pagerchoice_adapter(getSupportFragmentManager());
+        vpPager2.setAdapter(adapterViewPager);
 
         btnUpload = findViewById(R.id.btnUpload);
         btnSelect = findViewById(R.id.btnSelect);

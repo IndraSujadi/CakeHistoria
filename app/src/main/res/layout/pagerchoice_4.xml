@@ -1,6 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Decoration Theme:"
+        android:fontFamily="@font/gotham_bold"
+        android:layout_gravity="center"
+        android:textColor="@color/Dark"
+        android:textSize="18sp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="18dp"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="top|center"
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:id="@+id/imageView24"
+                android:layout_width="83dp"
+                android:layout_height="82dp"
+                app:srcCompat="@drawable/sprinkle" />
+
+            <RadioButton
+                android:id="@+id/sprinkle"
+                style="@style/customRadioButton4"
+                android:lineSpacingExtra="5dp"
+                android:text="Colorful Sprinkle" />
+
+            <ImageView
+                android:id="@+id/imageView25"
+                android:layout_width="83dp"
+                android:layout_height="82dp"
+                android:layout_marginTop="21dp"
+                app:srcCompat="@drawable/fruity" />
+
+            <RadioButton
+                android:id="@+id/fruity"
+                style="@style/customRadioButton4"
+                android:text="Fruity" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="top|center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView26"
+                android:layout_width="83dp"
+                android:layout_height="82dp"
+                app:srcCompat="@drawable/flourish" />
+
+            <RadioButton
+                android:id="@+id/flourish"
+                style="@style/customRadioButton4"
+                android:lineSpacingExtra="5dp"
+                android:text="Flourish" />
+
+            <ImageView
+                android:id="@+id/imageView27"
+                android:layout_width="83dp"
+                android:layout_height="82dp"
+                android:layout_marginTop="21dp"
+                app:srcCompat="@drawable/romance" />
+
+            <RadioButton
+                android:id="@+id/romance"
+                style="@style/customRadioButton4"
+                android:text="Romance" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="top|center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView28"
+                android:layout_width="83dp"
+                android:layout_height="82dp"
+                app:srcCompat="@drawable/kids" />
+
+            <RadioButton
+                android:id="@+id/kids"
+                style="@style/customRadioButton4"
+                android:lineSpacingExtra="5dp"
+                android:text="Kids" />
+
+            <ImageView
+                android:id="@+id/imageView29"
+                android:layout_width="83dp"
+                android:layout_height="82dp"
+                android:layout_marginTop="21dp"
+                app:srcCompat="@drawable/youth" />
+
+            <RadioButton
+                android:id="@+id/youth"
+                style="@style/customRadioButton4"
+
+                android:text="@string/youth" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

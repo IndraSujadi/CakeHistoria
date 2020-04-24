@@ -2,68 +2,141 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
     <TextView
         android:id="@+id/textView28"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_gravity="center"
+        android:fontFamily="@font/gotham_bold"
+        android:gravity="center"
+        android:text="Color"
+        android:textColor="@color/Dark"
+        android:textSize="18sp"
+         />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="top|center"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageView11"
-                android:layout_width="44dp"
-                android:layout_height="28dp"
+                style="@style/color_size"
+                android:layout_marginTop="18dp"
                 app:srcCompat="@drawable/brownish" />
 
-            <Button
-                android:id="@+id/btn_brownish"
-                android:text="Button"
-                style="@style/buttonpager"/>
+            <RadioButton
+                android:id="@+id/brown"
+                style="@style/customRadioButton2"
+                android:text="Brownish" />
 
             <ImageView
                 android:id="@+id/imageView12"
-                android:layout_width="44dp"
-                android:layout_height="28dp"
+                style="@style/color_size"
                 app:srcCompat="@drawable/reddish" />
 
-            <Button
-                android:id="@+id/btn_reddish"
-                android:text="Button"
-                style="@style/buttonpager"/>
+            <RadioButton
+                android:id="@+id/red"
+                style="@style/customRadioButton2"
+                android:text="Reddish" />
 
             <ImageView
                 android:id="@+id/imageView13"
-                android:layout_width="44dp"
-                android:layout_height="28dp"
+                style="@style/color_size"
                 app:srcCompat="@drawable/pinkish" />
 
-            <Button
-                android:id="@+id/button9"
-                android:text="Button"
-                style="@style/buttonpager"/>
+            <RadioButton
+                android:id="@+id/pink"
+                style="@style/customRadioButton2"
+                android:text="Pinkish"
+                />
+
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical"></LinearLayout>
+            android:layout_weight="1"
+            android:gravity="top|center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView14"
+                style="@style/color_size"
+                android:layout_marginTop="18dp"
+                app:srcCompat="@drawable/bluish" />
+
+            <RadioButton
+                android:id="@+id/blue"
+                style="@style/customRadioButton2"
+                android:text="Bluish" />
+
+            <ImageView
+                android:id="@+id/imageView15"
+                style="@style/color_size"
+                app:srcCompat="@drawable/greeny" />
+
+            <RadioButton
+                android:id="@+id/green"
+                style="@style/customRadioButton2"
+                android:text="Greeny" />
+
+            <ImageView
+                android:id="@+id/imageView16"
+                style="@style/color_size"
+                app:srcCompat="@drawable/rainbow" />
+
+            <RadioButton
+                android:id="@+id/rainbow"
+                style="@style/customRadioButton2"
+                android:text="Rainbow" />
+
+        </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical"></LinearLayout>
+            android:layout_weight="1"
+            android:gravity="top|center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView17"
+                style="@style/color_size"
+                android:layout_marginTop="18dp"
+                app:srcCompat="@drawable/purple" />
+
+            <RadioButton
+                android:id="@+id/purple"
+                style="@style/customRadioButton2"
+                android:text="Purple" />
+
+            <ImageView
+                android:id="@+id/imageView18"
+                style="@style/color_size"
+                app:srcCompat="@drawable/creamy" />
+
+            <RadioButton
+                android:id="@+id/creamy"
+                style="@style/customRadioButton2"
+                android:text="Creamy" />
+
+
+        </LinearLayout>
     </LinearLayout>
+
 
 </LinearLayout>
