@@ -48,7 +48,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_marginTop="14dp">
+        android:layout_marginTop="14dp"
+        android:id="@+id/rgDecor">
 
         <RadioButton
             android:id="@+id/butter_cream"

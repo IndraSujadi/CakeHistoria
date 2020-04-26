@@ -21,6 +21,7 @@ public class pagerchoice_5 extends Fragment implements CompoundButton.OnCheckedC
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.pagerchoice_5, container, false);
         rb1 = (RadioButton) view.findViewById(R.id.chocolate);
+        rb1.setChecked(true);
         rb1.setOnCheckedChangeListener(this);
         rb2 = (RadioButton) view.findViewById(R.id.strawberry);
         rb2.setOnCheckedChangeListener(this);

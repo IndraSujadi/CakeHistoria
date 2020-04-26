@@ -39,7 +39,7 @@ import umn.ac.cakehistoria.pagerchoice.pagerchoice_adapter;
 
 public class Create_order extends AppCompatActivity {
 
-    Button btnUpload,btnSelect;
+    Button btnUpload, btnSelect;
     ImageButton btnNext_toDelivery;
     FirebaseStorage storage;
     StorageReference storageReference;
@@ -48,24 +48,30 @@ public class Create_order extends AppCompatActivity {
 
     FragmentPagerAdapter adapterViewPager;
 
-    public View currView;
+    View currView;
 
     // Public variables that used as data that will written into database:
     String cakeType;
     String cakeColor;
+    String cakeDecor;
+    String cakeTheme;
+    String cakeFlavor;
+    String cakeTier;
+    String cakeShape;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_order);
 
-        ViewPager vpPager = (ViewPager)findViewById(R.id.pagerView);
+        ViewPager vpPager = (ViewPager) findViewById(R.id.pagerView);
         adapterViewPager = new PagerViewAdapter(getSupportFragmentManager());
         vpPager.setAdapter(adapterViewPager);
 
-        ViewPager vpPager2 = (ViewPager)findViewById(R.id.pagerChoice);
+        ViewPager vpPager2 = (ViewPager) findViewById(R.id.pagerChoice);
         adapterViewPager = new pagerchoice_adapter(getSupportFragmentManager());
         vpPager2.setAdapter(adapterViewPager);
+
 
         // -------------------- GET VIEWPAGER DATA ---------------------------
         vpPager2.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -75,7 +81,8 @@ public class Create_order extends AppCompatActivity {
                 if (positionOffset >= 0) {
                     currView = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.pagerChoice + ":" + position).getView();
                     if (currView != null) {
-                        Log.d(TAG, "The View object has already catched. Now get the layout instance(s)");
+//                        Log.d(TAG, "The View object has already catched. Now get the layout instance(s)");
+                        // CAKE TYPE
                         if (position == 0) {
                             RadioGroup rg;
                             rg = currView.findViewById(R.id.type);
@@ -86,38 +93,382 @@ public class Create_order extends AppCompatActivity {
                             rb = currView.findViewById(selectedRbId);
 
                             cakeType = rb.getText().toString();
+
+                            rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                                @Override
+                                public void onCheckedChanged(RadioGroup radioGroup, int selectedRbId) {
+                                    RadioButton rb;
+                                    rb = currView.findViewById(selectedRbId);
+
+                                    cakeType = rb.getText().toString();
+                                    Log.d(TAG, "Cake Type: " + cakeType);
+                                }
+                            });
+
                             Log.d(TAG, "Cake Type: " + cakeType);
                         }
+                        // CAKE COLOR
                         else if (position == 1) {
-//                            textView = currView.findViewById(R.id.txtColor);
+                            RadioButton brown, red, pink, blue, green, rainbow, purple, creamy;
+
+                            brown = currView.findViewById(R.id.brown);
+                            red = currView.findViewById(R.id.red);
+                            pink = currView.findViewWithTag(R.id.pink); // ini null object reference gatau kenapa
+                            blue = currView.findViewById(R.id.blue);
+                            green = currView.findViewById(R.id.green);
+                            rainbow = currView.findViewById(R.id.rainbow);
+                            purple = currView.findViewById(R.id.purple);
+                            creamy = currView.findViewById(R.id.creamy);
+
+                            if (brown.isChecked()) {
+                                cakeColor = brown.getText().toString();
+                                Log.d(TAG, "Cake Color: " + cakeColor);
+                            }
+                            if (red.isChecked()) {
+                                cakeColor = red.getText().toString();
+                                Log.d(TAG, "Cake Color: " + cakeColor);
+                            }
+//                            if (pink.isChecked()) {
+//                                cakeColor = pink.getText().toString();
+//                                Log.d(TAG, "Cake Color: " + cakeColor);
+//                            }
+                            if (blue.isChecked()) {
+                                cakeColor = blue.getText().toString();
+                                Log.d(TAG, "Cake Color: " + cakeColor);
+                            }
+                            if (green.isChecked()) {
+                                cakeColor = green.getText().toString();
+                                Log.d(TAG, "Cake Color: " + cakeColor);
+                            }
+                            if (rainbow.isChecked()) {
+                                cakeColor = rainbow.getText().toString();
+                                Log.d(TAG, "Cake Color: " + cakeColor);
+                            }
+                            if (purple.isChecked()) {
+                                cakeColor = purple.getText().toString();
+                                Log.d(TAG, "Cake Color: " + cakeColor);
+                            }
+                            if (creamy.isChecked()) {
+                                cakeColor = creamy.getText().toString();
+                                Log.d(TAG, "Cake Color: " + cakeColor);
+                            }
+
+                            brown.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    brown.setChecked(true);
+                                    cakeColor = brown.getText().toString();
+                                    Log.d(TAG, "Cake Color: " + cakeColor);
+                                }
+                            });
+
+                            red.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    red.setChecked(true);
+                                    cakeColor = red.getText().toString();
+                                    Log.d(TAG, "Cake Color: " + cakeColor);
+                                }
+                            });
+
+//                            pink.setOnClickListener(new View.OnClickListener() {
+//                                @Override
+//                                public void onClick(View view) {
+//                                    pink.setChecked(true);
+//                                    cakeColor = pink.getText().toString();
+//                                    Log.d(TAG, "Cake Color: " + cakeColor);
+//                                }
+//                            });
+
+                            blue.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    blue.setChecked(true);
+                                    cakeColor = blue.getText().toString();
+                                    Log.d(TAG, "Cake Color: " + cakeColor);
+                                }
+                            });
+
+                            green.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    green.setChecked(true);
+                                    cakeColor = green.getText().toString();
+                                    Log.d(TAG, "Cake Color: " + cakeColor);
+                                }
+                            });
+
+                            rainbow.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    rainbow.setChecked(true);
+                                    cakeColor = rainbow.getText().toString();
+                                    Log.d(TAG, "Cake Color: " + cakeColor);
+                                }
+                            });
+
+                            purple.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    purple.setChecked(true);
+                                    cakeColor = purple.getText().toString();
+                                    Log.d(TAG, "Cake Color: " + cakeColor);
+                                }
+                            });
+
+                            creamy.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    creamy.setChecked(true);
+                                    cakeColor = creamy.getText().toString();
+                                    Log.d(TAG, "Cake Color: " + cakeColor);
+                                }
+                            });
+                        }
+
+                        // CAKE COATING DECORATION
+                        else if (position == 2) {
                             RadioGroup rg;
-                            rg = currView.findViewById(R.id.rgColor);
+                            rg = currView.findViewById(R.id.rgDecor);
 
                             RadioButton rb;
 
                             int selectedRbId = rg.getCheckedRadioButtonId();
                             rb = currView.findViewById(selectedRbId);
 
-//                            masih error getText nya, masih null.
-//                            cakeColor = rb.getText().toString();
-//                            Log.d(TAG, "Cake Type: " + cakeColor);
+                            cakeDecor = rb.getText().toString();
+
+                            rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                                @Override
+                                public void onCheckedChanged(RadioGroup radioGroup, int selectedRbId) {
+                                    RadioButton rb;
+                                    rb = currView.findViewById(selectedRbId);
+
+                                    cakeDecor = rb.getText().toString();
+                                    Log.d(TAG, "Cake Decor: " + cakeDecor);
+                                }
+                            });
+
+                            Log.d(TAG, "Cake Decor: " + cakeDecor);
                         }
-                        else if (position ==2) {
-//                            textView = currView.findViewById(R.id.textDecor);
+                        // CAKE THEME
+                        else if (position == 3) {
+                            RadioButton sprinkle, fruity, flourish, romance, kids, youth;
+
+                            sprinkle = currView.findViewById(R.id.sprinkle);
+                            fruity = currView.findViewById(R.id.fruity);
+                            flourish = currView.findViewWithTag(R.id.flourish);
+                            romance = currView.findViewById(R.id.romance);
+                            kids = currView.findViewById(R.id.kids);
+                            youth = currView.findViewById(R.id.youth);
+
+                            if (sprinkle.isChecked()) {
+                                cakeTheme = sprinkle.getText().toString();
+                                Log.d(TAG, "Cake Theme: " + cakeTheme);
+                            }
+                            if (fruity.isChecked()) {
+                                cakeTheme = fruity.getText().toString();
+                                Log.d(TAG, "Cake Theme: " + cakeTheme);
+                            }
+//                            if(flourish.isChecked()){
+//                                cakeTheme = flourish.getText().toString();
+//                                Log.d(TAG, "Cake Theme: " + cakeTheme);
+//                            }
+                            if (romance.isChecked()) {
+                                cakeTheme = romance.getText().toString();
+                                Log.d(TAG, "Cake Theme: " + cakeTheme);
+                            }
+                            if (kids.isChecked()) {
+                                cakeTheme = kids.getText().toString();
+                                Log.d(TAG, "Cake Theme: " + cakeTheme);
+                            }
+                            if (youth.isChecked()) {
+                                cakeTheme = youth.getText().toString();
+                                Log.d(TAG, "Cake Theme: " + cakeTheme);
+                            }
+
+                            sprinkle.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    sprinkle.setChecked(true);
+                                    cakeTheme = sprinkle.getText().toString();
+                                    Log.d(TAG, "Cake Theme: " + cakeTheme);
+                                }
+                            });
+
+                            fruity.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    fruity.setChecked(true);
+                                    cakeTheme = fruity.getText().toString();
+                                    Log.d(TAG, "Cake Theme: " + cakeTheme);
+                                }
+                            });
+
+//                            flourish.setOnClickListener(new View.OnClickListener() {
+//                                @Override
+//                                public void onClick(View view) {
+//                                    flourish.setChecked(true);
+//                                    cakeTheme = flourish.getText().toString();
+//                                    Log.d(TAG, "Cake Theme: " + cakeTheme);
+//                                }
+//                            });
+
+                            romance.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    romance.setChecked(true);
+                                    cakeTheme = romance.getText().toString();
+                                    Log.d(TAG, "Cake Theme: " + cakeTheme);
+                                }
+                            });
+
+                            kids.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    kids.setChecked(true);
+                                    cakeTheme = kids.getText().toString();
+                                    Log.d(TAG, "Cake Theme: " + cakeTheme);
+                                }
+                            });
+
+                            youth.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    youth.setChecked(true);
+                                    cakeTheme = youth.getText().toString();
+                                    Log.d(TAG, "Cake Theme: " + cakeTheme);
+                                }
+                            });
                         }
-                        else if (position ==3) {
-//                            textView = currView.findViewById(R.id.txtTheme);
+                        // CAKE FLAVOR
+                        else if (position == 4) {
+                            RadioButton chocolate, cappucino, strawberry, green_tea, cheese;
+
+                            chocolate = currView.findViewById(R.id.chocolate);
+                            cappucino = currView.findViewById(R.id.cappucino);
+                            strawberry = currView.findViewWithTag(R.id.strawberry);
+                            green_tea = currView.findViewById(R.id.green_tea);
+                            cheese = currView.findViewById(R.id.cheese);
+
+                            if (chocolate.isChecked()) {
+                                cakeFlavor = chocolate.getText().toString();
+                                Log.d(TAG, "Cake Flavor: " + cakeFlavor);
+                            }
+                            if (cappucino.isChecked()) {
+                                cakeFlavor = cappucino.getText().toString();
+                                Log.d(TAG, "Cake Flavor: " + cakeFlavor);
+                            }
+//                            if(strawberry.isChecked()){
+//                                cakeFlavor = strawberry.getText().toString();
+//                                Log.d(TAG, "Cake Flavor: " + cakeFlavor);
+//                            }
+                            if (green_tea.isChecked()) {
+                                cakeFlavor = green_tea.getText().toString();
+                                Log.d(TAG, "Cake Flavor: " + cakeFlavor);
+                            }
+                            if (cheese.isChecked()) {
+                                cakeFlavor = cheese.getText().toString();
+                                Log.d(TAG, "Cake Flavor: " + cakeFlavor);
+                            }
+
+                            chocolate.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    chocolate.setChecked(true);
+                                    cakeFlavor = chocolate.getText().toString();
+                                    Log.d(TAG, "Cake Flavor: " + cakeFlavor);
+                                }
+                            });
+
+                            cappucino.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    cappucino.setChecked(true);
+                                    cakeFlavor = cappucino.getText().toString();
+                                    Log.d(TAG, "Cake Flavor: " + cakeFlavor);
+                                }
+                            });
+
+//                            strawberry.setOnClickListener(new View.OnClickListener() {
+//                                @Override
+//                                public void onClick(View view) {
+//                                    strawberry.setChecked(true);
+//                                    cakeFlavor = strawberry.getText().toString();
+//                                    Log.d(TAG, "Cake Flavor: " + cakeFlavor);
+//                                }
+//                            });
+
+                            green_tea.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    green_tea.setChecked(true);
+                                    cakeFlavor = green_tea.getText().toString();
+                                    Log.d(TAG, "Cake Flavor: " + cakeFlavor);
+                                }
+                            });
+
+                            cheese.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    cheese.setChecked(true);
+                                    cakeFlavor = cheese.getText().toString();
+                                    Log.d(TAG, "Cake Flavor: " + cakeFlavor);
+                                }
+                            });
                         }
-                        else if (position ==4) {
-//                            textView = currView.findViewById(R.id.txtFlavor);
+                        // CAKE TIER
+                        else if (position == 5) {
+                            RadioGroup rg;
+                            rg = currView.findViewById(R.id.rgTier);
+
+                            RadioButton rb;
+
+                            int selectedRbId = rg.getCheckedRadioButtonId();
+                            rb = currView.findViewById(selectedRbId);
+
+                            cakeTier = rb.getText().toString();
+
+                            rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                                @Override
+                                public void onCheckedChanged(RadioGroup radioGroup, int selectedRbId) {
+                                    RadioButton rb;
+                                    rb = currView.findViewById(selectedRbId);
+
+                                    cakeTier = rb.getText().toString();
+                                    Log.d(TAG, "Cake Tier: " + cakeTier);
+                                }
+                            });
+
+                            Log.d(TAG, "Cake Tier: " + cakeTier);
+
                         }
-                        else if (position ==5) {
-//                            textView = currView.findViewById(R.id.txtTier);
+                        // CAKE SHAPE
+                        else if (position == 6) {
+                            RadioGroup rg;
+                            rg = currView.findViewById(R.id.rgShape);
+
+                            RadioButton rb;
+
+                            int selectedRbId = rg.getCheckedRadioButtonId();
+                            rb = currView.findViewById(selectedRbId);
+
+                            cakeShape = rb.getText().toString();
+
+                            rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                                @Override
+                                public void onCheckedChanged(RadioGroup radioGroup, int selectedRbId) {
+                                    RadioButton rb;
+                                    rb = currView.findViewById(selectedRbId);
+
+                                    cakeShape = rb.getText().toString();
+                                    Log.d(TAG, "Cake Shape: " + cakeShape);
+                                }
+                            });
+
+                            Log.d(TAG, "Cake Shape: " + cakeShape);
                         }
-                        else if (position ==6) {
-//                            textView = currView.findViewById(R.id.txtShape);
-                        }
-                    }else {
+                    } else {
                         Log.d(TAG, "The View object is null");
                         Log.e(TAG, "The View object is null");
                     }
@@ -145,7 +496,6 @@ public class Create_order extends AppCompatActivity {
         Fragment fragPagerChoice = adapterViewPager.getItem(item);
 
 
-
 //        Toast.makeText(getApplicationContext(), String.valueOf(view), Toast.LENGTH_LONG).show();
 //        fragTransaction.add(R.id.pagerChoice, fragPagerChoice);
 //        fragTransaction.commit();
@@ -153,7 +503,7 @@ public class Create_order extends AppCompatActivity {
 //        TextView coba = findViewById(R.id.txtCakeType);
 //        Toast.makeText(getApplicationContext(), coba.getText(), Toast.LENGTH_LONG).show();
 
-                btnUpload = findViewById(R.id.btnUpload);
+        btnUpload = findViewById(R.id.btnUpload);
         FragmentActivity fragmentActivity = fragPagerChoice.getActivity();
         btnSelect = findViewById(R.id.btnSelect);
         btnNext_toDelivery = findViewById(R.id.btnNext_toDelivery);
@@ -171,10 +521,10 @@ public class Create_order extends AppCompatActivity {
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(imgUri == null){
-                    Toast.makeText(Create_order.this,"Silahkan Pilih Gambar yang ingin di Upload",Toast.LENGTH_LONG).show();
-                } else if (uploadTask != null && uploadTask.isInProgress()){
-                    Toast.makeText(Create_order.this,"Upload in progress",Toast.LENGTH_LONG).show();
+                if (imgUri == null) {
+                    Toast.makeText(Create_order.this, "Silahkan Pilih Gambar yang ingin di Upload", Toast.LENGTH_LONG).show();
+                } else if (uploadTask != null && uploadTask.isInProgress()) {
+                    Toast.makeText(Create_order.this, "Upload in progress", Toast.LENGTH_LONG).show();
                 } else {
                     uploadImage();
                 }
@@ -218,9 +568,9 @@ public class Create_order extends AppCompatActivity {
     }
 
     private void uploadImage() {
-        Toast.makeText(Create_order.this,"Upload in progress",Toast.LENGTH_LONG).show();
+        Toast.makeText(Create_order.this, "Upload in progress", Toast.LENGTH_LONG).show();
 
-        StorageReference Ref = storageReference.child(System.currentTimeMillis()+"."+getExtension(imgUri));
+        StorageReference Ref = storageReference.child(System.currentTimeMillis() + "." + getExtension(imgUri));
 
         uploadTask = Ref.putFile(imgUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -228,7 +578,7 @@ public class Create_order extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         // Get a URL to the uploaded content
                         //Uri downloadUrl = taskSnapshot.getUploadSessionUri();
-                        Toast.makeText(Create_order.this,"Upload Image Berhasil",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Create_order.this, "Upload Image Berhasil", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -240,23 +590,23 @@ public class Create_order extends AppCompatActivity {
                 });
     }
 
-    private String getExtension(Uri uri){
+    private String getExtension(Uri uri) {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
     }
 
-    private void  selectImage() {
+    private void selectImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,1);
+        startActivityForResult(intent, 1);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode==RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imgUri = data.getData();
         }
     }
