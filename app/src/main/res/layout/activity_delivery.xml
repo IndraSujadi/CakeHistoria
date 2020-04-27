@@ -192,7 +192,7 @@
                    android:inputType="number" />
 
                <CheckBox
-                   android:id="@+id/checkBox"
+                   android:id="@+id/checkAsuransi"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_marginLeft="-6.5dp"
@@ -245,7 +245,7 @@
                    tools:ignore="RtlCompat" />
 
                <ImageButton
-                   android:id="@+id/imageButton"
+                   android:id="@+id/btnNext_toPayment"
                    android:layout_width="36dp"
                    android:layout_height="36dp"
                    android:layout_weight="0"

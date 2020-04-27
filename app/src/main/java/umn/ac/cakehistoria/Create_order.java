@@ -40,6 +40,9 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +50,6 @@ import java.util.Map;
 import umn.ac.cakehistoria.pagerchoice.pagerchoice_adapter;
 
 public class Create_order extends AppCompatActivity {
-
 
     // Database
     FirebaseStorage storage;
@@ -77,34 +79,40 @@ public class Create_order extends AppCompatActivity {
 
     // Cake's detail
     private String cakeID = "";
-    private String orderID = "This is Order ID";
-    private String cakeType = "Cake Type";
-    private String cakeColor = "Cake Color";
-    private String cakeDecor = "Cake Decor";
-    private String cakeTheme = "Cake Theme";
-    private String cakeFlavor = "Cake Flavor";
-    private String cakeTier = "Cake TIer";
-    private String cakeShape = "Cake Shape";
-    private String cakeSize = "12x12 cm";
+    private String orderID = "";
+    private String cakeType = "Sponge";
+    private String cakeColor = "Brownish";
+    private String cakeDecor = "Butter Cream";
+    private String cakeTheme = "Colorful Sprinkle";
+    private String cakeFlavor = "Chocolate";
+    private String cakeTier = "One tier";
+    private String cakeShape = "Round";
+    private String cakeSize = "This is the shape";
     private String cakeCategory = "This is the category";
 
     private String addtText = "Addt Text";
     private String specialOrders = "Special Orders";
     private boolean includeLetterCard = false;
     private String letterMessage = "Letter Message";
-    private String figureURL;
-    //private String figureURL = "This will be the Storage's URL";
-    private String requestDate = "10-10-2010";
+    private String figureURL = "This will be the Storage's URL";
 
     private String testimony = "This will be the testimony";
-    private int rating = 1;
+    private int rating = 0;
     private String testimonyID;
 
     private int likes = 0;
     private String imageURL = "This is cake's image URL";
-
-
     private int cakePrice = 100000;
+
+    private String requestDate = "10-10-2010";
+    private Date orderDateTime;
+    private String orderStatus = "";
+
+    // MASTER CLASS:
+    class_cake Cake = new class_cake();
+    String cakeTypeCoba;
+
+    private String refKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,7 +140,10 @@ public class Create_order extends AppCompatActivity {
         fbUser = fbAuth.getCurrentUser();
 
 
+        Log.d("CobaData", "Ref Key: " + refKey);
+
         // -------------------- GET VIEWPAGER DATA ---------------------------
+
         vpPager2.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -160,6 +171,7 @@ public class Create_order extends AppCompatActivity {
                                     rb = currView.findViewById(selectedRbId);
 
                                     cakeType = rb.getText().toString();
+                                    Cake.setCakeType(cakeType);
                                     Log.d(TAG, "Cake Type: " + cakeType);
                                 }
                             });
@@ -529,7 +541,6 @@ public class Create_order extends AppCompatActivity {
                         }
                     } else {
                         Log.d(TAG, "The View object is null");
-                        Log.e(TAG, "The View object is null");
                     }
                 }
             }
@@ -544,8 +555,6 @@ public class Create_order extends AppCompatActivity {
 
             }
         });
-
-
 
         // -------------------- END OF GET VIEWPAGER DATA ---------------------------
 
@@ -584,9 +593,9 @@ public class Create_order extends AppCompatActivity {
         btnNext_toDelivery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("CobaData", "Cake Type: " + cakeType);
-                Log.d("CobaData", "Additional Text: " + addtText);
-                // RETRIEVE DATA
+                orderID = generateRefKey(20);
+                cakeID = generateRefKey(20);
+                // RETRIEVE CAKE'S DATA
                 // cakeCategory = spinCategory.getSelectedItem().toString();
                 ownerName = fbUser.getDisplayName();
                 addtText = edtAdditionalText.getText().toString();
@@ -595,83 +604,231 @@ public class Create_order extends AppCompatActivity {
                     includeLetterCard = true;
                 }
                 letterMessage = edtLetterMessage.getText().toString();
-
-
-
                 if (figureURL == null) {
-                    figureURL = "Figure URL";
+                    figureURL = "";
                 }else {
 
                 }
 
-                // requestDate = ...;
                 // cakeSize = ...;
+
+                // cakePrice = ...;
 
                 // Create new Cake's Document Based on Generated ID
                 Map<String, Object> cakeColl = new HashMap<>();
-                cakeColl.put("kategori", cakeCategory);
                 cakeColl.put("owner", ownerName);
                 cakeColl.put("imageURL", imageURL);
                 cakeColl.put("likes", likes);
+                cakeColl.put("cakePrice", cakePrice);
                 cakeColl.put("orderID", orderID);
+//                cakeColl.put("refKey", refKey);
 
-                db.collection("Cakes")
-                        .add(cakeColl)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                db.collection("Cakes").document(cakeID)
+                        .set(cakeColl)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
-                            public void onSuccess(DocumentReference documentReference) {
-
-                                cakeID = documentReference.getId();
-
-                                // Insert subdocument: Testimony
-                                Map<String, Object> testimonyObj = new HashMap<>();
-                                testimonyObj.put("testimonyText", testimony);
-                                testimonyObj.put("rating", rating);
-
-                                Map<String, Object> testimonySubdoc = new HashMap<>();
-                                testimonySubdoc.put("testimony", testimonyObj);
-
-                                db.collection("Cakes").document(cakeID)
-                                        .set(testimonySubdoc, SetOptions.merge());
-
-                                // Insert subdocument: cake details
-                                Map<String, Object> cakeDetailsObj = new HashMap<>();
-                                cakeDetailsObj.put("cakeCategory", cakeCategory);
-                                cakeDetailsObj.put("cakeType", cakeType);
-                                cakeDetailsObj.put("cakeColor", cakeColor);
-                                cakeDetailsObj.put("cakeDecor", cakeDecor);
-                                cakeDetailsObj.put("cakeTheme", cakeTheme);
-                                cakeDetailsObj.put("cakeFlavor", cakeFlavor);
-                                cakeDetailsObj.put("cakeTier", cakeTier);
-                                cakeDetailsObj.put("cakeShape", cakeShape);
-                                cakeDetailsObj.put("cakeSize", cakeSize);
-                                cakeDetailsObj.put("figureURL", figureURL);
-                                cakeDetailsObj.put("addtText", addtText);
-                                cakeDetailsObj.put("includeLetterCard", includeLetterCard);
-                                cakeDetailsObj.put("letterMessage", letterMessage);
-
-                                Map<String, Object> cakeDetailsSubcoll = new HashMap<>();
-                                cakeDetailsSubcoll.put("CakeDetails", cakeDetailsObj);
-
-                                db.collection("Cakes").document(cakeID)
-                                        .set(cakeDetailsSubcoll, SetOptions.merge());
-
-                                Log.d("CobaData", "Data Collection Cake berhasil masuk: " + documentReference.getId());
+                            public void onSuccess(Void aVoid) {
+                                Log.d("CobaData", "DocumentSnapshot successfully written: " + cakeID);
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Log.w("CobaData", "Error adding document", e);
+                                Log.w("CobaData", "Error writing document", e);
                             }
                         });
 
-                        Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_LONG).show();
-//                Intent i = new Intent( Create_order.this, Delivery.class);
-//                startActivity(i);
+                // Insert subdocument: Testimony
+                Map<String, Object> testimonyObj = new HashMap<>();
+                testimonyObj.put("testimonyText", testimony);
+                testimonyObj.put("rating", rating);
+
+                Map<String, Object> testimonySubdoc = new HashMap<>();
+                testimonySubdoc.put("testimony", testimonyObj);
+
+                db.collection("Cakes").document(cakeID)
+                        .set(testimonySubdoc, SetOptions.merge())
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d("CobaData", "Subdocument Testimony berhasil dimasukkan: " + cakeID);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d("CobaData", "Subdocument Testimony gagal dimasukkan");
+                            }
+                        });
+
+                // Insert subdocument: cake details
+                Map<String, Object> cakeDetailsObj = new HashMap<>();
+                cakeDetailsObj.put("cakeCategory", cakeCategory);
+                cakeDetailsObj.put("cakeType", cakeType);
+                cakeDetailsObj.put("cakeColor", cakeColor);
+                cakeDetailsObj.put("cakeDecor", cakeDecor);
+                cakeDetailsObj.put("cakeTheme", cakeTheme);
+                cakeDetailsObj.put("cakeFlavor", cakeFlavor);
+                cakeDetailsObj.put("cakeTier", cakeTier);
+                cakeDetailsObj.put("cakeShape", cakeShape);
+                cakeDetailsObj.put("cakeSize", cakeSize);
+                cakeDetailsObj.put("figureURL", figureURL);
+                cakeDetailsObj.put("addtText", addtText);
+                cakeDetailsObj.put("includeLetterCard", includeLetterCard);
+                cakeDetailsObj.put("letterMessage", letterMessage);
+                cakeDetailsObj.put("specialOrders", specialOrders);
+
+                Map<String, Object> cakeDetailsSubcoll = new HashMap<>();
+                cakeDetailsSubcoll.put("CakeDetails", cakeDetailsObj);
+
+                db.collection("Cakes").document(cakeID)
+                        .set(cakeDetailsSubcoll, SetOptions.merge())
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d("CobaData", "Subdocument Cake Details berhasil dimasukkan: " + cakeID);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d("CobaData", "Subdocument Cake Details gagal dimasukkan");
+                            }
+                        });
+
+                // INSERT CAKE DATA:
+//                db.collection("Cakes")
+//                        .add(cakeColl)
+//                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                            @Override
+//                            public void onSuccess(DocumentReference documentReference) {
+//
+//                                cakeID = documentReference.getId();
+//
+//                                // Insert subdocument: Testimony
+//                                Map<String, Object> testimonyObj = new HashMap<>();
+//                                testimonyObj.put("testimonyText", testimony);
+//                                testimonyObj.put("rating", rating);
+//
+//                                Map<String, Object> testimonySubdoc = new HashMap<>();
+//                                testimonySubdoc.put("testimony", testimonyObj);
+//
+//                                db.collection("Cakes").document(cakeID)
+//                                        .set(testimonySubdoc, SetOptions.merge());
+//
+//                                // Insert subdocument: cake details
+//                                Map<String, Object> cakeDetailsObj = new HashMap<>();
+//                                cakeDetailsObj.put("cakeCategory", cakeCategory);
+//                                cakeDetailsObj.put("cakeType", cakeType);
+//                                cakeDetailsObj.put("cakeColor", cakeColor);
+//                                cakeDetailsObj.put("cakeDecor", cakeDecor);
+//                                cakeDetailsObj.put("cakeTheme", cakeTheme);
+//                                cakeDetailsObj.put("cakeFlavor", cakeFlavor);
+//                                cakeDetailsObj.put("cakeTier", cakeTier);
+//                                cakeDetailsObj.put("cakeShape", cakeShape);
+//                                cakeDetailsObj.put("cakeSize", cakeSize);
+//                                cakeDetailsObj.put("figureURL", figureURL);
+//                                cakeDetailsObj.put("addtText", addtText);
+//                                cakeDetailsObj.put("includeLetterCard", includeLetterCard);
+//                                cakeDetailsObj.put("letterMessage", letterMessage);
+//                                cakeDetailsObj.put("specialOrders", specialOrders);
+//
+//                                Map<String, Object> cakeDetailsSubcoll = new HashMap<>();
+//                                cakeDetailsSubcoll.put("CakeDetails", cakeDetailsObj);
+//
+//                                db.collection("Cakes").document(cakeID)
+//                                        .set(cakeDetailsSubcoll, SetOptions.merge());
+//
+//                                Log.d("CobaData", "Data Collection Cake berhasil masuk: " + documentReference.getId());
+//                            }
+//                        })
+//                        .addOnFailureListener(new OnFailureListener() {
+//                            @Override
+//                            public void onFailure(@NonNull Exception e) {
+//                                Log.w("CobaData", "Error adding CAKES document", e);
+//                            }
+//                        });
+
+
+                // RETRIEVE ORDER'S DATA:
+                userID = fbUser.getUid();
+                orderDateTime = Calendar.getInstance().getTime();
+                // requestDate = ...;
+
+                // INSERT ORDER DATA:
+                Map<String, Object> orderColl = new HashMap<>();
+                orderColl.put("userID", userID);
+                orderColl.put("cakeID", cakeID);
+                orderColl.put("orderDateTime", orderDateTime);
+                orderColl.put("requestDate", requestDate);
+                orderColl.put("cakePrice", cakePrice);
+//                orderColl.put("refKey", refKey);
+
+                db.collection("Orders").document(orderID)
+                        .set(orderColl)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d("CobaData", "Document ORDERS berhasil dimasukkan: " + orderID);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d("CobaData", "Document ORDERS gagal dimasukkan");
+                            }
+                        });
+
+//                db.collection("Orders")
+//                        .add(orderColl)
+//                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                            @Override
+//                            public void onSuccess(DocumentReference documentReference) {
+//                                orderID = documentReference.getId();
+//                                Log.d("CobaData", "Data Collection ORDERS berhasil masuk: " + documentReference.getId());
+//                            }
+//                        })
+//                        .addOnFailureListener(new OnFailureListener() {
+//                            @Override
+//                            public void onFailure(@NonNull Exception e) {
+//                                Log.w("CobaData", "Error adding ORDERS document", e);
+//                            }
+//                        });
+
+                // GO TO NEXT PAGE
+                Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_LONG).show();
+                Intent i = new Intent( Create_order.this, Delivery.class);
+                i.putExtra("cakeID", cakeID);
+                i.putExtra("orderID", orderID);
+                startActivity(i);
             }
         });
 
+    }
+
+    private String generateRefKey(int n) {
+        // chose a Character random from this String
+        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                + "0123456789"
+                + "abcdefghijklmnopqrstuvxyz";
+
+        // create StringBuffer size of AlphaNumericString
+        StringBuilder sb = new StringBuilder(n);
+
+        for (int i = 0; i < n; i++) {
+
+            // generate a random number between
+            // 0 to AlphaNumericString variable length
+            int index
+                    = (int)(AlphaNumericString.length()
+                    * Math.random());
+
+            // add Character one by one in end of sb
+            sb.append(AlphaNumericString
+                    .charAt(index));
+        }
+
+        return sb.toString();
     }
 
     private View getCurrentView(ViewPager viewPager) {
