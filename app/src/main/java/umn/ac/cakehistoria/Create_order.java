@@ -92,7 +92,8 @@ public class Create_order extends AppCompatActivity {
     private String specialOrders = "Special Orders";
     private boolean includeLetterCard = false;
     private String letterMessage = "Letter Message";
-    private String figureURL = "This will be the Storage's URL";
+    private String figureURL;
+    //private String figureURL = "This will be the Storage's URL";
     private String requestDate = "10-10-2010";
 
     private String testimony = "This will be the testimony";
@@ -594,7 +595,15 @@ public class Create_order extends AppCompatActivity {
                     includeLetterCard = true;
                 }
                 letterMessage = edtLetterMessage.getText().toString();
-                figureURL = "Figure URL";
+
+
+
+                if (figureURL == null) {
+                    figureURL = "Figure URL";
+                }else {
+
+                }
+
                 // requestDate = ...;
                 // cakeSize = ...;
 
@@ -658,7 +667,7 @@ public class Create_order extends AppCompatActivity {
                         });
 
                         Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_LONG).show();
-//                Intent i = new Intent(Create_order.this, Delivery.class);
+//                Intent i = new Intent( Create_order.this, Delivery.class);
 //                startActivity(i);
             }
         });
@@ -702,6 +711,12 @@ public class Create_order extends AppCompatActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         // Get a URL to the uploaded content
                         //Uri downloadUrl = taskSnapshot.getUploadSessionUri();
+                        Ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                figureURL = String.valueOf(uri);
+                            }
+                        });
                         Toast.makeText(Create_order.this, "Upload Image Berhasil", Toast.LENGTH_SHORT).show();
                     }
                 })
