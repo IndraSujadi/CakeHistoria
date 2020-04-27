@@ -18,46 +18,92 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import umn.ac.cakehistoria.pagerchoice.pagerchoice_adapter;
 
 public class Create_order extends AppCompatActivity {
 
-    Button btnUpload, btnSelect;
-    ImageButton btnNext_toDelivery;
+
+    // Database
     FirebaseStorage storage;
     StorageReference storageReference;
     public Uri imgUri;
     private StorageTask uploadTask;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseAuth fbAuth;
+    FirebaseUser fbUser;
 
+    // Layout elements:
+    Button btnUpload, btnSelect;
+    ImageButton btnNext_toDelivery;
     FragmentPagerAdapter adapterViewPager;
-
     View currView;
+    Spinner spinCategory;
+    EditText edtAdditionalText;
+    EditText edtSpecialOrders;
+    // Datenya belom
+    CheckBox checkLetterCard;
+    EditText edtLetterMessage;
+    TextView txtCakePrice;
+    Button btnNext;
 
-    // Public variables that used as data that will written into database:
-    String cakeType;
-    String cakeColor;
-    String cakeDecor;
-    String cakeTheme;
-    String cakeFlavor;
-    String cakeTier;
-    String cakeShape;
+    String ownerName = "";
+    String userID = "";
+
+    // Cake's detail
+    private String cakeID = "";
+    private String orderID = "This is Order ID";
+    private String cakeType = "Cake Type";
+    private String cakeColor = "Cake Color";
+    private String cakeDecor = "Cake Decor";
+    private String cakeTheme = "Cake Theme";
+    private String cakeFlavor = "Cake Flavor";
+    private String cakeTier = "Cake TIer";
+    private String cakeShape = "Cake Shape";
+    private String cakeSize = "12x12 cm";
+    private String cakeCategory = "This is the category";
+
+    private String addtText = "Addt Text";
+    private String specialOrders = "Special Orders";
+    private boolean includeLetterCard = false;
+    private String letterMessage = "Letter Message";
+    private String figureURL = "This will be the Storage's URL";
+    private String requestDate = "10-10-2010";
+
+    private String testimony = "This will be the testimony";
+    private int rating = 1;
+    private String testimonyID;
+
+    private int likes = 0;
+    private String imageURL = "This is cake's image URL";
+
+
+    private int cakePrice = 100000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +117,18 @@ public class Create_order extends AppCompatActivity {
         ViewPager vpPager2 = (ViewPager) findViewById(R.id.pagerChoice);
         adapterViewPager = new pagerchoice_adapter(getSupportFragmentManager());
         vpPager2.setAdapter(adapterViewPager);
+
+        spinCategory = findViewById(R.id.spinCategory);
+        edtAdditionalText = findViewById(R.id.edtAdditionalText);
+        edtSpecialOrders = findViewById(R.id.edtSpecialOrders);
+        // Datenya belom
+        checkLetterCard = findViewById(R.id.checkLettercard);
+        edtLetterMessage = findViewById(R.id.edtLetterMessage);
+        txtCakePrice = findViewById(R.id.txtCakePrice);
+        btnNext_toDelivery = findViewById(R.id.btnNext_toDelivery);
+
+        fbAuth = FirebaseAuth.getInstance();
+        fbUser = fbAuth.getCurrentUser();
 
 
         // -------------------- GET VIEWPAGER DATA ---------------------------
@@ -486,22 +544,13 @@ public class Create_order extends AppCompatActivity {
             }
         });
 
+
+
         // -------------------- END OF GET VIEWPAGER DATA ---------------------------
 
 
-//        FragmentManager fragManager = getSupportFragmentManager();
-//        FragmentTransaction fragTransaction = fragManager.beginTransaction();
-
         int item = vpPager2.getCurrentItem();
         Fragment fragPagerChoice = adapterViewPager.getItem(item);
-
-
-//        Toast.makeText(getApplicationContext(), String.valueOf(view), Toast.LENGTH_LONG).show();
-//        fragTransaction.add(R.id.pagerChoice, fragPagerChoice);
-//        fragTransaction.commit();
-
-//        TextView coba = findViewById(R.id.txtCakeType);
-//        Toast.makeText(getApplicationContext(), coba.getText(), Toast.LENGTH_LONG).show();
 
         btnUpload = findViewById(R.id.btnUpload);
         FragmentActivity fragmentActivity = fragPagerChoice.getActivity();
@@ -534,15 +583,90 @@ public class Create_order extends AppCompatActivity {
         btnNext_toDelivery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Create_order.this, Delivery.class);
-                startActivity(i);
+                Log.d("CobaData", "Cake Type: " + cakeType);
+                Log.d("CobaData", "Additional Text: " + addtText);
+                // RETRIEVE DATA
+                // cakeCategory = spinCategory.getSelectedItem().toString();
+                ownerName = fbUser.getDisplayName();
+                addtText = edtAdditionalText.getText().toString();
+                specialOrders = edtSpecialOrders.getText().toString();
+                if (checkLetterCard.isChecked()) {
+                    includeLetterCard = true;
+                }
+                letterMessage = edtLetterMessage.getText().toString();
+                figureURL = "Figure URL";
+                // requestDate = ...;
+                // cakeSize = ...;
+
+                // Create new Cake's Document Based on Generated ID
+                Map<String, Object> cakeColl = new HashMap<>();
+                cakeColl.put("kategori", cakeCategory);
+                cakeColl.put("owner", ownerName);
+                cakeColl.put("imageURL", imageURL);
+                cakeColl.put("likes", likes);
+                cakeColl.put("orderID", orderID);
+
+                db.collection("Cakes")
+                        .add(cakeColl)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+
+                                cakeID = documentReference.getId();
+
+                                // Insert subdocument: Testimony
+                                Map<String, Object> testimonyObj = new HashMap<>();
+                                testimonyObj.put("testimonyText", testimony);
+                                testimonyObj.put("rating", rating);
+
+                                Map<String, Object> testimonySubdoc = new HashMap<>();
+                                testimonySubdoc.put("testimony", testimonyObj);
+
+                                db.collection("Cakes").document(cakeID)
+                                        .set(testimonySubdoc, SetOptions.merge());
+
+                                // Insert subdocument: cake details
+                                Map<String, Object> cakeDetailsObj = new HashMap<>();
+                                cakeDetailsObj.put("cakeCategory", cakeCategory);
+                                cakeDetailsObj.put("cakeType", cakeType);
+                                cakeDetailsObj.put("cakeColor", cakeColor);
+                                cakeDetailsObj.put("cakeDecor", cakeDecor);
+                                cakeDetailsObj.put("cakeTheme", cakeTheme);
+                                cakeDetailsObj.put("cakeFlavor", cakeFlavor);
+                                cakeDetailsObj.put("cakeTier", cakeTier);
+                                cakeDetailsObj.put("cakeShape", cakeShape);
+                                cakeDetailsObj.put("cakeSize", cakeSize);
+                                cakeDetailsObj.put("figureURL", figureURL);
+                                cakeDetailsObj.put("addtText", addtText);
+                                cakeDetailsObj.put("includeLetterCard", includeLetterCard);
+                                cakeDetailsObj.put("letterMessage", letterMessage);
+
+                                Map<String, Object> cakeDetailsSubcoll = new HashMap<>();
+                                cakeDetailsSubcoll.put("CakeDetails", cakeDetailsObj);
+
+                                db.collection("Cakes").document(cakeID)
+                                        .set(cakeDetailsSubcoll, SetOptions.merge());
+
+                                Log.d("CobaData", "Data Collection Cake berhasil masuk: " + documentReference.getId());
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w("CobaData", "Error adding document", e);
+                            }
+                        });
+
+                        Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_LONG).show();
+//                Intent i = new Intent(Create_order.this, Delivery.class);
+//                startActivity(i);
             }
         });
 
     }
 
     private View getCurrentView(ViewPager viewPager) {
-        String TAG = "View_Pager";
+        String TAG = "ViewPager";
         try {
             final int currentItem = viewPager.getCurrentItem();
             for (int i = 0; i < viewPager.getChildCount(); i++) {

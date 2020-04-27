@@ -42,9 +42,9 @@ public class Login_Activity extends AppCompatActivity {
     ImageButton btn_FBLogin;
     ProgressBar progressBar;
 
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
     GoogleSignInClient mGoogleSignInClient;
-    int GOOGLE_SIGN_IN = 12;
+    int GOOGLE_SIGN_IN = 0;
 
     FirebaseAuth.AuthStateListener fbAuthStateListener;
 
@@ -76,6 +76,8 @@ public class Login_Activity extends AppCompatActivity {
                 .requestEmail()
                 .build();
 
+
+        Log.d("Masuk", "Web Client ID: " + R.string.default_web_client_id);
         mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
 
         // ----------------- GOOGLE SIGN IN BUTTON -------------------------------
@@ -113,6 +115,7 @@ public class Login_Activity extends AppCompatActivity {
     private void Login() {
         progressBar.setVisibility(View.VISIBLE);
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        Log.d("Masuk", "Masuk ke function Login()");
         startActivityForResult(signInIntent, GOOGLE_SIGN_IN);
     }
 
@@ -122,26 +125,32 @@ public class Login_Activity extends AppCompatActivity {
 
         if (requestCode == GOOGLE_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            Log.d("Masuk", "Request code valid");
             handleSignInResult(task);
         }
     }
 
+    // INI ASWIN FAILED DI SINI
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
+
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             //Intent i = new Intent(Login_Activity.this,MainActivity.class);
             //startActivity(i);
+            Log.d("Masuk", "Masuk ke try dengan Akun: " + account.getId());
             progressBar.setVisibility(View.INVISIBLE);
             FirebaseGoogleAuth(account);
-
         }catch (ApiException e ) {
-            Toast.makeText(Login_Activity.this,"Sign In Failed",Toast.LENGTH_LONG).show();
+            Log.d("Masuk", "Masuk ke catch: " + e);
             FirebaseGoogleAuth(null);
         }
     }
 
     private void FirebaseGoogleAuth(GoogleSignInAccount account) {
+        Log.d("Masuk", "firebaseAuthWithGoogle:" + account.getId());
+
         AuthCredential authCredential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+        Log.d("Masuk", authCredential.toString());
         mAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

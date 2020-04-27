@@ -155,7 +155,7 @@
                 android:textAppearance="@style/Paragraph" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/edtAdditionalText"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_marginTop="13dp"
@@ -178,7 +178,7 @@
                 android:textAppearance="@style/SubTitle" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/edtSpecialOrders"
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:layout_marginTop="14dp"
@@ -216,7 +216,7 @@
                 android:inputType="date" />
 
             <CheckBox
-                android:id="@+id/checkBox2"
+                android:id="@+id/checkLettercard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -226,7 +226,7 @@
                 android:textAppearance="@style/SubTitle" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/edtLetterMessage"
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:layout_marginTop="12dp"
@@ -251,7 +251,7 @@
                 android:text="CAKE PRICE" />
 
             <TextView
-                android:id="@+id/txtHargaDeliv"
+                android:id="@+id/txtCakePrice"
                 android:layout_width="188dp"
                 android:layout_height="34dp"
                 android:layout_gravity="center"
