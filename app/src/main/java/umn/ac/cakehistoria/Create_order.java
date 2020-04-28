@@ -100,14 +100,14 @@ public class Create_order extends AppCompatActivity {
     private String cakeTier = "One tier";
     private String nTier = "";
     private String cakeShape = "Round";
-    private String cakeSize = "This is the size";
-    private String cakeCategory = "This is the category";
+    private String cakeSize = "Diameter 16cm";
+    private String cakeCategory = "Birthday";
 
-    private String addtText = "Addt Text";
-    private String specialOrders = "Special Orders";
+    private String addtText = "";
+    private String specialOrders = "";
     private boolean includeLetterCard = false;
-    private String letterMessage = "Letter Message";
-    private String figureURL = "This will be the Storage's URL";
+    private String letterMessage = "";
+    private String figureURL = "";
 
     private String testimony = "This will be the testimony";
     private int rating = 0;
@@ -548,23 +548,29 @@ public class Create_order extends AppCompatActivity {
                                     RadioButton rb;
                                     rb = currView.findViewById(selectedRbId);
 
-//                                    if(selectedRbId != R.id.multi){
-//                                        spinTier.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                                            @Override
-//                                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                                                nTier = " " + spinTier.getSelectedItem().toString();
-//                                                Log.d(TAG, "nTier: " + nTier);
-//                                            }
-//
-//                                            @Override
-//                                            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//                                            }
-//                                        });
-//                                    }else{
-//                                        nTier = "";
-//                                    }
-                                    cakeTier = rb.getText().toString() + nTier;
+                                    if(selectedRbId == R.id.multi){
+                                        nTier = " " + spinTier.getSelectedItem().toString();
+                                        cakeTier = rb.getText().toString() + nTier;
+                                        Log.d(TAG, "cakeTier pas baru masuk rb Multi: " + cakeTier);
+                                        spinTier.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                            @Override
+                                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                                nTier = " " + spinTier.getSelectedItem().toString();
+                                                Log.d(TAG, "nTier: " + nTier);
+                                                cakeTier = rb.getText().toString() + nTier;
+                                            }
+
+                                            @Override
+                                            public void onNothingSelected(AdapterView<?> adapterView) {
+
+                                            }
+                                        });
+                                    }
+                                    else{
+                                        nTier = "";
+                                        cakeTier = rb.getText().toString() + nTier;
+                                        Log.d(TAG, "nTier: " + nTier);
+                                    }
 
                                     Log.d(TAG, "Cake Tier: " + cakeTier);
                                 }
@@ -591,16 +597,31 @@ public class Create_order extends AppCompatActivity {
                                     RadioButton rb;
                                     rb = currView.findViewById(selectedRbId);
 
-                                    Spinner spinSize;
-                                    spinSize = currView.findViewById(R.id.spinSize);
-
-                                    cakeSize = spinSize.getSelectedItem().toString(); // Masih belom bener
                                     cakeShape = rb.getText().toString();
                                     Log.d(TAG, "Cake Shape: " + cakeShape);
                                 }
                             });
 
+                            Spinner spinSize;
+                            spinSize = currView.findViewById(R.id.spinSize);
+
+                            cakeSize = spinSize.getSelectedItem().toString();
+
+                            spinSize.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                @Override
+                                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                    cakeSize = spinSize.getSelectedItem().toString();
+                                    Log.d(TAG, "Cake Size: " + cakeSize);
+                                }
+
+                                @Override
+                                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                                }
+                            });
+
                             Log.d(TAG, "Cake Shape: " + cakeShape);
+                            Log.d(TAG, "Cake Size: " + cakeSize);
                         }
                     } else {
                         Log.d(TAG, "The View object is null");
@@ -618,6 +639,7 @@ public class Create_order extends AppCompatActivity {
 
             }
         });
+
 
         // -------------------- END OF GET VIEWPAGER DATA ---------------------------
 
@@ -656,6 +678,7 @@ public class Create_order extends AppCompatActivity {
         btnNext_toDelivery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("ViewPager", "Cake Tier hasil akhir: " + cakeTier);
                 orderID = generateRefKey(20);
                 cakeID = generateRefKey(20);
 
@@ -790,10 +813,10 @@ public class Create_order extends AppCompatActivity {
 
                 // GO TO NEXT PAGE
                 Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_LONG).show();
-//                Intent i = new Intent( Create_order.this, Delivery.class);
-//                i.putExtra("cakeID", cakeID);
-//                i.putExtra("orderID", orderID);
-//                startActivity(i);
+                Intent i = new Intent( Create_order.this, Delivery.class);
+                i.putExtra("cakeID", cakeID);
+                i.putExtra("orderID", orderID);
+                startActivity(i);
             }
         });
 
