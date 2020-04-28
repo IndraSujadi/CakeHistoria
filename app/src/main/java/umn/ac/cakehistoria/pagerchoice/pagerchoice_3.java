@@ -31,15 +31,15 @@ public class pagerchoice_3 extends Fragment implements View.OnClickListener{
         switch(view.getId()){
 
             case R.id.butter_cream:
-                Toast.makeText(getActivity(), "A", Toast.LENGTH_LONG ).show();
+//                Toast.makeText(getActivity(), "A", Toast.LENGTH_LONG ).show();
                 break;
 
             case R.id.ganache:
-                Toast.makeText(getActivity(), "B", Toast.LENGTH_LONG ).show();
+//                Toast.makeText(getActivity(), "B", Toast.LENGTH_LONG ).show();
                 break;
 
             case R.id.fondant:
-                Toast.makeText(getActivity(), "C", Toast.LENGTH_LONG ).show();
+//                Toast.makeText(getActivity(), "C", Toast.LENGTH_LONG ).show();
                 break;
         }
     }

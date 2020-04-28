@@ -61,15 +61,15 @@ public class Delivery extends AppCompatActivity {
     TextView txtHargaDeliv;
     ImageButton btnNext_toPayment;
 
-    private String receiverName;
-    private String receiverPhone;
-    private String receiverEmail;
-    private String receiverProvinsi;
-    private String receiverKota;
-    private String receiverKecamatan;
-    private String receiverKelurahan;
-    private String receiverZip;
-    private String receiverFullAddress;
+    private String receiverName = "";
+    private String receiverPhone = "";
+    private String receiverEmail = "";
+    private String receiverProvinsi = "";
+    private String receiverKota = "";
+    private String receiverKecamatan = "";
+    private String receiverKelurahan = "";
+    private String receiverZip = "";
+    private String receiverFullAddress = "";
 
     private Boolean asuransi = false;
     private int delivPrice = 9000;

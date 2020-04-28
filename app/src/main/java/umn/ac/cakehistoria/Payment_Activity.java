@@ -31,6 +31,8 @@ public class Payment_Activity extends AppCompatActivity {
 
     private String refNama, refEmail, refNomor, refAlamat, refRequestDate, refCakeType, refCakeDetails, refLetterCard;
 
+    private String refCakeShape, refCakeSize, refCakeTier;
+
     private int refHargaProduk, refHargaDeliv, refTotal1, refTotal2;
 
     private boolean includeLettercard;
@@ -74,11 +76,18 @@ public class Payment_Activity extends AppCompatActivity {
                         refCakeType = (String) cakeDetails.get("cakeCategory") + " Custom Cake";
                         txtCakeType.setText(refCakeType);
 
+                        refCakeShape = (String) cakeDetails.get("cakeShape");
+                        refCakeSize = (String) cakeDetails.get("cakeSize");
+                        refCakeTier = (String) cakeDetails.get("cakeTier");
+
                         refCakeDetails = (String) cakeDetails.get("cakeType") + ", " + (String) cakeDetails.get("cakeColor")
                                 + ", " + (String) cakeDetails.get("cakeDecor") + ", " + (String) cakeDetails.get("cakeTheme")
                                 + ", " + (String) cakeDetails.get("cakeFlavor") + ", " + (String) cakeDetails.get("cakeTier")
-                                + ", " + (String) cakeDetails.get("cakeShape");
+                                + ", " + (String) cakeDetails.get("cakeShape") + ", " + (String) cakeDetails.get("cakeSize");
                         txtCakeDetails.setText(refCakeDetails);
+
+                        refHargaProduk = document.get("cakePrice", Integer.class);
+                        txtHargaProduk.setText(String.valueOf(refHargaProduk));
 
                     } else {
                         Log.d("CobaData", "No such document");
@@ -116,8 +125,8 @@ public class Payment_Activity extends AppCompatActivity {
                         refRequestDate = document.get("requestDate", String.class);
                         txtRequestDate.setText(refRequestDate);
 
-                        refHargaProduk = document.get("cakePrice", Integer.class);
-                        txtHargaProduk.setText(String.valueOf(refHargaProduk));
+//                        refHargaProduk = document.get("cakePrice", Integer.class);
+//                        txtHargaProduk.setText(String.valueOf(refHargaProduk));
 
                         refHargaDeliv = document.get("delivPrice", Integer.class);
                         txtHargaDeliv.setText(String.valueOf(refHargaDeliv));

@@ -100,7 +100,7 @@ public class Create_order extends AppCompatActivity {
     private String cakeTier = "One tier";
     private String nTier = "";
     private String cakeShape = "Round";
-    private String cakeSize = "Diameter 16cm";
+    private String cakeSize = "Diameter 16 cm";
     private String cakeCategory = "Birthday";
 
     private String addtText = "";
@@ -109,17 +109,17 @@ public class Create_order extends AppCompatActivity {
     private String letterMessage = "";
     private String figureURL = "";
 
-    private String testimony = "This will be the testimony";
+    private String testimony = "";
     private int rating = 0;
     private String testimonyID;
 
     private int likes = 0;
-    private String imageURL = "This is cake's image URL";
-    private int cakePrice = 100000;
+    private String imageURL = "";
+    private int cakePrice = 0;
 
-    private String requestDate = "This is the date";
+    private String requestDate = "";
     private Date orderDateTime;
-    private String orderStatus = "";
+    private String orderStatus = "Order is processed";
 
     // MASTER CLASS:
     class_cake Cake = new class_cake();
@@ -558,6 +558,7 @@ public class Create_order extends AppCompatActivity {
                                                 nTier = " " + spinTier.getSelectedItem().toString();
                                                 Log.d(TAG, "nTier: " + nTier);
                                                 cakeTier = rb.getText().toString() + nTier;
+                                                Log.d(TAG, "cakeTier: " + cakeTier);
                                             }
 
                                             @Override
@@ -575,8 +576,8 @@ public class Create_order extends AppCompatActivity {
                                     Log.d(TAG, "Cake Tier: " + cakeTier);
                                 }
                             });
-
-                            Log.d(TAG, "Cake Tier: " + cakeTier);
+                            cakeTier = rb.getText().toString() + nTier;
+                            Log.d(TAG, "Cake Tier Akhir: " + cakeTier);
 
                         }
                         // CAKE SHAPE
@@ -697,7 +698,176 @@ public class Create_order extends AppCompatActivity {
 
                 }
 
-                // cakePrice = ...;
+                if(cakeShape.equalsIgnoreCase("Round")){
+                    switch(cakeSize){
+                        case "Diameter 16 cm":
+                            switch (cakeTier){
+                                case "Cupcake":
+                                    cakePrice += 100000;
+                                    break;
+                                case "One tier":
+                                    cakePrice += 105000;
+                                    break;
+                                case "Multi-tier":
+                                    cakePrice += 155000;
+                                    break;
+                                case "Multi-tier 2":
+                                    cakePrice += 155000;
+                                    break;
+                                case "Multi-tier 3":
+                                    cakePrice += 205000;
+                                    break;
+                                case "Multi-tier 4":
+                                    cakePrice += 255000;
+                                    break;
+                                default:
+                                    cakePrice += 0;
+                            }
+                            break;
+                        case "Diameter 20 cm":
+                            switch (cakeTier){
+                                case "Cupcake":
+                                    cakePrice += 120000;
+                                    break;
+                                case "One tier":
+                                    cakePrice += 125000;
+                                    break;
+                                case "Multi-tier":
+                                    cakePrice += 175000;
+                                    break;
+                                case "Multi-tier 2":
+                                    cakePrice += 175000;
+                                    break;
+                                case "Multi-tier 3":
+                                    cakePrice += 225000;
+                                    break;
+                                case "Multi-tier 4":
+                                    cakePrice += 275000;
+                                    break;
+                                default:
+                                    cakePrice += 0;
+                            }
+                            break;
+                        case "Diameter 26 cm":
+                            switch (cakeTier){
+                                case "Cupcake":
+                                    cakePrice += 140000;
+                                    break;
+                                case "One tier":
+                                    cakePrice += 145000;
+                                    break;
+                                case "Multi-tier":
+                                    cakePrice += 195000;
+                                    break;
+                                case "Multi-tier 2":
+                                    cakePrice += 195000;
+                                    break;
+                                case "Multi-tier 3":
+                                    cakePrice += 245000;
+                                    break;
+                                case "Multi-tier 4":
+                                    cakePrice += 295000;
+                                    break;
+                                default:
+                                    cakePrice += 0;
+                            }
+                            break;
+                        default:
+                            cakePrice += 0;
+                    }
+                }
+                if(cakeShape.equalsIgnoreCase("Square")){
+                    switch(cakeSize){
+                        case "24x24 cm":
+                            switch (cakeTier){
+                                case "Cupcake":
+                                    cakePrice += 100000;
+                                    break;
+                                case "One tier":
+                                    cakePrice += 105000;
+                                    break;
+                                case "Multi-tier":
+                                    cakePrice += 155000;
+                                    break;
+                                case "Multi-tier 2":
+                                    cakePrice += 155000;
+                                    break;
+                                case "Multi-tier 3":
+                                    cakePrice += 205000;
+                                    break;
+                                case "Multi-tier 4":
+                                    cakePrice += 255000;
+                                    break;
+                                default:
+                                    cakePrice += 0;
+                            }
+                            break;
+                        case "30x30 cm":
+                            switch (cakeTier){
+                                case "Cupcake":
+                                    cakePrice += 120000;
+                                    break;
+                                case "One tier":
+                                    cakePrice += 125000;
+                                    break;
+                                case "Multi-tier":
+                                    cakePrice += 175000;
+                                    break;
+                                case "Multi-tier 2":
+                                    cakePrice += 175000;
+                                    break;
+                                case "Multi-tier 3":
+                                    cakePrice += 225000;
+                                    break;
+                                case "Multi-tier 4":
+                                    cakePrice += 275000;
+                                    break;
+                                default:
+                                    cakePrice += 0;
+                            }
+                            break;
+                        case "45x45 cm":
+                            switch (cakeTier){
+                                case "Cupcake":
+                                    cakePrice += 140000;
+                                    break;
+                                case "One tier":
+                                    cakePrice += 145000;
+                                    break;
+                                case "Multi-tier":
+                                    cakePrice += 195000;
+                                    break;
+                                case "Multi-tier 2":
+                                    cakePrice += 195000;
+                                    break;
+                                case "Multi-tier 3":
+                                    cakePrice += 245000;
+                                    break;
+                                case "Multi-tier 4":
+                                    cakePrice += 295000;
+                                    break;
+                                default:
+                                    cakePrice += 0;
+                            }
+                            break;
+                        default:
+                            cakePrice += 0;
+                    }
+                }
+
+                if(addtText != null && !addtText.isEmpty()){
+                    cakePrice += 20000;
+                }
+
+                if(includeLetterCard){
+                   cakePrice += 8000;
+                }
+
+                Log.d("Variabel", "Cake Shape: " + cakeShape);
+                Log.d("Variabel", "Cake Size: " + cakeSize);
+                Log.d("Variabel", "Cake Tier: " + cakeTier);
+
+                Log.d("Variabel", "Cake Price: " + cakePrice);
 
                 // Create new Cake's Document Based on Generated ID
                 Map<String, Object> cakeColl = new HashMap<>();
@@ -793,6 +963,7 @@ public class Create_order extends AppCompatActivity {
                 orderColl.put("orderDateTime", orderDateTime);
                 orderColl.put("requestDate", requestDate);
                 orderColl.put("cakePrice", cakePrice);
+                orderColl.put("orderStatus", orderStatus);
 //                orderColl.put("refKey", refKey);
 
                 db.collection("Orders").document(orderID)
