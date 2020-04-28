@@ -3,6 +3,7 @@ package umn.ac.cakehistoria;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -10,6 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.DatePickerDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
@@ -17,10 +19,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -45,6 +52,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import umn.ac.cakehistoria.pagerchoice.pagerchoice_adapter;
@@ -68,11 +76,15 @@ public class Create_order extends AppCompatActivity {
     Spinner spinCategory;
     EditText edtAdditionalText;
     EditText edtSpecialOrders;
-    // Datenya belom
+    EditText edtOtherCategory;
+    EditText edtReqDate;
     CheckBox checkLetterCard;
     EditText edtLetterMessage;
     TextView txtCakePrice;
     Button btnNext;
+
+    private DatePickerDialog datePickerDialog;
+    private SimpleDateFormat dateFormatter;
 
     String ownerName = "";
     String userID = "";
@@ -86,8 +98,9 @@ public class Create_order extends AppCompatActivity {
     private String cakeTheme = "Colorful Sprinkle";
     private String cakeFlavor = "Chocolate";
     private String cakeTier = "One tier";
+    private String nTier = "";
     private String cakeShape = "Round";
-    private String cakeSize = "This is the shape";
+    private String cakeSize = "This is the size";
     private String cakeCategory = "This is the category";
 
     private String addtText = "Addt Text";
@@ -104,7 +117,7 @@ public class Create_order extends AppCompatActivity {
     private String imageURL = "This is cake's image URL";
     private int cakePrice = 100000;
 
-    private String requestDate = "10-10-2010";
+    private String requestDate = "This is the date";
     private Date orderDateTime;
     private String orderStatus = "";
 
@@ -128,19 +141,45 @@ public class Create_order extends AppCompatActivity {
         vpPager2.setAdapter(adapterViewPager);
 
         spinCategory = findViewById(R.id.spinCategory);
+        edtOtherCategory = findViewById(R.id.edtOtherCategory);
         edtAdditionalText = findViewById(R.id.edtAdditionalText);
         edtSpecialOrders = findViewById(R.id.edtSpecialOrders);
-        // Datenya belom
+        edtReqDate = findViewById(R.id.edtReqDate);
         checkLetterCard = findViewById(R.id.checkLettercard);
         edtLetterMessage = findViewById(R.id.edtLetterMessage);
         txtCakePrice = findViewById(R.id.txtCakePrice);
         btnNext_toDelivery = findViewById(R.id.btnNext_toDelivery);
 
+        ArrayAdapter <CharSequence> categoryAdapter = ArrayAdapter.createFromResource(this, R.array.cake_category_lists, android.R.layout.simple_spinner_item);
+        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinCategory.setAdapter(categoryAdapter);
+
         fbAuth = FirebaseAuth.getInstance();
         fbUser = fbAuth.getCurrentUser();
 
+        edtOtherCategory.setVisibility(View.INVISIBLE);
+        edtLetterMessage.setVisibility(View.INVISIBLE);
 
-        Log.d("CobaData", "Ref Key: " + refKey);
+        checkLetterCard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(compoundButton.isChecked()){
+                    edtLetterMessage.setVisibility(View.VISIBLE);
+                }
+                else{
+                    edtLetterMessage.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+//         DATE PICKER
+        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        edtReqDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDatePicker();
+            }
+        });
 
         // -------------------- GET VIEWPAGER DATA ---------------------------
 
@@ -495,6 +534,9 @@ public class Create_order extends AppCompatActivity {
 
                             RadioButton rb;
 
+                            Spinner spinTier = currView.findViewById(R.id.spinTiers);
+
+
                             int selectedRbId = rg.getCheckedRadioButtonId();
                             rb = currView.findViewById(selectedRbId);
 
@@ -506,7 +548,24 @@ public class Create_order extends AppCompatActivity {
                                     RadioButton rb;
                                     rb = currView.findViewById(selectedRbId);
 
-                                    cakeTier = rb.getText().toString();
+//                                    if(selectedRbId != R.id.multi){
+//                                        spinTier.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//                                            @Override
+//                                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                                                nTier = " " + spinTier.getSelectedItem().toString();
+//                                                Log.d(TAG, "nTier: " + nTier);
+//                                            }
+//
+//                                            @Override
+//                                            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//                                            }
+//                                        });
+//                                    }else{
+//                                        nTier = "";
+//                                    }
+                                    cakeTier = rb.getText().toString() + nTier;
+
                                     Log.d(TAG, "Cake Tier: " + cakeTier);
                                 }
                             });
@@ -532,6 +591,10 @@ public class Create_order extends AppCompatActivity {
                                     RadioButton rb;
                                     rb = currView.findViewById(selectedRbId);
 
+                                    Spinner spinSize;
+                                    spinSize = currView.findViewById(R.id.spinSize);
+
+                                    cakeSize = spinSize.getSelectedItem().toString(); // Masih belom bener
                                     cakeShape = rb.getText().toString();
                                     Log.d(TAG, "Cake Shape: " + cakeShape);
                                 }
@@ -595,8 +658,9 @@ public class Create_order extends AppCompatActivity {
             public void onClick(View v) {
                 orderID = generateRefKey(20);
                 cakeID = generateRefKey(20);
+
                 // RETRIEVE CAKE'S DATA
-                // cakeCategory = spinCategory.getSelectedItem().toString();
+                cakeCategory = spinCategory.getSelectedItem().toString();
                 ownerName = fbUser.getDisplayName();
                 addtText = edtAdditionalText.getText().toString();
                 specialOrders = edtSpecialOrders.getText().toString();
@@ -610,8 +674,6 @@ public class Create_order extends AppCompatActivity {
 
                 }
 
-                // cakeSize = ...;
-
                 // cakePrice = ...;
 
                 // Create new Cake's Document Based on Generated ID
@@ -621,7 +683,6 @@ public class Create_order extends AppCompatActivity {
                 cakeColl.put("likes", likes);
                 cakeColl.put("cakePrice", cakePrice);
                 cakeColl.put("orderID", orderID);
-//                cakeColl.put("refKey", refKey);
 
                 db.collection("Cakes").document(cakeID)
                         .set(cakeColl)
@@ -696,64 +757,11 @@ public class Create_order extends AppCompatActivity {
                             }
                         });
 
-                // INSERT CAKE DATA:
-//                db.collection("Cakes")
-//                        .add(cakeColl)
-//                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                            @Override
-//                            public void onSuccess(DocumentReference documentReference) {
-//
-//                                cakeID = documentReference.getId();
-//
-//                                // Insert subdocument: Testimony
-//                                Map<String, Object> testimonyObj = new HashMap<>();
-//                                testimonyObj.put("testimonyText", testimony);
-//                                testimonyObj.put("rating", rating);
-//
-//                                Map<String, Object> testimonySubdoc = new HashMap<>();
-//                                testimonySubdoc.put("testimony", testimonyObj);
-//
-//                                db.collection("Cakes").document(cakeID)
-//                                        .set(testimonySubdoc, SetOptions.merge());
-//
-//                                // Insert subdocument: cake details
-//                                Map<String, Object> cakeDetailsObj = new HashMap<>();
-//                                cakeDetailsObj.put("cakeCategory", cakeCategory);
-//                                cakeDetailsObj.put("cakeType", cakeType);
-//                                cakeDetailsObj.put("cakeColor", cakeColor);
-//                                cakeDetailsObj.put("cakeDecor", cakeDecor);
-//                                cakeDetailsObj.put("cakeTheme", cakeTheme);
-//                                cakeDetailsObj.put("cakeFlavor", cakeFlavor);
-//                                cakeDetailsObj.put("cakeTier", cakeTier);
-//                                cakeDetailsObj.put("cakeShape", cakeShape);
-//                                cakeDetailsObj.put("cakeSize", cakeSize);
-//                                cakeDetailsObj.put("figureURL", figureURL);
-//                                cakeDetailsObj.put("addtText", addtText);
-//                                cakeDetailsObj.put("includeLetterCard", includeLetterCard);
-//                                cakeDetailsObj.put("letterMessage", letterMessage);
-//                                cakeDetailsObj.put("specialOrders", specialOrders);
-//
-//                                Map<String, Object> cakeDetailsSubcoll = new HashMap<>();
-//                                cakeDetailsSubcoll.put("CakeDetails", cakeDetailsObj);
-//
-//                                db.collection("Cakes").document(cakeID)
-//                                        .set(cakeDetailsSubcoll, SetOptions.merge());
-//
-//                                Log.d("CobaData", "Data Collection Cake berhasil masuk: " + documentReference.getId());
-//                            }
-//                        })
-//                        .addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(@NonNull Exception e) {
-//                                Log.w("CobaData", "Error adding CAKES document", e);
-//                            }
-//                        });
-
 
                 // RETRIEVE ORDER'S DATA:
                 userID = fbUser.getUid();
                 orderDateTime = Calendar.getInstance().getTime();
-                // requestDate = ...;
+                requestDate = edtReqDate.getText().toString();
 
                 // INSERT ORDER DATA:
                 Map<String, Object> orderColl = new HashMap<>();
@@ -779,31 +787,33 @@ public class Create_order extends AppCompatActivity {
                             }
                         });
 
-//                db.collection("Orders")
-//                        .add(orderColl)
-//                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                            @Override
-//                            public void onSuccess(DocumentReference documentReference) {
-//                                orderID = documentReference.getId();
-//                                Log.d("CobaData", "Data Collection ORDERS berhasil masuk: " + documentReference.getId());
-//                            }
-//                        })
-//                        .addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(@NonNull Exception e) {
-//                                Log.w("CobaData", "Error adding ORDERS document", e);
-//                            }
-//                        });
 
                 // GO TO NEXT PAGE
                 Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_LONG).show();
-                Intent i = new Intent( Create_order.this, Delivery.class);
-                i.putExtra("cakeID", cakeID);
-                i.putExtra("orderID", orderID);
-                startActivity(i);
+//                Intent i = new Intent( Create_order.this, Delivery.class);
+//                i.putExtra("cakeID", cakeID);
+//                i.putExtra("orderID", orderID);
+//                startActivity(i);
             }
         });
 
+    }
+
+    private void showDatePicker() {
+        Calendar newCalendar = Calendar.getInstance();
+        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+
+                edtReqDate.setText(dateFormatter.format(newDate.getTime()));
+            }
+
+        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() + + 3*24*60*60*1000);
+        datePickerDialog.show();
     }
 
     private String generateRefKey(int n) {

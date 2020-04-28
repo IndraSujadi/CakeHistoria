@@ -78,24 +78,31 @@
 
     </RadioGroup>
 
-    <TextView
-        android:layout_gravity="center"
-        android:layout_marginTop="27dp"
-        android:id="@+id/textView27"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/gotham_medium"
-        android:textColor="@color/Dark"
-        android:textSize="12sp"
-        android:text="how many tiers?" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/formTier">
 
-    <Spinner
-        android:id="@+id/spinTiers"
-        android:layout_width="80dp"
-        android:layout_height="35dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="14dp"
-        android:autofillHints="2"
-        android:background="@drawable/spinner_border" />
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="27dp"
+            android:fontFamily="@font/gotham_medium"
+            android:text="how many tiers?"
+            android:textColor="@color/Dark"
+            android:textSize="12sp" />
+
+        <Spinner
+            android:id="@+id/spinTiers"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="14dp"
+            android:autofillHints="2"
+            android:background="@drawable/spinner_border" />
+    </LinearLayout>
 
 </LinearLayout>

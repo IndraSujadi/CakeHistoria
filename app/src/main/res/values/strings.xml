@@ -13,5 +13,30 @@
         consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         Sed risus ultricies tristique nulla aliquet enim tortor at.</string>
 
+    <string-array name="cake_category_lists">
+        <item>Birthday</item>
+        <item>Wedding</item>
+        <item>Valentine</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="cake_tier_lists">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="cake_size_lists1">
+        <item>Diameter 16 cm</item>
+        <item>Diameter 20 cm</item>
+        <item>Diameter 26 cm</item>
+    </string-array>
+
+    <string-array name="cake_size_lists2">
+        <item>24x24 cm</item>
+        <item>30x30 cm</item>
+        <item>45x45 cm</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
 </resources>
