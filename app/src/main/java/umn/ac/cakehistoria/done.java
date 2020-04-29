@@ -31,8 +31,8 @@ public class done extends Fragment {
 
         mTransactionList = new ArrayList<>();
 
-        mTransactionData = new TransactionData("TR-002","Birthday Custom Cake", "15-03-2020", "990000", "7");
-        mTransactionList.add(mTransactionData);
+//        mTransactionData = new TransactionData("TR-002","Birthday Custom Cake", "15-03-2020", "990000", "7");
+//        mTransactionList.add(mTransactionData);
 
 //        mTransactionData = new TransactionData("TR-002","Birthday Custom Cake", "15-03-2020", "990000", "7");
 //        mTransactionList.add(mTransactionData);

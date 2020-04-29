@@ -958,12 +958,14 @@ public class Create_order extends AppCompatActivity {
 
                 // INSERT ORDER DATA:
                 Map<String, Object> orderColl = new HashMap<>();
+                orderColl.put("orderID", orderID);
                 orderColl.put("userID", userID);
                 orderColl.put("cakeID", cakeID);
                 orderColl.put("orderDateTime", orderDateTime);
                 orderColl.put("requestDate", requestDate);
                 orderColl.put("cakePrice", cakePrice);
                 orderColl.put("orderStatus", orderStatus);
+                orderColl.put("orderName", cakeCategory + " Custom Cake");
 //                orderColl.put("refKey", refKey);
 
                 db.collection("Orders").document(orderID)

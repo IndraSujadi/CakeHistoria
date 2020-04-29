@@ -59,6 +59,9 @@ public class fragHome extends Fragment {
             @Override
             public void onClick(View view) {
                 // Masuk ke activity history di sini...
+                Intent i = new Intent(getActivity(), Transactions.class);
+                startActivity(i);
+                getActivity().finish();
             }
         });
 

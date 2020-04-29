@@ -32,11 +32,11 @@ public class DataAdapter extends RecyclerView.Adapter<TransactionViewHolder> {
     @Override
     public void onBindViewHolder(final TransactionViewHolder holder, int position) {
 
-        holder.mOrderNo.setText(mTransactionList.get(position).getOrderno());
-        holder.mOrderItem.setText(mTransactionList.get(position).getOrderitem());
-        holder.mOrderDate.setText(mTransactionList.get(position).getOrderdate());
-        holder.mPrice.setText(mTransactionList.get(position).getPrice());
-        holder.mDoneEstimation.setText(mTransactionList.get(position).getDoneestimation());
+//        holder.mOrderNo.setText(mTransactionList.get(position).getOrderno());
+//        holder.mOrderItem.setText(mTransactionList.get(position).getOrderitem());
+//        holder.mOrderDate.setText(mTransactionList.get(position).getOrderdate());
+//        holder.mPrice.setText(mTransactionList.get(position).getPrice());
+//        holder.mDoneEstimation.setText(mTransactionList.get(position).getDoneestimation());
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

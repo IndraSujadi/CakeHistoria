@@ -132,11 +132,12 @@ public class Payment_Activity extends AppCompatActivity {
                         txtHargaDeliv.setText(String.valueOf(refHargaDeliv));
 
                         refTotal1 = document.get("totalPrice", Integer.class);
-                        txtTotal1.setText(String.valueOf(refTotal1));
+//                        txtTotal1.setText(String.valueOf(refTotal1));
+                        txtTotal1.setText("Rp " + String.format("%, d", Integer.parseInt(String.valueOf(refTotal1))));
 
                         refTotal2 = document.get("totalPrice", Integer.class);
-                        txtTotal2.setText(String.valueOf(refTotal2));
-
+//                        txtTotal2.setText(String.valueOf(refTotal2));
+                        txtTotal2.setText("Rp " + String.format("%, d", Integer.parseInt(String.valueOf(refTotal2))));
                     } else {
                         Log.d("CobaData", "No such document");
                     }
