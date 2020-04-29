@@ -11,24 +11,15 @@
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-<<<<<<< Updated upstream
-        <activity android:name=".Create_order">
-=======
+
+        <activity android:name=".Create_order"/>
+
         <activity android:name=".done"></activity>
         <activity android:name=".onprogress" />
         <activity android:name=".Transactions">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
->>>>>>> Stashed changes
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-<<<<<<< Updated upstream
-=======
-        <activity android:name=".LoginActivity2" />
-        <activity android:name=".Create_order" />
->>>>>>> Stashed changes
+<!--        <activity android:name=".LoginActivity2" />-->
+
         <activity android:name=".OrderDone_Activity" />
         <activity android:name=".Payment_Activity">
 
@@ -43,17 +34,14 @@
             android:theme="@style/Review" />
         <activity android:name=".Delivery" />
         <activity android:name=".Login_Activity" />
-<<<<<<< Updated upstream
+
         <activity android:name=".Splach_Screen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-=======
-        <activity android:name=".Splach_Screen" />
->>>>>>> Stashed changes
+
         <activity android:name=".MainActivity" />
     </application>
 
