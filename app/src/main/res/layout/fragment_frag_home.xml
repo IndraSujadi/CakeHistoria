@@ -20,7 +20,8 @@
             android:backgroundTint="@color/Light"
             android:orientation="horizontal"
             android:paddingVertical="10dp"
-            android:paddingLeft="15dp">
+            android:paddingLeft="18dp"
+            android:paddingRight="5dp">
 
             <TextView
                 android:id="@+id/txtWelcome"
@@ -30,29 +31,34 @@
                 android:layout_centerVertical="true"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/gotham_bold"
+                android:gravity="center_vertical"
                 android:text="@string/app_name"
                 android:textColor="@color/Dark"
                 android:textSize="25dp" />
 
 
             <ImageButton
-                android:id="@+id/imageButton3"
+                android:id="@+id/btnFav"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
+                android:padding="5dp"
                 android:layout_weight=".5"
                 android:background="@color/Light"
                 android:scaleType="fitEnd"
-                android:src="@drawable/heart2" />
+                android:src="@drawable/fav_icon"
+                android:layout_gravity="center_vertical"/>
 
             <ImageButton
-                android:id="@+id/imageButton4"
+                android:id="@+id/btnHistory"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
+                android:layout_gravity="center_vertical"
+                android:padding="5dp"
                 android:layout_weight=".5"
                 android:background="@color/Light"
-                android:src="@drawable/shopping_cart" />
+                android:src="@drawable/history_icon" />
 
 
         </LinearLayout>

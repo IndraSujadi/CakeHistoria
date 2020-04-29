@@ -1,6 +1,7 @@
 package umn.ac.cakehistoria;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,8 @@ public class fragHome extends Fragment {
 
     //private List<Cake_model> cakeList;
     Context Ctx;
+
+    ImageButton btnHistory;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,6 +53,14 @@ public class fragHome extends Fragment {
         rvBeranda.setAdapter(adapter);
 
         setData();
+
+        btnHistory = view.findViewById(R.id.btnHistory);
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Masuk ke activity history di sini...
+            }
+        });
 
         return view;
     }
