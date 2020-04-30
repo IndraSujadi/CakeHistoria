@@ -892,29 +892,6 @@ public class Create_order extends AppCompatActivity {
                             }
                         });
 
-                // Insert subdocument: Testimony
-                Map<String, Object> testimonyObj = new HashMap<>();
-                testimonyObj.put("testimonyText", testimony);
-                testimonyObj.put("rating", rating);
-
-                Map<String, Object> testimonySubdoc = new HashMap<>();
-                testimonySubdoc.put("testimony", testimonyObj);
-
-                db.collection("Cakes").document(cakeID)
-                        .set(testimonySubdoc, SetOptions.merge())
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Log.d("CobaData", "Subdocument Testimony berhasil dimasukkan: " + cakeID);
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.d("CobaData", "Subdocument Testimony gagal dimasukkan");
-                            }
-                        });
-
                 // Insert subdocument: cake details
                 Map<String, Object> cakeDetailsObj = new HashMap<>();
                 cakeDetailsObj.put("cakeCategory", cakeCategory);

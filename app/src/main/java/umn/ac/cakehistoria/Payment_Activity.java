@@ -125,8 +125,8 @@ public class Payment_Activity extends AppCompatActivity {
                         refRequestDate = document.get("requestDate", String.class);
                         txtRequestDate.setText(refRequestDate);
 
-//                        refHargaProduk = document.get("cakePrice", Integer.class);
-//                        txtHargaProduk.setText(String.valueOf(refHargaProduk));
+                        refHargaProduk = document.get("cakePrice", Integer.class);
+                        txtHargaProduk.setText(String.valueOf(refHargaProduk));
 
                         refHargaDeliv = document.get("delivPrice", Integer.class);
                         txtHargaDeliv.setText(String.valueOf(refHargaDeliv));

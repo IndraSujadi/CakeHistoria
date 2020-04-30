@@ -46,6 +46,7 @@ public class onprogress extends Fragment {
     private String userID = fbUser.getUid();
 
     private String cakeID;
+    private String orderID;
 
     private FirestoreRecyclerAdapter adapter;
 
@@ -106,6 +107,7 @@ public class onprogress extends Fragment {
                 }
 
                 cakeID = model.getCakeID();
+                orderID = model.getOrderID();
                 Button btnReceive;
                 btnReceive = holder.btnReceive;
                 btnReceive.setOnClickListener(new View.OnClickListener() {
@@ -113,6 +115,7 @@ public class onprogress extends Fragment {
                     public void onClick(View view) {
                         Intent i = new Intent(getActivity(), Review_Activity.class);
                         i.putExtra("cakeID", cakeID);
+                        i.putExtra("orderID", orderID);
                         startActivity(i);
                     }
                 });
