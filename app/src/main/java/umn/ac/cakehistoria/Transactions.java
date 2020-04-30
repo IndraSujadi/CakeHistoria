@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class Transactions extends AppCompatActivity {
@@ -21,6 +22,14 @@ public class Transactions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transactions);
+
+        ImageButton btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         Button btn_onprogress = findViewById(R.id.btn_onprogess);
         Button btn_done = findViewById(R.id.btn_done);
@@ -84,13 +93,13 @@ public class Transactions extends AppCompatActivity {
             }
         });
 
-        // impelementasi toolbar atas stars here.
+        // impelementasi toolbar atas starts here.
 
-        Toolbar toolbar = findViewById(R.id.review_toolbar);
-        toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(),R.color.ReviewToolbar));
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        Toolbar toolbar = findViewById(R.id.review_toolbar);
+//        toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(),R.color.ReviewToolbar));
+//        setSupportActionBar(toolbar);
+//
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // implementasi toolbar atas ends here.
     }

@@ -29,20 +29,21 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class onprogress extends Fragment {
 
-    RecyclerView mRecyclerView;
+    private RecyclerView mRecyclerView;
     List<TransactionData> mOrderList = new ArrayList();
     TransactionData mTransactionData;
 
     private String orderStatus;
 
-    // Database
-    FirebaseFirestore fbStore;
-    FirebaseAuth fbAuth;
-    FirebaseUser fbUser = fbAuth.getInstance().getCurrentUser();
+    // Firebase
+    private FirebaseFirestore fbStore;
+    private FirebaseAuth fbAuth;
+    private FirebaseUser fbUser = fbAuth.getInstance().getCurrentUser();
     private String userID = fbUser.getUid();
 
     private String cakeID;
@@ -74,7 +75,9 @@ public class onprogress extends Fragment {
 //        mRecyclerView.setAdapter(dataAdapter);
 
         // Query the data
-        Query query = fbStore.collection("Orders").whereEqualTo("userID", userID);
+        Query query = fbStore.collection("Orders")
+                .whereIn("orderStatus", Arrays.asList("Order is processed", "On Making", "On Delivery"))
+                .whereEqualTo("userID", userID);
 
         // FirebaseRecyclerOptions & FirebaseRecyclerAdapter
         FirestoreRecyclerOptions<class_order> options = new FirestoreRecyclerOptions.Builder<class_order>()

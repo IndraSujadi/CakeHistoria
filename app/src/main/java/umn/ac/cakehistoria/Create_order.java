@@ -132,6 +132,14 @@ public class Create_order extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_order);
 
+        ImageButton btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         ViewPager vpPager = (ViewPager) findViewById(R.id.pagerView);
         adapterViewPager = new PagerViewAdapter(getSupportFragmentManager());
         vpPager.setAdapter(adapterViewPager);
@@ -157,8 +165,8 @@ public class Create_order extends AppCompatActivity {
         fbAuth = FirebaseAuth.getInstance();
         fbUser = fbAuth.getCurrentUser();
 
-        edtOtherCategory.setVisibility(View.INVISIBLE);
-        edtLetterMessage.setVisibility(View.INVISIBLE);
+        edtOtherCategory.setVisibility(View.GONE);
+        edtLetterMessage.setVisibility(View.GONE);
 
         checkLetterCard.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -167,7 +175,8 @@ public class Create_order extends AppCompatActivity {
                     edtLetterMessage.setVisibility(View.VISIBLE);
                 }
                 else{
-                    edtLetterMessage.setVisibility(View.INVISIBLE);
+                    edtLetterMessage.setVisibility(View.GONE);
+                    edtLetterMessage.getText().clear();
                 }
             }
         });

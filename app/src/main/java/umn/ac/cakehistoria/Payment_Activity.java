@@ -126,10 +126,10 @@ public class Payment_Activity extends AppCompatActivity {
                         txtRequestDate.setText(refRequestDate);
 
                         refHargaProduk = document.get("cakePrice", Integer.class);
-                        txtHargaProduk.setText(String.valueOf(refHargaProduk));
+                        txtHargaProduk.setText("Rp " + String.format("%, d", Integer.parseInt(String.valueOf(refHargaProduk))));
 
                         refHargaDeliv = document.get("delivPrice", Integer.class);
-                        txtHargaDeliv.setText(String.valueOf(refHargaDeliv));
+                        txtHargaDeliv.setText("Rp " + String.format("%, d", Integer.parseInt(String.valueOf(refHargaDeliv))));
 
                         refTotal1 = document.get("totalPrice", Integer.class);
 //                        txtTotal1.setText(String.valueOf(refTotal1));

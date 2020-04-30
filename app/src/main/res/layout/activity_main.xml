@@ -30,7 +30,6 @@
                 android:id="@+id/Bottom_Nav"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background"
                 android:orientation="horizontal">
 
                 <ImageButton
@@ -39,7 +38,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/Light"
-                    app:srcCompat="@drawable/home_solid" />
+                    app:srcCompat="@drawable/home_icon" />
 
                 <ImageButton
                     android:id="@+id/btn_Order"
@@ -55,7 +54,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/Light"
-                    app:srcCompat="@drawable/user_circle_solid"/>
+                    app:srcCompat="@drawable/acc_icon"/>
             </LinearLayout>
 
 

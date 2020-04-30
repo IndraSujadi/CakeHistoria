@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.common.collect.Ordering;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -239,6 +240,9 @@ public class Review_Activity extends AppCompatActivity {
                                 Log.d("CobaData", "Subdocument Testimony gagal dimasukkan");
                             }
                         });
+
+                db.collection("Orders").document(orderID)
+                        .update("orderStatus", "Done");
 
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
