@@ -270,7 +270,7 @@ public class Delivery extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Data> call, Throwable t) {
-
+                Log.d("API_Provinsi", "Gabisa weh: " + t.getMessage());
             }
         });
     }
