@@ -12,11 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".individual">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".OnProgress_Detail" />
         <activity android:name=".Create_order" />
@@ -36,6 +32,11 @@
         <activity android:name=".Delivery" />
         <activity android:name=".Login_Activity" />
         <activity android:name=".Splach_Screen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity android:name=".MainActivity" />
