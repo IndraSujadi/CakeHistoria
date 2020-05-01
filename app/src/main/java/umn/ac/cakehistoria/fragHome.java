@@ -47,11 +47,13 @@ public class fragHome extends Fragment implements CakeAdapter.OnItemClickListene
 
 
     ImageButton btnHistory, btnFav;
+    TextView moreBirthday,moreWedding, moreValentine, moreOthers;
 
     private CakeAdapter birthdayCakeAdapter;
     private CakeAdapter weddingCakeAdapter;
     private CakeAdapter valentineCakeAdapter;
     private CakeAdapter othersCakeAdapter;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,6 +63,10 @@ public class fragHome extends Fragment implements CakeAdapter.OnItemClickListene
         //-------------------------------------------  Intent yang button tolong tro sini aja yaa -----------------------------------------
         btnFav = view.findViewById(R.id.btnFav);
         btnHistory = view.findViewById(R.id.btnHistory);
+        moreBirthday = view.findViewById(R.id.moreBirthday);
+        moreWedding = view.findViewById(R.id.moreWedding);
+        moreValentine = view.findViewById(R.id.moreValentine);
+        moreOthers = view.findViewById(R.id.moreOthers);
 
         btnFav.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +84,44 @@ public class fragHome extends Fragment implements CakeAdapter.OnItemClickListene
                 getActivity().finish();
             }
         });
+
+        moreBirthday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), specificCategory.class);
+                i.putExtra("series", "Birthday");
+                startActivity(i);
+            }
+        });
+
+        moreWedding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), specificCategory.class);
+                i.putExtra("series", "Wedding");
+                startActivity(i);
+            }
+        });
+
+        moreValentine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), specificCategory.class);
+                i.putExtra("series", "Valentine");
+                startActivity(i);
+            }
+        });
+
+        moreOthers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), specificCategory.class);
+                i.putExtra("series", "Others");
+                startActivity(i);
+            }
+        });
+
+
 
         // -------------------------------------------- END of Button Intent =-------------------------------------------------------
 

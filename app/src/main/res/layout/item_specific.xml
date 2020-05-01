@@ -55,23 +55,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.055" />
 
-            <Button
-                android:id="@+id/btnOrder_similars"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/bg_button"
-                android:backgroundTint="@color/primaryBrown"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.730"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1"
-                android:fontFamily="@font/gotham_medium"
-                android:text="Order similar"
-                android:textSize="8sp"
-                android:textColor="@color/Light"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

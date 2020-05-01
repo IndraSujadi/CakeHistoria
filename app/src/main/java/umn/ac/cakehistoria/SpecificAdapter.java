@@ -71,7 +71,7 @@ public class SpecificAdapter extends RecyclerView.Adapter<SpecificAdapter.Specif
 
             imgSpecific = itemView.findViewById(R.id.imgSpesific);
             btnUser = itemView.findViewById(R.id.btnUser);
-            btnOrder_similar = itemView.findViewById(R.id.btnOrder_similars);
+            
         }
     }
 }
