@@ -19,18 +19,57 @@ public class class_cake {
     private boolean includeLetterCard;
     private String letterMessage;
 
+    private int cakePrice;
+
     private String imageURL;
 
     private int likes;
     private String orderID;
 
-    private String ownerName;
+    private String owner;
 
     private String testimonyText;
     private int rating;
 
     public class_cake() {
 
+    }
+
+    public class_cake(String cakeID, String addtText, String cakeCategory, String cakeColor,
+                      String cakeDecor, String cakeFlavor, String cakeShape, String cakeSize,
+                      String cakeTheme, String cakeTier, String cakeType, String specialOrders,
+                      String figureURL, boolean includeLetterCard, String letterMessage, int cakePrice,
+                      String imageURL, int likes, String orderID, String owner, String testimonyText, int rating) {
+        this.cakeID = cakeID;
+        this.addtText = addtText;
+        this.cakeCategory = cakeCategory;
+        this.cakeColor = cakeColor;
+        this.cakeDecor = cakeDecor;
+        this.cakeFlavor = cakeFlavor;
+        this.cakeShape = cakeShape;
+        this.cakeSize = cakeSize;
+        this.cakeTheme = cakeTheme;
+        this.cakeTier = cakeTier;
+        this.cakeType = cakeType;
+        this.specialOrders = specialOrders;
+        this.figureURL = figureURL;
+        this.includeLetterCard = includeLetterCard;
+        this.letterMessage = letterMessage;
+        this.cakePrice = cakePrice;
+        this.imageURL = imageURL;
+        this.likes = likes;
+        this.orderID = orderID;
+        this.owner = owner;
+        this.testimonyText = testimonyText;
+        this.rating = rating;
+    }
+
+    public int getCakePrice() {
+        return cakePrice;
+    }
+
+    public void setCakePrice(int cakePrice) {
+        this.cakePrice = cakePrice;
     }
 
     public String getCakeID() {
@@ -177,12 +216,12 @@ public class class_cake {
         this.orderID = orderID;
     }
 
-    public String getOwnerName() {
-        return ownerName;
+    public String getOwner() {
+        return owner;
     }
 
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
+    public void setOwnerName(String owner) {
+        this.owner = owner;
     }
 
     public String getTestimonyText() {

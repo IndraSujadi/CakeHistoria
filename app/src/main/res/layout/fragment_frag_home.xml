@@ -92,11 +92,169 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvBeranda"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginHorizontal="23dp"
-        android:orientation="vertical" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ========================================= RECYCLER VIEW BIRTHDAY SERIES ======================= -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="2dp">
+
+                <TextView
+                    android:id="@+id/txtBirthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginVertical="10dp"
+                    android:layout_toStartOf="@id/moreBirthday"
+                    android:fontFamily="@font/gotham_bold"
+                    android:text="Birthday Series"
+                    android:textColor="@color/Dark"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/moreBirthday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/gotham_medium"
+                    android:text="see more"
+                    android:textColor="@color/primaryBrown"
+                    android:textSize="15sp"/>
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerBirthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <!-- ========================================= RECYCLER VIEW WEDDING SERIES ======================= -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/moreWedding"
+                    android:fontFamily="@font/gotham_bold"
+                    android:text="Wedding Series"
+                    android:textColor="@color/Dark"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/moreWedding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/gotham_medium"
+                    android:text="see more"
+                    android:textColor="@color/primaryBrown"
+                    android:textSize="15sp"/>
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerWedding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <!-- ========================================= RECYCLER VIEW VALENTINE SERIES ======================= -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/moreValentine"
+                    android:fontFamily="@font/gotham_bold"
+                    android:text="Valentine Series"
+                    android:textColor="@color/Dark"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/moreValentine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/gotham_medium"
+                    android:text="see more"
+                    android:textColor="@color/primaryBrown"
+                    android:textSize="15sp"/>
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerValentine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                />
+
+            <!-- ========================================= RECYCLER VIEW OTHERS ===================================== -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/moreOthers"
+                    android:fontFamily="@font/gotham_bold"
+                    android:text="Others"
+                    android:textColor="@color/Dark"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/moreOthers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/gotham_medium"
+                    android:text="see more"
+                    android:textColor="@color/primaryBrown"
+                    android:textSize="15sp"/>
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerOthers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+
+
 
 </LinearLayout>
