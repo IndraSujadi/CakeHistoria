@@ -73,7 +73,7 @@ public class Payment_Activity extends AppCompatActivity {
                         Map subdoc = document.getData();
                         Map cakeDetails = (Map) subdoc.get("CakeDetails");
 
-                        refCakeType = (String) cakeDetails.get("cakeCategory") + " Custom Cake";
+                        refCakeType = (String) document.get("cakeCategory") + " Custom Cake";
                         txtCakeType.setText(refCakeType);
 
                         refCakeShape = (String) cakeDetails.get("cakeShape");

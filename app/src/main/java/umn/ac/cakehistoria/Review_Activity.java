@@ -90,8 +90,8 @@ public class Review_Activity extends AppCompatActivity {
                         Map subdoc = document.getData();
                         Map cakeDetails = (Map) subdoc.get("CakeDetails");
 
-                        txt_Title.setText((String) cakeDetails.get("cakeCategory") + " Custom Cake");
-                        txt_cake_category.setText((String) cakeDetails.get("cakeCategory"));
+                        txt_Title.setText((String) document.get("cakeCategory") + " Custom Cake");
+                        txt_cake_category.setText((String) document.get("cakeCategory"));
                     } else {
                         Log.d("CobaData", "No such document");
                     }
@@ -243,6 +243,11 @@ public class Review_Activity extends AppCompatActivity {
 
                 db.collection("Orders").document(orderID)
                         .update("orderStatus", "Done");
+
+                db.collection("Cakes").document(cakeID)
+                        .update("isPosted", "yes");
+
+
 
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);

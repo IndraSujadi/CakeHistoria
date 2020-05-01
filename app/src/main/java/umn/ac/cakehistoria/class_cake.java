@@ -31,11 +31,16 @@ public class class_cake {
     private String testimonyText;
     private int rating;
 
+    private String isPosted;
+
     public class_cake() {
 
     }
 
-    public class_cake(String cakeID, String addtText, String cakeCategory, String cakeColor, String cakeDecor, String cakeFlavor, String cakeShape, String cakeSize, String cakeTheme, String cakeTier, String cakeType, String specialOrders, String figureURL, boolean includeLetterCard, String letterMessage, int cakePrice, String imageURL, int likes, String orderID, String owner, String testimonyText, int rating) {
+    public class_cake(String cakeID, String addtText, String cakeCategory, String cakeColor, String cakeDecor, String cakeFlavor
+            , String cakeShape, String cakeSize, String cakeTheme, String cakeTier, String cakeType, String specialOrders
+            , String figureURL, boolean includeLetterCard, String letterMessage, int cakePrice, String imageURL, int likes
+            , String orderID, String owner, String testimonyText, int rating, String isPosted) {
         this.cakeID = cakeID;
         this.addtText = addtText;
         this.cakeCategory = cakeCategory;
@@ -58,6 +63,7 @@ public class class_cake {
         this.owner = owner;
         this.testimonyText = testimonyText;
         this.rating = rating;
+        this.isPosted = isPosted;
     }
 
     public String getCakeID() {
@@ -234,5 +240,13 @@ public class class_cake {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    public String getIsPosted() {
+        return isPosted;
+    }
+
+    public void setIsPosted(String isPosted) {
+        this.isPosted = isPosted;
     }
 }

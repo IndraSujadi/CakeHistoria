@@ -81,8 +81,8 @@ public class Specific_Review_Activity extends AppCompatActivity {
                         Map cakeDetails = (Map) subdoc.get("CakeDetails");
                         Map testimony = (Map) subdoc.get("testimony");
 
-                        txtTitle.setText((String) cakeDetails.get("cakeCategory") + " Custom Cake");
-                        txt_cake_category.setText((String) cakeDetails.get("cakeCategory"));
+                        txtTitle.setText((String) document.get("cakeCategory") + " Custom Cake");
+                        txt_cake_category.setText((String) document.get("cakeCategory"));
                         txtLikeCount.setText(String.valueOf((Long) document.get("likes")));
                         txtOwnerName.setText((String) document.get("owner"));
                         txtTestimony.setText((String) testimony.get("testimonyText"));

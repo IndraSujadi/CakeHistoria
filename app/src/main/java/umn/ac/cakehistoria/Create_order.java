@@ -34,12 +34,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -48,9 +53,11 @@ import com.google.firebase.storage.UploadTask;
 
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -121,6 +128,10 @@ public class Create_order extends AppCompatActivity {
     private Date orderDateTime;
     private String orderStatus = "Order is processed";
 
+    // Untuk nampung semua id document dari collection "Users", begitu ada cake baru, langsung diwrite ke semua subdoc "Likes"
+    // dari collectiion USER.
+    List<String> userList = new ArrayList<>();
+
     // MASTER CLASS:
     class_cake Cake = new class_cake();
     String cakeTypeCoba;
@@ -131,6 +142,26 @@ public class Create_order extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_order);
+
+        db.collection("User").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(QueryDocumentSnapshot document: task.getResult()){
+                        userList.add(document.getId());
+                    }
+                    Log.d("CobaData", "List user berhasil diambil: " + userList.toString());
+                    Log.d("CobaData", "ArrayList size:" + String.valueOf(userList.size()));
+                    for(int i=0; i < userList.size(); i++){
+                        Log.d("CobaData", "User ID: " + userList.get(i) + "\n");
+                    }
+                } else {
+                    Log.d("CobaData", "List user gagal diambil" + task.getException());
+                }
+            }
+        });
+
+
 
         ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -875,7 +906,6 @@ public class Create_order extends AppCompatActivity {
                 Log.d("Variabel", "Cake Shape: " + cakeShape);
                 Log.d("Variabel", "Cake Size: " + cakeSize);
                 Log.d("Variabel", "Cake Tier: " + cakeTier);
-
                 Log.d("Variabel", "Cake Price: " + cakePrice);
 
                 // Create new Cake's Document Based on Generated ID
@@ -885,6 +915,8 @@ public class Create_order extends AppCompatActivity {
                 cakeColl.put("likes", likes);
                 cakeColl.put("cakePrice", cakePrice);
                 cakeColl.put("orderID", orderID);
+                cakeColl.put("cakeCategory", cakeCategory);
+                cakeColl.put("isPosted", "no");
 
                 db.collection("Cakes").document(cakeID)
                         .set(cakeColl)
@@ -903,7 +935,6 @@ public class Create_order extends AppCompatActivity {
 
                 // Insert subdocument: cake details
                 Map<String, Object> cakeDetailsObj = new HashMap<>();
-                cakeDetailsObj.put("cakeCategory", cakeCategory);
                 cakeDetailsObj.put("cakeType", cakeType);
                 cakeDetailsObj.put("cakeColor", cakeColor);
                 cakeDetailsObj.put("cakeDecor", cakeDecor);
@@ -969,6 +1000,14 @@ public class Create_order extends AppCompatActivity {
                             }
                         });
 
+                // INSERT LIKE'S DATA
+                Map<String, Object> likeItems = new HashMap<>();
+                likeItems.put(cakeID, false);
+
+                for(int i = 0; i < userList.size(); i++){
+                    db.collection("User").document(userList.get(i)).collection("Likes")
+                            .add(likeItems);
+                }
 
                 // GO TO NEXT PAGE
                 Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_LONG).show();
