@@ -23,55 +23,29 @@
                 android:background="@drawable/background"
                 android:backgroundTint="@color/Light"
                 android:orientation="horizontal"
-                android:paddingVertical="10dp"
-                android:paddingLeft="15dp">
+                android:paddingVertical="14dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="5dp">
 
                 <ImageView
                     android:id="@+id/imgBackNEW"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/balik"/>
+                    android:src="@drawable/back_icon_dark"/>
 
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="160dp">
-
-                    <TextView
-                        android:id="@+id/txtWelcomeNEW"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/gotham_bold"
-                        android:text="@string/app_name"
-                        android:textColor="@color/Dark"
-                        android:textSize="25dp" />
-
-                </RelativeLayout>
-
-
-                <ImageButton
-                    android:id="@+id/imageButton3NEW"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/Light"
-                    android:scaleType="fitEnd"
-                    android:src="@drawable/heart2" />
-
-                <ImageButton
-                    android:id="@+id/imageButton4NEW"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:background="@color/Light"
-                    android:src="@drawable/shopping_cart" />
-
-
+                <TextView
+                    android:id="@+id/txtWelcome"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/gotham_bold"
+                    android:gravity="center_vertical"
+                    android:text="Testimony"
+                    android:textColor="@color/Dark"
+                    android:textSize="25dp" />
             </LinearLayout>
 
         </com.google.android.material.appbar.AppBarLayout>

@@ -166,7 +166,6 @@ public class fragHome extends Fragment implements CakeAdapter.OnItemClickListene
     @Override
     public void onStart() {
         super.onStart();
-//        adapterB.startListening();
         birthdayCakeAdapter.startListening();
         weddingCakeAdapter.startListening();
         valentineCakeAdapter.startListening();

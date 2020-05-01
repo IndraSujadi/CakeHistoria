@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,10 +38,20 @@ public class Specific_Review_Activity extends AppCompatActivity {
     private int rating;
     private String cakeID;
 
+    private ImageButton btnBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_specific__review);
+
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         Intent i = getIntent();
         cakeID = i.getStringExtra("cakeID");
@@ -48,11 +60,10 @@ public class Specific_Review_Activity extends AppCompatActivity {
 
         //impelementasi toolbar atas stars here.
 
-        Toolbar toolbar = findViewById(R.id.review_toolbar);
-        toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(),R.color.ReviewToolbar));
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        Toolbar toolbar = findViewById(R.id.review_toolbar);
+//        toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(),R.color.ReviewToolbar));
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //implementasi toolbar atas ends here.
 
