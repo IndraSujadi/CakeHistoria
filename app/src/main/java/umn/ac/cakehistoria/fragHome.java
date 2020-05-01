@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -95,7 +96,9 @@ public class fragHome extends Fragment {
         //recyclerBirthday.setLayoutManager(linearLayoutB);
 
         // Query the Data
-        Query queryB = fbStore.collection("Cakes").orderBy("orderID");
+        Query queryB = fbStore.collection("Cakes")
+                .whereEqualTo("cakeCategory","Birthday")
+                .whereEqualTo("isPosted","yes");
 
         // FirebaseRecyclerOptions & FirebaseRecyclerAdapter
         FirestoreRecyclerOptions<class_cake> options = new FirestoreRecyclerOptions.Builder<class_cake>()
@@ -141,7 +144,9 @@ public class fragHome extends Fragment {
         recyclerBirthday.setAdapter(birthdayCakeAdapter);
 
         //---------------------------------------------- WEDDING---------------------------------------------------------------------
-        Query queryW = fbStore.collection("Cakes").orderBy("owner");
+        Query queryW = fbStore.collection("Cakes")
+                .whereEqualTo("cakeCategory","Wedding")
+                .whereEqualTo("isPosted","yes");
 
         FirestoreRecyclerOptions<class_cake> optionsW = new FirestoreRecyclerOptions.Builder<class_cake>()
                 .setQuery(queryW,class_cake.class)
@@ -153,7 +158,9 @@ public class fragHome extends Fragment {
         recyclerWedding.setLayoutManager(linearLayoutW);
         recyclerWedding.setAdapter(weddingCakeAdapter);
         //---------------------------------------------- VALENTINE---------------------------------------------------------------------
-        Query queryV = fbStore.collection("Cakes").orderBy("cakePrice");
+        Query queryV = fbStore.collection("Cakes")
+                .whereEqualTo("cakeCategory","Valentine")
+                .whereEqualTo("isPosted","yes");
 
         FirestoreRecyclerOptions<class_cake> optionsV = new FirestoreRecyclerOptions.Builder<class_cake>()
                 .setQuery(queryV,class_cake.class)
@@ -165,7 +172,9 @@ public class fragHome extends Fragment {
         recyclerValentine.setLayoutManager(linearLayoutV);
         recyclerValentine.setAdapter(valentineCakeAdapter);
         //---------------------------------------------- OTHERS---------------------------------------------------------------------
-        Query queryO = fbStore.collection("Cakes").orderBy("likes");
+        Query queryO = fbStore.collection("Cakes")
+                .whereEqualTo("cakeCategory","Others")
+                .whereEqualTo("isPosted","yes");
 
         FirestoreRecyclerOptions<class_cake> optionsO = new FirestoreRecyclerOptions.Builder<class_cake>()
                 .setQuery(queryO,class_cake.class)
@@ -234,7 +243,16 @@ class CakeAdapter extends FirestoreRecyclerAdapter<class_cake, CakeAdapter.Birth
         holder.txt_namaUser.setText(model.getOwner());
         holder.txtLikes.setText(String.valueOf(model.getLikes()));
         holder.txtHarga.setText("Rp " + String.format("%, d", Integer.parseInt(String.valueOf(model.getCakePrice()))));
-        Picasso.get().load(model.getImageURL()).into(holder.imgCake);
+        if (model.getImageURL() != "") {
+            Picasso.get().load(model.getImageURL()).into(holder.imgCake);
+        } else {
+            Picasso.get()
+                    .load("https://firebasestorage.googleapis.com/v0/b/historiacake.appspot.com/o/no.png?alt=media&token=edcf1cca-322a-4dd6-be66-34522f5e71e0")
+                    .into(holder.imgCake);
+        }
+
+
+
 
     }
 
@@ -248,6 +266,7 @@ class CakeAdapter extends FirestoreRecyclerAdapter<class_cake, CakeAdapter.Birth
     public class BirthdayCakeViewHolder extends RecyclerView.ViewHolder{
         TextView txtCategory, txt_namaUser, txtLikes, txtHarga;
         ImageView imgCake;
+        CardView cakeCard;
 
         public BirthdayCakeViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -259,6 +278,9 @@ class CakeAdapter extends FirestoreRecyclerAdapter<class_cake, CakeAdapter.Birth
             txtHarga = itemView.findViewById(R.id.txtHarga);
 
             imgCake = itemView.findViewById(R.id.imgCake);
+
+            cakeCard = itemView.findViewById(R.id.cakeCard);
+
         }
     }
 }
