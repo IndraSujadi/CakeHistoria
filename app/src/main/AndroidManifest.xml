@@ -11,13 +11,20 @@
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".OnProgress_Detail"></activity>
+        <activity android:name=".individual">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".OnProgress_Detail" />
         <activity android:name=".Create_order" />
         <activity android:name=".done" />
         <activity android:name=".onprogress" />
-        <activity android:name=".Transactions"></activity> <!-- <activity android:name=".LoginActivity2" /> -->
+        <activity android:name=".Transactions" /> <!-- <activity android:name=".LoginActivity2" /> -->
         <activity android:name=".OrderDone_Activity" />
-        <activity android:name=".Payment_Activity"></activity>
+        <activity android:name=".Payment_Activity" />
         <activity
             android:name=".Specific_Review_Activity"
             android:label="Review"
@@ -29,11 +36,7 @@
         <activity android:name=".Delivery" />
         <activity android:name=".Login_Activity" />
         <activity android:name=".Splach_Screen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
     </application>
