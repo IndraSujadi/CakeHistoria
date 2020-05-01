@@ -11,9 +11,8 @@
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".individual">
-
-        </activity>
+        <activity android:name=".specificCategory"></activity>
+        <activity android:name=".individual"></activity>
         <activity android:name=".OnProgress_Detail" />
         <activity android:name=".Create_order" />
         <activity android:name=".done" />
@@ -37,7 +36,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".MainActivity" />
     </application>
