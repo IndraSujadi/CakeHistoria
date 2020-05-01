@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,7 +35,7 @@ import java.util.List;
 public class fragHome extends Fragment {
 
     private RecyclerView recyclerBirthday, recyclerWedding, recyclerValentine, recyclerOthers;
-    FirebaseFirestore DB;
+    FirebaseFirestore fbStore;
     private FirestoreRecyclerAdapter adapterB, adapterW, adapterV, adapterO;
     Context Ctx;
 
@@ -42,6 +43,8 @@ public class fragHome extends Fragment {
 
 
     ImageButton btnHistory, btnFav;
+
+    private BirthdayCakeAdapter birthdayCakeAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -72,64 +75,66 @@ public class fragHome extends Fragment {
         // -------------------------------------------- END of Button Intent =-------------------------------------------------------
 
         //-------------------------------------------- RECYCLER VIEW ----------------------------------------------------------------
-        DB = FirebaseFirestore.getInstance();
+        fbStore = FirebaseFirestore.getInstance();
         recyclerBirthday = view.findViewById(R.id.recyclerBirthday);
         recyclerWedding = view.findViewById(R.id.recyclerWedding);
         recyclerValentine = view.findViewById(R.id.recyclerValentine);
         recyclerOthers = view.findViewById(R.id.recyclerOthers);
 
         LinearLayoutManager linearLayoutB = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        LinearLayoutManager linearLayoutW = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        LinearLayoutManager linearLayoutV = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        LinearLayoutManager linearLayoutO = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+//        LinearLayoutManager linearLayoutW = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+//        LinearLayoutManager linearLayoutV = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+//        LinearLayoutManager linearLayoutO = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         // ---------------------------------------------BIRTHDAY --------------------------------------------------------------------
+
         recyclerBirthday.setLayoutManager(linearLayoutB);
 
         // Query the Data
-        Query queryB;
-        queryB = DB.collection("Cakes").whereEqualTo("owner","Aswin Candra");
+        Query queryB = fbStore.collection("Cakes").orderBy("orderID");
 
 
         // FirebaseRecyclerOptions & FirebaseRecyclerAdapter
-        FirestoreRecyclerOptions<Cake_model> options = new FirestoreRecyclerOptions.Builder<Cake_model>()
-                .setQuery(queryB, Cake_model.class)
+        FirestoreRecyclerOptions<class_cake> options = new FirestoreRecyclerOptions.Builder<class_cake>()
+                .setQuery(queryB, class_cake.class)
                 .build();
 
-        adapterB = new FirestoreRecyclerAdapter<Cake_model, cakeViewHolderB> (options) {
-            @NonNull
-            @Override
-            public cakeViewHolderB onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.catalog_list, parent, false);
-                return new cakeViewHolderB(view);
-            }
+        birthdayCakeAdapter = new BirthdayCakeAdapter(options);
 
-            @Override
-            protected void onBindViewHolder(@NonNull cakeViewHolderB holder, int position, @NonNull Cake_model model) {
-                //holder.txtCategory.setText(model.getCakeCategory());
-                holder.txtLikes.setText(Integer.parseInt(String.valueOf(model.getLikes())));
-                holder.txt_namaUser.setText(model.getOwner());
-                holder.txtHarga.setText("Rp " + String.format("%, d", Integer.parseInt(String.valueOf(model.getCakePrice()))));
-
-                Glide.with(Ctx).load(model.getImageURL()).into(holder.imgCake);
-
-                imgCake = model.getImageURL();
-                Button btnDetail;
-                btnDetail = holder.btnDetail;
-                btnDetail.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent i = new Intent(getActivity(),Specific_Category.class);
-                        i.putExtra("imgURL",imgCake);
-                        startActivity(i);
-                    }
-                });
-
-            }
-        };
+//        adapterB = new FirestoreRecyclerAdapter<Cake_model, cakeViewHolderB> (options) {
+//            @NonNull
+//            @Override
+//            public cakeViewHolderB onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.catalog_list, parent, false);
+//                return new cakeViewHolderB(view);
+//            }
+//
+//            @Override
+//            protected void onBindViewHolder(@NonNull cakeViewHolderB holder, int position, @NonNull Cake_model model) {
+//                //holder.txtCategory.setText(model.getCakeCategory());
+//                holder.txtLikes.setText(Integer.parseInt(String.valueOf(model.getLikes())));
+//                holder.txt_namaUser.setText(model.getOwner());
+//                holder.txtHarga.setText("Rp " + String.format("%, d", Integer.parseInt(String.valueOf(model.getCakePrice()))));
+//
+//                Glide.with(Ctx).load(model.getImageURL()).into(holder.imgCake);
+//
+//                imgCake = model.getImageURL();
+//                Button btnDetail;
+//                btnDetail = holder.btnDetail;
+//                btnDetail.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Intent i = new Intent(getActivity(),Specific_Category.class);
+//                        i.putExtra("imgURL",imgCake);
+//                        startActivity(i);
+//                    }
+//                });
+//
+//            }
+//        };
 
         recyclerBirthday.setHasFixedSize(true);
         recyclerBirthday.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerBirthday.setAdapter(adapterB);
+        recyclerBirthday.setAdapter(birthdayCakeAdapter);
 
         //---------------------------------------------- WEDDING---------------------------------------------------------------------
         //recyclerWedding.setLayoutManager(linearLayoutW);
@@ -142,34 +147,70 @@ public class fragHome extends Fragment {
         return view;
     }
 
-    private class cakeViewHolderB extends RecyclerView.ViewHolder {
+//    private class cakeViewHolderB extends RecyclerView.ViewHolder {
+//
+//        private TextView txtCategory, txtLikes, txt_namaUser, txtHarga;
+//        private ImageView imgCake;
+//        Button btnDetail, btnOrder_similar;
+//        public cakeViewHolderB(@NonNull View itemView) {
+//            super(itemView);
+//            txtCategory = itemView.findViewById(R.id.txtCategory);
+//            txtLikes = itemView.findViewById(R.id.txtLikes);
+//            txt_namaUser = itemView.findViewById(R.id.txt_namaUser);
+//            txtHarga = itemView.findViewById(R.id.txtHarga);
+//            imgCake = itemView.findViewById(R.id.imgCake);
+//
+//            btnDetail = itemView.findViewById(R.id.btnDetail);
+//            btnOrder_similar = itemView.findViewById(R.id.btnOrder_similar);
+//
+//        }
+//    }
 
-        private TextView txtCategory, txtLikes, txt_namaUser, txtHarga;
-        private ImageView imgCake;
-        Button btnDetail, btnOrder_similar;
-        public cakeViewHolderB(@NonNull View itemView) {
-            super(itemView);
-            txtCategory = itemView.findViewById(R.id.txtCategory);
-            txtLikes = itemView.findViewById(R.id.txtLikes);
-            txt_namaUser = itemView.findViewById(R.id.txt_namaUser);
-            txtHarga = itemView.findViewById(R.id.txtHarga);
-            imgCake = itemView.findViewById(R.id.imgCake);
-
-            btnDetail = itemView.findViewById(R.id.btnDetail);
-            btnOrder_similar = itemView.findViewById(R.id.btnOrder_similar);
-
-        }
+    @Override
+    public void onStart() {
+        super.onStart();
+//        adapterB.startListening();
+        birthdayCakeAdapter.startListening();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        adapterB.stopListening();
+//        adapterB.stopListening();
+        birthdayCakeAdapter.stopListening();
+    }
+}
+
+class BirthdayCakeAdapter extends FirestoreRecyclerAdapter<class_cake, BirthdayCakeAdapter.BirthdayCakeViewHolder>{
+    public BirthdayCakeAdapter(@NonNull FirestoreRecyclerOptions<class_cake> options) {
+        super(options);
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        adapterB.startListening();
+    protected void onBindViewHolder(@NonNull BirthdayCakeAdapter.BirthdayCakeViewHolder holder, int position, @NonNull class_cake model) {
+        holder.txt_namaUser.setText(model.getOwner());
+        holder.txtLikes.setText(String.valueOf(model.getLikes()));
+        holder.txtHarga.setText(String.valueOf(model.getCakePrice()));
+    }
+
+    @NonNull
+    @Override
+    public BirthdayCakeAdapter.BirthdayCakeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.catalog_list, parent, false);
+        return new BirthdayCakeViewHolder(view);
+    }
+
+    public class BirthdayCakeViewHolder extends RecyclerView.ViewHolder{
+        TextView txtCategory, txt_namaUser, txtLikes, txtHarga;
+
+        public BirthdayCakeViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            txtCategory = itemView.findViewById(R.id.txtCategory);
+
+            txt_namaUser = itemView.findViewById(R.id.txt_namaUser);
+            txtLikes = itemView.findViewById(R.id.txtLikes);
+            txtHarga = itemView.findViewById(R.id.txtHarga);
+        }
     }
 }

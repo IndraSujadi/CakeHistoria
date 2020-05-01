@@ -35,11 +35,7 @@ public class class_cake {
 
     }
 
-    public class_cake(String cakeID, String addtText, String cakeCategory, String cakeColor,
-                      String cakeDecor, String cakeFlavor, String cakeShape, String cakeSize,
-                      String cakeTheme, String cakeTier, String cakeType, String specialOrders,
-                      String figureURL, boolean includeLetterCard, String letterMessage, int cakePrice,
-                      String imageURL, int likes, String orderID, String owner, String testimonyText, int rating) {
+    public class_cake(String cakeID, String addtText, String cakeCategory, String cakeColor, String cakeDecor, String cakeFlavor, String cakeShape, String cakeSize, String cakeTheme, String cakeTier, String cakeType, String specialOrders, String figureURL, boolean includeLetterCard, String letterMessage, int cakePrice, String imageURL, int likes, String orderID, String owner, String testimonyText, int rating) {
         this.cakeID = cakeID;
         this.addtText = addtText;
         this.cakeCategory = cakeCategory;
@@ -62,14 +58,6 @@ public class class_cake {
         this.owner = owner;
         this.testimonyText = testimonyText;
         this.rating = rating;
-    }
-
-    public int getCakePrice() {
-        return cakePrice;
-    }
-
-    public void setCakePrice(int cakePrice) {
-        this.cakePrice = cakePrice;
     }
 
     public String getCakeID() {
@@ -192,6 +180,14 @@ public class class_cake {
         this.letterMessage = letterMessage;
     }
 
+    public int getCakePrice() {
+        return cakePrice;
+    }
+
+    public void setCakePrice(int cakePrice) {
+        this.cakePrice = cakePrice;
+    }
+
     public String getImageURL() {
         return imageURL;
     }
@@ -220,7 +216,7 @@ public class class_cake {
         return owner;
     }
 
-    public void setOwnerName(String owner) {
+    public void setOwner(String owner) {
         this.owner = owner;
     }
 
