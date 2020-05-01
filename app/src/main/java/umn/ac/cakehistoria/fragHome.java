@@ -25,6 +25,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
@@ -35,7 +36,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class fragHome extends Fragment {
+public class fragHome extends Fragment implements CakeAdapter.OnItemClickListener{
 
     private RecyclerView recyclerBirthday, recyclerWedding, recyclerValentine, recyclerOthers;
     FirebaseFirestore fbStore;
@@ -106,38 +107,7 @@ public class fragHome extends Fragment {
                 .build();
 
         birthdayCakeAdapter = new CakeAdapter(options);
-
-//       adapterB = new FirestoreRecyclerAdapter<Cake_model, cakeViewHolderB> (options) {
-//            @NonNull
-//            @Override
-//            public cakeViewHolderB onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.catalog_list, parent, false);
-//                return new cakeViewHolderB(view);
-//            }
-//
-//            @Override
-//            protected void onBindViewHolder(@NonNull cakeViewHolderB holder, int position, @NonNull Cake_model model) {
-//                //holder.txtCategory.setText(model.getCakeCategory());
-//                holder.txtLikes.setText(Integer.parseInt(String.valueOf(model.getLikes())));
-//                holder.txt_namaUser.setText(model.getOwner());
-//                holder.txtHarga.setText("Rp " + String.format("%, d", Integer.parseInt(String.valueOf(model.getCakePrice()))));
-//
-//                Glide.with(Ctx).load(model.getImageURL()).into(holder.imgCake);
-//
-//                imgCake = model.getImageURL();
-//                Button btnDetail;
-//                btnDetail = holder.btnDetail;
-//                btnDetail.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Intent i = new Intent(getActivity(),Specific_Category.class);
-//                        i.putExtra("imgURL",imgCake);
-//                        startActivity(i);
-//                    }
-//                });
-//
-//            }
-//        };
+        birthdayCakeAdapter.setOnItemClickListener(this::OnItemClick);
 
         recyclerBirthday.setHasFixedSize(true);
         recyclerBirthday.setLayoutManager(linearLayoutB);
@@ -153,6 +123,7 @@ public class fragHome extends Fragment {
                 .build();
 
         weddingCakeAdapter = new CakeAdapter(optionsW);
+        weddingCakeAdapter.setOnItemClickListener(this::OnItemClick);
 
         recyclerWedding.setHasFixedSize(true);
         recyclerWedding.setLayoutManager(linearLayoutW);
@@ -167,6 +138,7 @@ public class fragHome extends Fragment {
                 .build();
 
         valentineCakeAdapter = new CakeAdapter(optionsV);
+        valentineCakeAdapter.setOnItemClickListener(this::OnItemClick);
 
         recyclerValentine.setHasFixedSize(true);
         recyclerValentine.setLayoutManager(linearLayoutV);
@@ -181,34 +153,15 @@ public class fragHome extends Fragment {
                 .build();
 
         othersCakeAdapter = new CakeAdapter(optionsO);
+        othersCakeAdapter.setOnItemClickListener(this::OnItemClick);
 
         recyclerOthers.setHasFixedSize(true);
         recyclerOthers.setLayoutManager(linearLayoutO);
         recyclerOthers.setAdapter(othersCakeAdapter);
       //====================================================================END OF RECYCLER VIEW======================================================
 
-
         return view;
     }
-
-//    private class cakeViewHolderB extends RecyclerView.ViewHolder {
-//
-//        private TextView txtCategory, txtLikes, txt_namaUser, txtHarga;
-//        private ImageView imgCake;
-//        Button btnDetail, btnOrder_similar;
-//        public cakeViewHolderB(@NonNull View itemView) {
-//            super(itemView);
-//            txtCategory = itemView.findViewById(R.id.txtCategory);
-//            txtLikes = itemView.findViewById(R.id.txtLikes);
-//            txt_namaUser = itemView.findViewById(R.id.txt_namaUser);
-//            txtHarga = itemView.findViewById(R.id.txtHarga);
-//            imgCake = itemView.findViewById(R.id.imgCake);
-//
-//            btnDetail = itemView.findViewById(R.id.btnDetail);
-//            btnOrder_similar = itemView.findViewById(R.id.btnOrder_similar);
-//
-//        }
-//    }
 
     @Override
     public void onStart() {
@@ -223,15 +176,28 @@ public class fragHome extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-//        adapterB.stopListening();
         birthdayCakeAdapter.stopListening();
         weddingCakeAdapter.stopListening();
         valentineCakeAdapter.startListening();
         othersCakeAdapter.stopListening();
     }
+
+    @Override
+    public void OnItemClick(DocumentSnapshot documentSnapshot, int position) {
+        String cakeID = documentSnapshot.getId();
+        String orderID = (String) documentSnapshot.get("orderID");
+
+        Intent i = new Intent(getActivity(), individual.class);
+        i.putExtra("cakeID", cakeID);
+        i.putExtra("orderID", orderID);
+        startActivity(i);
+        getActivity().finish();
+    }
 }
 
 class CakeAdapter extends FirestoreRecyclerAdapter<class_cake, CakeAdapter.BirthdayCakeViewHolder>{
+
+    private OnItemClickListener listener;
 
     public CakeAdapter(@NonNull FirestoreRecyclerOptions<class_cake> options) {
         super(options);
@@ -250,10 +216,6 @@ class CakeAdapter extends FirestoreRecyclerAdapter<class_cake, CakeAdapter.Birth
                     .load("https://firebasestorage.googleapis.com/v0/b/historiacake.appspot.com/o/no.png?alt=media&token=edcf1cca-322a-4dd6-be66-34522f5e71e0")
                     .into(holder.imgCake);
         }
-
-
-
-
     }
 
     @NonNull
@@ -281,7 +243,24 @@ class CakeAdapter extends FirestoreRecyclerAdapter<class_cake, CakeAdapter.Birth
 
             cakeCard = itemView.findViewById(R.id.cakeCard);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getLayoutPosition();
+                    if(position != RecyclerView.NO_POSITION && listener != null){
+                        listener.OnItemClick(getSnapshots().getSnapshot(position), position);
+                    }
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener{
+        void OnItemClick(DocumentSnapshot documentSnapshot, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
     }
 }
 

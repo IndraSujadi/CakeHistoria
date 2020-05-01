@@ -169,7 +169,7 @@ class OrderAdapter2 extends FirestoreRecyclerAdapter<class_order, OrderAdapter2.
             txt_DoneEstimation_Value = itemView.findViewById(R.id.txt_DoneEstimation_Value);
             txtOrderStatus = itemView.findViewById(R.id.txtOrderStatus);
 
-            /*itemView.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int position = getLayoutPosition();
@@ -177,7 +177,7 @@ class OrderAdapter2 extends FirestoreRecyclerAdapter<class_order, OrderAdapter2.
                         listener.onItemClick(getSnapshots().getSnapshot(position), position);
                     }
                 }
-            });*/
+            });
 
         }
     }

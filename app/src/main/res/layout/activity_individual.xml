@@ -92,6 +92,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
+                        android:id="@+id/imgCake"
                         android:layout_width="match_parent"
                         android:layout_height="300dp"
                         android:padding="6dp"
@@ -107,10 +108,11 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="95dp"
+                    android:layout_marginHorizontal="65dp"
                     android:layout_marginBottom="5dp">
 
                     <TextView
+                        android:id="@+id/txtCakeCategory"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Birthday"/>
@@ -127,6 +129,7 @@
                             android:src="@drawable/heart"/>
 
                         <TextView
+                            android:id="@+id/txtLikeCount"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="3dp"
@@ -152,22 +155,25 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:paddingTop="10dp">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="10dp"
-                            android:text="Customer :"
+                            android:text="Owner :"
                             android:textAlignment="center"/>
 
                         <ImageView
+                            android:id="@+id/imgUser"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
                             android:src="@drawable/user_circle_solid"/>
 
                         <TextView
+                            android:id="@+id/txtOwnerName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textAlignment="center"
@@ -176,10 +182,53 @@
                             android:fontFamily="@font/gotham_medium"
                             android:textColor="@color/Dark"/>
 
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_marginVertical="20dp"
+                            android:layout_gravity="center">
+
+                            <ImageView
+                                android:id="@+id/star1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/rate_clicked" />
+
+                            <ImageView
+                                android:id="@+id/star2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/rate_clicked" />
+
+                            <ImageView
+                                android:id="@+id/star3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/rate_clicked" />
+
+                            <ImageView
+                                android:id="@+id/star4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/rate_clicked" />
+
+                            <ImageView
+                                android:id="@+id/star5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:srcCompat="@drawable/rate_clicked" />
+                        </LinearLayout>
+
                         <TextView
+                            android:id="@+id/txtTestimony"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
                             android:layout_marginBottom="15dp"
                             android:layout_marginHorizontal="18dp"
                             android:textAlignment="center"
@@ -200,7 +249,7 @@
                     android:paddingHorizontal="32dp">
 
                     <TextView
-                        android:id="@+id/txtCakeDetailsNEW"
+                        android:id="@+id/txtCakeDetails"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="11dp"
@@ -218,6 +267,7 @@
                     android:layout_marginTop="24dp">
 
                     <TextView
+                        android:id="@+id/txtCakePrice"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_alignParentStart="true"
@@ -229,6 +279,7 @@
                         />
 
                     <Button
+                        android:id="@+id/btnOrderSimilar"
                         android:layout_width="132dp"
                         android:layout_height="40dp"
                         android:layout_marginTop="5dp"
