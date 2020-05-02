@@ -29,7 +29,9 @@ public class Transactions extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+                //finish();
             }
         });
 

@@ -29,6 +29,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -129,6 +130,7 @@ class OrderAdapter extends FirestoreRecyclerAdapter<class_order2, OrderAdapter.O
         holder.txtOrderDate.setText(model.getOrderDateTime().toString());
         holder.txtTotalPrice.setText("Rp " + String.format("%, d", Integer.parseInt(String.valueOf(model.getTotalPrice()))));
 
+
         cakeID = model.getCakeID();
         fbStore = FirebaseFirestore.getInstance();
         DocumentReference dbCakes = fbStore.collection("Cakes").document(model.getCakeID());
@@ -138,6 +140,7 @@ class OrderAdapter extends FirestoreRecyclerAdapter<class_order2, OrderAdapter.O
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
+                        Picasso.get().load((String) document.get("imageURL")).into(holder.imgDone);
                         Map subdoc = document.getData();
                         Map testimony = (Map) subdoc.get("testimony");
 
@@ -208,7 +211,7 @@ class OrderAdapter extends FirestoreRecyclerAdapter<class_order2, OrderAdapter.O
 
     public class OrderViewHolder extends RecyclerView.ViewHolder{
         private TextView txtOrderID, txtOrderName, txtOrderDate, txtTotalPrice, txtTestimony;
-        private ImageView star1, star2, star3, star4, star5;
+        private ImageView star1, star2, star3, star4, star5, imgDone;
 
         public OrderViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -218,6 +221,7 @@ class OrderAdapter extends FirestoreRecyclerAdapter<class_order2, OrderAdapter.O
             txtOrderDate = itemView.findViewById(R.id.txtOrderDate);
             txtTotalPrice = itemView.findViewById(R.id.txtTotalPrice);
             txtTestimony = itemView.findViewById(R.id.txtTestimony);
+            imgDone = itemView.findViewById(R.id.imgDone);
 
             star1 = itemView.findViewById(R.id.star1);
             star2 = itemView.findViewById(R.id.star2);
