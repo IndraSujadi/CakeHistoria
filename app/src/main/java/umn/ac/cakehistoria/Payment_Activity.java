@@ -227,6 +227,8 @@ public class Payment_Activity extends AppCompatActivity implements TransactionFi
             switch (result.getStatus()){
                 case TransactionResult.STATUS_SUCCESS:
                     Toast.makeText(this, "Transaction Sukses " + result.getResponse().getTransactionId(), Toast.LENGTH_LONG).show();
+                    Intent myIntent = new Intent(getBaseContext(),   OrderDone_Activity.class);
+                    startActivity(myIntent);
                     break;
                 case TransactionResult.STATUS_PENDING:
                     Toast.makeText(this, "Transaction Pending " + result.getResponse().getTransactionId(), Toast.LENGTH_LONG).show();
