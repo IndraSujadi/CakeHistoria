@@ -83,13 +83,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="65dp"
-                    android:layout_marginBottom="5dp">
+                    android:layout_marginBottom="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical">
 
                     <TextView
                         android:id="@+id/txtCakeCategory"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Birthday"/>
+                        android:text="Birthday"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="12dp"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -97,22 +101,33 @@
                         android:orientation="horizontal"
                         android:layout_alignParentEnd="true">
 
-                        <ImageView
+<!--                        <ImageView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:src="@drawable/heart"/>-->
+
+                        <com.like.LikeButton
+                            android:id="@+id/btnLike"
+                            app:icon_type="heart"
+                            app:icon_size="22dp"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:src="@drawable/heart"/>
+                            app:circle_start_color="@color/colorPrimary"
+                            app:dots_primary_color="@color/colorAccent"
+                            app:dots_secondary_color="@color/colorPrimary"
+                            app:circle_end_color="@color/colorAccent"
+                            app:anim_scale_factor="2"
+                            android:layout_gravity="center_vertical"/>
 
                         <TextView
                             android:id="@+id/txtLikeCount"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginLeft="3dp"
                             android:text="150"
-                            />
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"/>
 
                     </LinearLayout>
-
-
 
                 </RelativeLayout>
 
@@ -267,6 +282,15 @@
                         android:textSize="12sp" />
 
                 </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="15dp">
+
+
+                </LinearLayout>
 
             </LinearLayout>
         </ScrollView>

@@ -10,17 +10,25 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.like.LikeButton;
+import com.like.OnLikeListener;
 
 import java.util.Map;
 
 public class individual extends AppCompatActivity {
 
+    private FirebaseAuth fbAuth;
+    private FirebaseUser fbUser = fbAuth.getInstance().getCurrentUser();
+    private String userID = fbUser.getUid();
     private FirebaseFirestore fbStore = FirebaseFirestore.getInstance();
 
     private TextView txtCakeCategory, txtLikeCount, txtOwnerName, txtTestimony, txtCakeDetails, txtCakePrice;
@@ -29,6 +37,11 @@ public class individual extends AppCompatActivity {
     private ImageView back;
 
     private String orderID, cakeID,kategori;
+
+    private LikeButton btnLike;
+
+    private int likeCount;
+    private boolean isLiked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +54,6 @@ public class individual extends AppCompatActivity {
         kategori = i.getStringExtra("kategori");
 
         back = findViewById(R.id.imgBackNEW);
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +91,8 @@ public class individual extends AppCompatActivity {
                         Map testimony = (Map) subdoc.get("testimony");
 
                         txtCakeCategory.setText((String) document.get("cakeCategory"));
+
+                        likeCount = document.get("likes", Integer.class);
                         txtLikeCount.setText(String.valueOf((Long) document.get("likes")));
                         txtOwnerName.setText((String) document.get("owner"));
                         txtTestimony.setText((String) testimony.get("testimonyText"));
@@ -142,6 +156,51 @@ public class individual extends AppCompatActivity {
                 } else {
                     Log.d("CobaData", "get failed with ", task.getException());
                 }
+            }
+        });
+
+        btnLike = findViewById(R.id.btnLike);
+
+        // Kalo udah dilike pas masuk ke activity button like nya udah liked.
+        DocumentReference docLikes = fbStore.collection("User").document(userID)
+                .collection("Likes").document(cakeID);
+
+        docLikes.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                isLiked = document.get("like", Boolean.class);
+                Log.d("CobaData", "is liked: " + isLiked);
+
+                if(isLiked){
+                    btnLike.setLiked(true);
+                }
+            }
+        });
+
+        btnLike.setOnLikeListener(new OnLikeListener() {
+            @Override
+            public void liked(LikeButton likeButton) {
+                likeCount += 1;
+//                Toast.makeText(getApplicationContext(), "Like:" + String.valueOf(likeCount), Toast.LENGTH_LONG).show();
+                fbStore.collection("Cakes").document(cakeID)
+                        .update("likes", likeCount);
+
+                // Update collection "LIKES" di User
+                fbStore.collection("User").document(userID).collection("Likes").document(cakeID)
+                        .update("like", true);
+            }
+
+            @Override
+            public void unLiked(LikeButton likeButton) {
+                likeCount -= 1;
+//                Toast.makeText(getApplicationContext(), "Like:" + String.valueOf(likeCount), Toast.LENGTH_LONG).show();
+                fbStore.collection("Cakes").document(cakeID)
+                        .update("likes", likeCount);
+
+                // Update collection "LIKES" di User
+                fbStore.collection("User").document(userID).collection("Likes").document(cakeID)
+                        .update("like", false);
             }
         });
     }

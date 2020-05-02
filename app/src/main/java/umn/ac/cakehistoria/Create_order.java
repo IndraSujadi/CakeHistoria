@@ -1002,11 +1002,12 @@ public class Create_order extends AppCompatActivity {
 
                 // INSERT LIKE'S DATA
                 Map<String, Object> likeItems = new HashMap<>();
-                likeItems.put(cakeID, false);
+                likeItems.put("cakeID", cakeID);
+                likeItems.put("like", false);
 
                 for(int i = 0; i < userList.size(); i++){
-                    db.collection("User").document(userList.get(i)).collection("Likes")
-                            .add(likeItems);
+                    db.collection("User").document(userList.get(i)).collection("Likes").document(cakeID)
+                            .set(likeItems);
                 }
 
                 // GO TO NEXT PAGE
