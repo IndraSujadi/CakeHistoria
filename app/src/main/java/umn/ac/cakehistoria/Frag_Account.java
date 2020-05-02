@@ -15,6 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,12 +30,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
 
 
 public class Frag_Account extends Fragment {
 
     TextView NamaUser, EmailUser;
     Button btnSign_Out;
+    //ImageButton btnFav_Acc, btnHistory_Acc;
+    ImageView imgAcc;
 
     FirebaseAuth mAuth;
 
@@ -53,8 +58,27 @@ public class Frag_Account extends Fragment {
 
         NamaUser = view.findViewById(R.id.NamaUser);
         EmailUser = view.findViewById(R.id.EmailUser);
+        imgAcc = view.findViewById(R.id.imgAcc);
         btnSign_Out = view.findViewById(R.id.btnSign_Out);
+        //btnFav_Acc = view.findViewById(R.id.btnFav_Acc);
+        //btnHistory_Acc = view.findViewById(R.id.btnHistory_Acc);
         mAuth = FirebaseAuth.getInstance();
+
+        /*btnFav_Acc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), likes.class);
+                startActivity(i);
+            }
+        });
+
+        btnHistory_Acc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), Transactions.class);
+                startActivity(i);
+            }
+        });*/
 
         btnSign_Out.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +98,8 @@ public class Frag_Account extends Fragment {
 
             NamaUser.setText(personName);
             EmailUser.setText(personEmail);
+            Picasso.get()
+                    .load(personPhoto).into(imgAcc);
         }
         return view;
 

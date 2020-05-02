@@ -81,7 +81,156 @@ public class individual extends AppCompatActivity {
 
         imgCake_individual = findViewById(R.id.imgCake_individual);
 
+        /*DocumentReference dbCakes = fbStore.collection("Cakes").document(cakeID);
+        dbCakes.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Map subdoc = document.getData();
+                        Map cakeDetails = (Map) subdoc.get("CakeDetails");
+                        Map testimony = (Map) subdoc.get("testimony");
+
+                        if ((String) document.get("imageURL") != "") {
+                            Picasso.get().load((String) document.get("imageURL") ).into(imgCake_individual);
+                        } else {
+                            Picasso.get()
+                                    .load("https://firebasestorage.googleapis.com/v0/b/historiacake.appspot.com/o/no.png?alt=media&token=edcf1cca-322a-4dd6-be66-34522f5e71e0")
+                                    .into(imgCake_individual);
+                        }
+
+                        txtCakeCategory.setText((String) document.get("cakeCategory"));
+                        likeCount = document.get("likes", Integer.class);
+                        txtLikeCount.setText(String.valueOf((Long) document.get("likes")));
+                        txtOwnerName.setText((String) document.get("owner"));
+                        txtTestimony.setText((String) testimony.get("testimonyText"));
+
+                        String refCakeDetails = (String) cakeDetails.get("cakeType") + ", " + (String) cakeDetails.get("cakeColor")
+                                + ", " + (String) cakeDetails.get("cakeDecor") + ", " + (String) cakeDetails.get("cakeTheme")
+                                + ", " + (String) cakeDetails.get("cakeFlavor") + ", " + (String) cakeDetails.get("cakeTier")
+                                + ", " + (String) cakeDetails.get("cakeShape") + ", " + (String) cakeDetails.get("cakeSize");
+                        txtCakeDetails.setText(refCakeDetails);
+
+                        int refHargaProduk = document.get("cakePrice", Integer.class);
+                        txtCakePrice.setText("Rp " + String.format("%, d", Integer.parseInt(String.valueOf(refHargaProduk))));
+
+                        int rating = ((Long) testimony.get("rating")).intValue();
+                        switch (rating) {
+                            case 1:
+                                star1.setImageResource(R.drawable.rate_clicked);
+                                star2.setImageResource(R.drawable.rate_not_clicked_yet);
+                                star3.setImageResource(R.drawable.rate_not_clicked_yet);
+                                star4.setImageResource(R.drawable.rate_not_clicked_yet);
+                                star5.setImageResource(R.drawable.rate_not_clicked_yet);
+                                break;
+                            case 2:
+                                star1.setImageResource(R.drawable.rate_clicked);
+                                star2.setImageResource(R.drawable.rate_clicked);
+                                star3.setImageResource(R.drawable.rate_not_clicked_yet);
+                                star4.setImageResource(R.drawable.rate_not_clicked_yet);
+                                star5.setImageResource(R.drawable.rate_not_clicked_yet);
+                                break;
+                            case 3:
+                                star1.setImageResource(R.drawable.rate_clicked);
+                                star2.setImageResource(R.drawable.rate_clicked);
+                                star3.setImageResource(R.drawable.rate_clicked);
+                                star4.setImageResource(R.drawable.rate_not_clicked_yet);
+                                star5.setImageResource(R.drawable.rate_not_clicked_yet);
+                                break;
+                            case 4:
+                                star1.setImageResource(R.drawable.rate_clicked);
+                                star2.setImageResource(R.drawable.rate_clicked);
+                                star3.setImageResource(R.drawable.rate_clicked);
+                                star4.setImageResource(R.drawable.rate_clicked);
+                                star5.setImageResource(R.drawable.rate_not_clicked_yet);
+                                break;
+                            case 5:
+                                star1.setImageResource(R.drawable.rate_clicked);
+                                star2.setImageResource(R.drawable.rate_clicked);
+                                star3.setImageResource(R.drawable.rate_clicked);
+                                star4.setImageResource(R.drawable.rate_clicked);
+                                star5.setImageResource(R.drawable.rate_clicked);
+                                break;
+                            default:
+                                star1.setImageResource(R.drawable.rate_not_clicked_yet);
+                                star2.setImageResource(R.drawable.rate_not_clicked_yet);
+                                star3.setImageResource(R.drawable.rate_not_clicked_yet);
+                                star4.setImageResource(R.drawable.rate_not_clicked_yet);
+                                star5.setImageResource(R.drawable.rate_not_clicked_yet);
+                        }
+                    } else {
+                        Log.d("CobaData", "No such document");
+                    }
+                } else {
+                    Log.d("CobaData", "get failed with ", task.getException());
+                }
+            }
+        });*/
+
+        tampilData();
+
+        btnLike = findViewById(R.id.btnLike);
+
+        // Kalo udah dilike pas masuk ke activity button like nya udah liked.
+        DocumentReference docLikes = fbStore.collection("User").document(userID)
+                .collection("Likes").document(cakeID);
+
+        docLikes.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                isLiked = document.get("like", Boolean.class);  //kalo yang ini gw nyalain error
+                Log.d("CobaData", "is liked: " + isLiked);
+
+                if(isLiked){
+                    btnLike.setLiked(true);
+                }
+            }
+        });
+
+        btnLike.setOnLikeListener(new OnLikeListener() {
+            @Override
+            public void liked(LikeButton likeButton) {
+                likeCount += 1;
+//                Toast.makeText(getApplicationContext(), "Like:" + String.valueOf(likeCount), Toast.LENGTH_LONG).show();
+                fbStore.collection("Cakes").document(cakeID)
+                        .update("likes", likeCount);
+
+                // Update collection "LIKES" di User
+                fbStore.collection("User").document(userID).collection("Likes").document(cakeID)
+                        .update("like", true);
+
+                tampilData();
+            }
+
+            @Override
+            public void unLiked(LikeButton likeButton) {
+                likeCount -= 1;
+//                Toast.makeText(getApplicationContext(), "Like:" + String.valueOf(likeCount), Toast.LENGTH_LONG).show();
+                fbStore.collection("Cakes").document(cakeID)
+                        .update("likes", likeCount);
+
+                // Update collection "LIKES" di User
+                fbStore.collection("User").document(userID).collection("Likes").document(cakeID)
+                        .update("like", false);
+
+                tampilData();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    public void tampilData () {
         DocumentReference dbCakes = fbStore.collection("Cakes").document(cakeID);
+
         dbCakes.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -167,58 +316,5 @@ public class individual extends AppCompatActivity {
                 }
             }
         });
-
-        btnLike = findViewById(R.id.btnLike);
-
-        // Kalo udah dilike pas masuk ke activity button like nya udah liked.
-        DocumentReference docLikes = fbStore.collection("User").document(userID)
-                .collection("Likes").document(cakeID);
-
-        docLikes.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                DocumentSnapshot document = task.getResult();
-                isLiked = document.get("like", Boolean.class);
-                Log.d("CobaData", "is liked: " + isLiked);
-
-                if(isLiked){
-                    btnLike.setLiked(true);
-                }
-            }
-        });
-
-        btnLike.setOnLikeListener(new OnLikeListener() {
-            @Override
-            public void liked(LikeButton likeButton) {
-                likeCount += 1;
-//                Toast.makeText(getApplicationContext(), "Like:" + String.valueOf(likeCount), Toast.LENGTH_LONG).show();
-                fbStore.collection("Cakes").document(cakeID)
-                        .update("likes", likeCount);
-
-                // Update collection "LIKES" di User
-                fbStore.collection("User").document(userID).collection("Likes").document(cakeID)
-                        .update("like", true);
-            }
-
-            @Override
-            public void unLiked(LikeButton likeButton) {
-                likeCount -= 1;
-//                Toast.makeText(getApplicationContext(), "Like:" + String.valueOf(likeCount), Toast.LENGTH_LONG).show();
-                fbStore.collection("Cakes").document(cakeID)
-                        .update("likes", likeCount);
-
-                // Update collection "LIKES" di User
-                fbStore.collection("User").document(userID).collection("Likes").document(cakeID)
-                        .update("like", false);
-            }
-        });
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(i);
-        finish();
     }
 }

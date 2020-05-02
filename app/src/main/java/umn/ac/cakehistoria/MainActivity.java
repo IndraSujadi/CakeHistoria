@@ -45,9 +45,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+                /*FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.Frame,home);
-                fragmentTransaction.commit();
+                fragmentTransaction.commit();*/
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
             }
         });
 

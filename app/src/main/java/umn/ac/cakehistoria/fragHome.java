@@ -25,6 +25,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -82,7 +84,7 @@ public class fragHome extends Fragment implements CakeAdapter.OnItemClickListene
                 // Masuk ke activity history di sini...
                 Intent i = new Intent(getActivity(), Transactions.class);
                 startActivity(i);
-                getActivity().finish();
+                //getActivity().finish();
             }
         });
 

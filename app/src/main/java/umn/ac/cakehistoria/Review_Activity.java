@@ -28,6 +28,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,6 +44,8 @@ public class Review_Activity extends AppCompatActivity {
     private EditText edt_testimony;
     private TextView txt_Title, txt_cake_category, txtNameReceiver, txtEmailReceiver, txtNomorReceiver, txtAlamatReceiver
             , txtHargaProduk, txtHargaDeliv, txtTotalPrice;
+
+    private ImageView img_cake_pict;
 
     private Button btn_submit_review;
 
@@ -77,6 +80,7 @@ public class Review_Activity extends AppCompatActivity {
         txtHargaDeliv = findViewById(R.id.txtHargaDeliv);
         txtTotalPrice = findViewById(R.id.txtTotalPrice);
         edt_testimony = findViewById(R.id.edt_testimony);
+        img_cake_pict = findViewById(R.id.img_cake_pict);
 
         btn_submit_review = findViewById(R.id.btn_submit_review);
 
@@ -90,6 +94,7 @@ public class Review_Activity extends AppCompatActivity {
                         Map subdoc = document.getData();
                         Map cakeDetails = (Map) subdoc.get("CakeDetails");
 
+                        Picasso.get().load((String) document.get("imageURL")).into(img_cake_pict);
                         txt_Title.setText((String) document.get("cakeCategory") + " Custom Cake");
                         txt_cake_category.setText((String) document.get("cakeCategory"));
                     } else {
