@@ -229,10 +229,12 @@ public class fragHome extends Fragment implements CakeAdapter.OnItemClickListene
     public void OnItemClick(DocumentSnapshot documentSnapshot, int position) {
         String cakeID = documentSnapshot.getId();
         String orderID = (String) documentSnapshot.get("orderID");
+        String cakeCategory = (String) documentSnapshot.get("cakeCategory");
 
         Intent i = new Intent(getActivity(), individual.class);
         i.putExtra("cakeID", cakeID);
         i.putExtra("orderID", orderID);
+        i.putExtra("kategori", cakeCategory);
         startActivity(i);
         getActivity().finish();
     }
