@@ -219,14 +219,15 @@ public class fragHome extends Fragment implements CakeAdapter.OnItemClickListene
         othersCakeAdapter.startListening();
     }
 
-    @Override
+   /* @Override
     public void onStop() {
         super.onStop();
         birthdayCakeAdapter.stopListening();
         weddingCakeAdapter.stopListening();
         valentineCakeAdapter.startListening();
         othersCakeAdapter.stopListening();
-    }
+    }*/
+
 
     @Override
     public void OnItemClick(DocumentSnapshot documentSnapshot, int position) {
