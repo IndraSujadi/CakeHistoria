@@ -20,7 +20,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Map;
 
-import com.midtrans.sdk.corekit.BuildConfig;
 import com.midtrans.sdk.corekit.callback.TransactionFinishedCallback;
 import com.midtrans.sdk.corekit.core.MidtransSDK;
 import com.midtrans.sdk.corekit.core.TransactionRequest;
@@ -82,6 +81,15 @@ public class Payment_Activity extends AppCompatActivity implements TransactionFi
         txtTotal2 = findViewById(R.id.txtTotal2);
 
         txtLetterCard.setVisibility(View.INVISIBLE);
+
+        findViewById(R.id.btnPay).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickPay();
+            }
+        });
+
+        makePayment();
 
         DocumentReference dbCakes = db.collection("Cakes").document(cakeID);
         dbCakes.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -167,22 +175,13 @@ public class Payment_Activity extends AppCompatActivity implements TransactionFi
             }
         });
 
-        findViewById(R.id.btnPay).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickPay();
-            }
-        });
-
-        makePayment();
-
     }
 
     private void makePayment(){
         SdkUIFlowBuilder.init()
                 .setContext(this)
                 .setMerchantBaseUrl(BuildConfig.BASE_URL)
-                .setClientKey(umn.ac.cakehistoria.BuildConfig.CLIENT_KEY)
+                .setClientKey(BuildConfig.CLIENT_KEY)
                 .setTransactionFinishedCallback(this)
                 .enableLog(true)
                 .setColorTheme(new CustomColorTheme("#777777","#f77474" , "#3f0d0d"))
