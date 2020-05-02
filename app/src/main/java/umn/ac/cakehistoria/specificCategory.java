@@ -37,13 +37,16 @@ public class specificCategory extends AppCompatActivity implements adapterSpecif
         setContentView(R.layout.activity_specific_category);
 
         recyclerSpecific = findViewById(R.id.recyclerSpecific);
+        imgback = findViewById(R.id.imgBack_specific);
 
-        /*imgback.setOnClickListener(new View.OnClickListener() {
+        imgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
             }
-        });*/
+        });
+
 //==================================================BAGIAN RECYCLER VIEW=================================================================
         Bundle extras = getIntent().getExtras();
         kategori = extras.getString(KEY);

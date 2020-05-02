@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
@@ -19,7 +17,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imgSpesific"
+                android:id="@+id/imgLikes"
                 android:layout_width="match_parent"
                 android:layout_height="280dp"
                 android:src="@drawable/maxime_4x"
@@ -28,10 +26,24 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.0"/>
 
             <Button
-                android:id="@+id/btnLike"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:background="@drawable/bg_button"
+                android:text="Category"
+                android:fontFamily="@font/gotham_bold"
+                android:textSize="12sp"
+                android:textColor="@color/Light"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.270"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.040"/>
+
+            <Button
                 android:layout_width="34dp"
                 android:layout_height="34dp"
                 android:background="@drawable/bg_small_heart_button"
@@ -40,24 +52,24 @@
                 app:layout_constraintHorizontal_bias="0.765"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.035" />
+                app:layout_constraintVertical_bias="0.035"/>
 
             <Button
-                android:id="@+id/btnUser"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:background="@drawable/user_abu"
-                android:backgroundTint="@color/Light"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:background="@drawable/bg_button"
+                android:backgroundTint="@color/Cream"
+                android:text="Rp.900.000"
+                android:fontFamily="@font/gotham_bold"
+                android:textSize="12sp"
+                android:textColor="@color/primaryBrown"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.235"
+                app:layout_constraintHorizontal_bias="0.700"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.035" />
-
-
+                app:layout_constraintVertical_bias="0.970"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </LinearLayout>
 
 </LinearLayout>
