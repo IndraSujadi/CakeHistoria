@@ -21,6 +21,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.Map;
 
@@ -33,7 +34,7 @@ public class individual extends AppCompatActivity {
 
     private TextView txtCakeCategory, txtLikeCount, txtOwnerName, txtTestimony, txtCakeDetails, txtCakePrice;
     private ImageView star1, star2, star3, star4, star5;
-    private ImageView imgCake;
+    private ImageView imgCake_individual;
     private ImageView back;
 
     private String orderID, cakeID,kategori;
@@ -71,13 +72,14 @@ public class individual extends AppCompatActivity {
         txtCakeDetails = findViewById(R.id.txtCakeDetails);
         txtCakePrice = findViewById(R.id.txtCakePrice);
 
+
         star1 = findViewById(R.id.star1);
         star2 = findViewById(R.id.star2);
         star3 = findViewById(R.id.star3);
         star4 = findViewById(R.id.star4);
         star5 = findViewById(R.id.star5);
 
-        imgCake = findViewById(R.id.imgCake);
+        imgCake_individual = findViewById(R.id.imgCake_individual);
 
         DocumentReference dbCakes = fbStore.collection("Cakes").document(cakeID);
         dbCakes.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -90,8 +92,15 @@ public class individual extends AppCompatActivity {
                         Map cakeDetails = (Map) subdoc.get("CakeDetails");
                         Map testimony = (Map) subdoc.get("testimony");
 
-                        txtCakeCategory.setText((String) document.get("cakeCategory"));
+                        if ((String) document.get("imageURL") != "") {
+                            Picasso.get().load((String) document.get("imageURL") ).into(imgCake_individual);
+                        } else {
+                            Picasso.get()
+                                    .load("https://firebasestorage.googleapis.com/v0/b/historiacake.appspot.com/o/no.png?alt=media&token=edcf1cca-322a-4dd6-be66-34522f5e71e0")
+                                    .into(imgCake_individual);
+                        }
 
+                        txtCakeCategory.setText((String) document.get("cakeCategory"));
                         likeCount = document.get("likes", Integer.class);
                         txtLikeCount.setText(String.valueOf((Long) document.get("likes")));
                         txtOwnerName.setText((String) document.get("owner"));

@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 import java.util.Map;
 
@@ -92,6 +93,13 @@ public class Specific_Review_Activity extends AppCompatActivity {
                         Map cakeDetails = (Map) subdoc.get("CakeDetails");
                         Map testimony = (Map) subdoc.get("testimony");
 
+                        if ((String) document.get("imageURL") != "") {
+                            Picasso.get().load((String) document.get("imageURL") ).into(img_cake);
+                        } else {
+                            Picasso.get()
+                                    .load("https://firebasestorage.googleapis.com/v0/b/historiacake.appspot.com/o/no.png?alt=media&token=edcf1cca-322a-4dd6-be66-34522f5e71e0")
+                                    .into(img_cake);
+                        }
                         txtTitle.setText((String) document.get("cakeCategory") + " Custom Cake");
                         txt_cake_category.setText((String) document.get("cakeCategory"));
                         txtLikeCount.setText(String.valueOf((Long) document.get("likes")));

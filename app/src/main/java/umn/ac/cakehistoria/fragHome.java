@@ -71,7 +71,8 @@ public class fragHome extends Fragment implements CakeAdapter.OnItemClickListene
         btnFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i = new Intent(getActivity(), likes.class);
+                startActivity(i);
             }
         });
 
