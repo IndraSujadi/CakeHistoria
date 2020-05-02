@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,16 +14,18 @@ import android.widget.ImageView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.squareup.picasso.Picasso;
 
-public class specificCategory extends AppCompatActivity {
+public class specificCategory extends AppCompatActivity implements adapterSpecific.OnItemClickListener {
 
     private String KEY = "series";
     private String kategori;
 
     RecyclerView recyclerSpecific;
+    ImageView imgback;
 
     private adapterSpecific adapter;
 
@@ -35,6 +38,13 @@ public class specificCategory extends AppCompatActivity {
 
         recyclerSpecific = findViewById(R.id.recyclerSpecific);
 
+        /*imgback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            }
+        });*/
+//==================================================BAGIAN RECYCLER VIEW=================================================================
         Bundle extras = getIntent().getExtras();
         kategori = extras.getString(KEY);
 
@@ -50,6 +60,8 @@ public class specificCategory extends AppCompatActivity {
                 .build();
 
         adapter = new adapterSpecific(options);
+        adapter.setOnItemClickListener(this::OnItemClick);
+
         recyclerSpecific.setHasFixedSize(true);
         recyclerSpecific.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerSpecific.setAdapter(adapter);
@@ -69,9 +81,23 @@ public class specificCategory extends AppCompatActivity {
 
         adapter.stopListening();
     }
+
+    @Override
+    public void OnItemClick(DocumentSnapshot documentSnapshot, int position) {
+        String cakeID = documentSnapshot.getId();
+        String orderID = (String) documentSnapshot.get("orderID");
+
+        Intent i = new Intent(getApplicationContext(), individual.class);
+        i.putExtra("cakeID", cakeID);
+        i.putExtra("orderID", orderID);
+        startActivity(i);
+        finish();
+    }
 }
 
 class adapterSpecific extends FirestoreRecyclerAdapter<class_cake, adapterSpecific.specificViewHolder> {
+
+    private CakeAdapter.OnItemClickListener listener;
 
     public adapterSpecific(@NonNull FirestoreRecyclerOptions<class_cake> options) {
         super(options);
@@ -103,6 +129,24 @@ class adapterSpecific extends FirestoreRecyclerAdapter<class_cake, adapterSpecif
             super(itemView);
 
             imgSpecific = itemView.findViewById(R.id.imgSpesific);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getLayoutPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.OnItemClick(getSnapshots().getSnapshot(position), position);
+                    }
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener{
+        void OnItemClick(DocumentSnapshot documentSnapshot, int position);
+    }
+
+    public void setOnItemClickListener(CakeAdapter.OnItemClickListener listener){
+        this.listener = listener;
     }
 }

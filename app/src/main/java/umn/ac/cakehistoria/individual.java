@@ -28,7 +28,7 @@ public class individual extends AppCompatActivity {
     private ImageView imgCake;
     private ImageView back;
 
-    private String orderID, cakeID;
+    private String orderID, cakeID,kategori;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,7 @@ public class individual extends AppCompatActivity {
         Intent i = getIntent();
         cakeID = i.getStringExtra("cakeID");
         orderID = i.getStringExtra("orderID");
+        kategori = i.getStringExtra("kategori");
 
         back = findViewById(R.id.imgBackNEW);
 
@@ -45,6 +46,8 @@ public class individual extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                /*Intent i = new Intent(getApplicationContext(), specificCategory.class);
+                i.putExtra("series",kategori);*/
                 startActivity(i);
             }
         });
