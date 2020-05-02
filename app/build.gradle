@@ -4,7 +4,7 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
-
+    flavorDimensions "mode"
     defaultConfig {
         applicationId "umn.ac.cakehistoria"
         minSdkVersion 24
@@ -13,6 +13,24 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    productFlavors {
+//      mode pengembang
+        sandbox {
+            dimension = "mode"
+            applicationId "umn.ac.cakehistoria"
+            buildConfigField "String", "BASE_URL", "\"https://cakehistoria.herokuapp.com/index.php/\""
+            buildConfigField "String", "CLIENT_KEY", "\"SB-Mid-client-BuQAuHkT8mw0lRxg\""
+        }
+
+/*//      mode produksi
+        production {
+            dimension = "mode"
+            applicationId "umn.ac.cakehistoria"
+            buildConfigField "String", "BASE_URL", "\"https://cakehistoria.herokuapp.com/index.php/\""
+            buildConfigField "String", "CLIENT_KEY", "\"Mid-client-8r2V-3Z9XrHEc-_n\""
+        }*/
     }
 
     buildTypes {
@@ -62,5 +80,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
 
     implementation 'com.github.amarjain07:StickyScrollView:1.0.2'
+
+    //implementation 'com.midtrans:uikit:1.23.1'
+    implementation 'com.midtrans:uikit:1.23.1-SANDBOX'
 
 }
