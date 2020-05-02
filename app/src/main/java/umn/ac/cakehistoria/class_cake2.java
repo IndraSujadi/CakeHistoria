@@ -1,6 +1,6 @@
 package umn.ac.cakehistoria;
 
-public class class_cake {
+public class class_cake2 {
     private String cakeID;
 
     private String addtText;
@@ -33,12 +33,11 @@ public class class_cake {
 
     private String isPosted;
 
-
-    public class_cake() {
+    public class_cake2() {
 
     }
 
-    public class_cake(String cakeID, String addtText, String cakeCategory, String cakeColor, String cakeDecor, String cakeFlavor
+    public class_cake2(String cakeID, String addtText, String cakeCategory, String cakeColor, String cakeDecor, String cakeFlavor
             , String cakeShape, String cakeSize, String cakeTheme, String cakeTier, String cakeType, String specialOrders
             , String figureURL, boolean includeLetterCard, String letterMessage, int cakePrice, String imageURL, int likes
             , String orderID, String owner, String testimonyText, int rating, String isPosted) {

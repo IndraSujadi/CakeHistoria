@@ -94,7 +94,7 @@ public class Review_Activity extends AppCompatActivity {
                         Map subdoc = document.getData();
                         Map cakeDetails = (Map) subdoc.get("CakeDetails");
 
-                        Picasso.get().load((String) document.get("imageURL")).into(img_cake_pict);
+//                        Picasso.get().load((String) document.get("imageURL")).into(img_cake_pict);
                         txt_Title.setText((String) document.get("cakeCategory") + " Custom Cake");
                         txt_cake_category.setText((String) document.get("cakeCategory"));
                     } else {

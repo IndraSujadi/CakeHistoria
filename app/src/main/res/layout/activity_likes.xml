@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/balik"/>
+                android:src="@drawable/back_icon_dark"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -49,7 +49,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerLikes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginLeft="40dp"/>
 
 
 </LinearLayout>

@@ -5,19 +5,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.like.LikeButton;
+import com.like.OnLikeListener;
 import com.squareup.picasso.Picasso;
+
+import java.util.Map;
 
 public class specificCategory extends AppCompatActivity implements adapterSpecific.OnItemClickListener {
 
@@ -100,7 +113,14 @@ public class specificCategory extends AppCompatActivity implements adapterSpecif
 
 class adapterSpecific extends FirestoreRecyclerAdapter<class_cake, adapterSpecific.specificViewHolder> {
 
-    private CakeAdapter.OnItemClickListener listener;
+    private OnItemClickListener listener;
+    private FirebaseAuth fbAuth;
+    private FirebaseUser fbUser = fbAuth.getInstance().getCurrentUser();
+    private String userID = fbUser.getUid();
+    private FirebaseFirestore fbStore = FirebaseFirestore.getInstance();
+
+
+    private boolean isLiked = false;
 
     public adapterSpecific(@NonNull FirestoreRecyclerOptions<class_cake> options) {
         super(options);
@@ -116,6 +136,76 @@ class adapterSpecific extends FirestoreRecyclerAdapter<class_cake, adapterSpecif
                     .into(holder.imgSpecific);
         }
 
+//        // Kalo udah dilike pas masuk ke activity button like nya udah liked.
+//        DocumentReference docLikes = fbStore.collection("User").document(userID)
+//                .collection("Likes").document(model.getCakeID());
+//
+//        docLikes.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                DocumentSnapshot document = task.getResult();
+//                isLiked = document.get("isLiked", Boolean.class);  //kalo yang ini gw nyalain error
+//                Log.d("CobaData", "is liked: " + isLiked);
+////                if(isLiked){
+////                    holder.btnLike.setLiked(true);
+////                }
+//            }
+//        });
+//
+        // Dapetin likeCount
+//        DocumentReference dbCakes = fbStore.collection("Cakes").document(model.getCakeID());
+//        dbCakes.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                if (task.isSuccessful()) {
+//                    DocumentSnapshot document = task.getResult();
+//                    if (document.exists()) {
+//                        likeCount = document.get("likes", Integer.class);
+//                        Log.d("CobaData", "Likes: " + likeCount);
+//                    } else {
+//                        Log.d("CobaData", "No such document");
+//                    }
+//                } else {
+//                    Log.d("CobaData", "get failed with ", task.getException());
+//                }
+//            }
+//        });
+//
+//        holder.btnLike.setOnLikeListener(new OnLikeListener() {
+//            @Override
+//            public void liked(LikeButton likeButton) {
+//                Toast.makeText(holder.mContext, "Added to favorites: " + model.getCakeID(), Toast.LENGTH_LONG).show();
+//                likeCount += 1;
+//                fbStore.collection("Cakes").document(model.getCakeID())
+//                        .update("likes", likeCount);
+//
+//                // Update collection "LIKES" di User field: "isLiked"
+//                fbStore.collection("User").document(userID).collection("Likes").document(model.getCakeID())
+//                        .update("isLiked", true);
+//
+//                // Update collection "LIKES" di User field: "likes"
+//                fbStore.collection("User").document(userID).collection("Likes").document(model.getCakeID())
+//                        .update("likes", likeCount);
+//            }
+//
+//            @Override
+//            public void unLiked(LikeButton likeButton) {
+//                Toast.makeText(holder.mContext, "Removed to favorites: " + model.getCakeID(), Toast.LENGTH_LONG).show();
+//                likeCount -= 1;
+//                fbStore.collection("Cakes").document(model.getCakeID())
+//                        .update("likes", likeCount);
+//
+//                // Update collection "LIKES" di User
+//                fbStore.collection("User").document(userID).collection("Likes").document(model.getCakeID())
+//                        .update("isLiked", false);
+//
+//                // Update collection "LIKES" di User field: "likes"
+//                fbStore.collection("User").document(userID).collection("Likes").document(model.getCakeID())
+//                        .update("likes", likeCount);
+//            }
+//        });
+
+        holder.setCakeID(model.getCakeID());
     }
 
     @NonNull
@@ -127,10 +217,18 @@ class adapterSpecific extends FirestoreRecyclerAdapter<class_cake, adapterSpecif
 
     public class specificViewHolder extends RecyclerView.ViewHolder{
         ImageView imgSpecific;
+        LikeButton btnLike;
+
+        Context mContext;
+        View mView;
+
+        private String refCakeID;
+        private int likeCount = 0;
 
         public specificViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            mView = itemView;
+            mContext = itemView.getContext();
             imgSpecific = itemView.findViewById(R.id.imgSpesific);
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -142,6 +240,85 @@ class adapterSpecific extends FirestoreRecyclerAdapter<class_cake, adapterSpecif
                     }
                 }
             });
+
+
+//            btnLike = itemView.findViewById(R.id.btnLike);
+//
+//            btnLike.setOnLikeListener(new OnLikeListener() {
+//                @Override
+//                public void liked(LikeButton likeButton) {
+//                    Toast.makeText(mContext, "Added to favorites: " + refCakeID, Toast.LENGTH_LONG).show();
+//                    likeCount += 1;
+//                    fbStore.collection("Cakes").document(refCakeID)
+//                            .update("likes", likeCount);
+//
+//                    // Update collection "LIKES" di User field: "isLiked"
+//                    fbStore.collection("User").document(userID).collection("Likes").document(refCakeID)
+//                            .update("isLiked", true);
+//
+//                    // Update collection "LIKES" di User field: "likes"
+//                    fbStore.collection("User").document(userID).collection("Likes").document(refCakeID)
+//                            .update("likes", likeCount);
+//                }
+//
+//                @Override
+//                public void unLiked(LikeButton likeButton) {
+//                    Toast.makeText(mContext, "Removed to favorites: " + refCakeID, Toast.LENGTH_LONG).show();
+//                    likeCount -= 1;
+//                    fbStore.collection("Cakes").document(refCakeID)
+//                            .update("likes", likeCount);
+//
+//                    // Update collection "LIKES" di User
+//                    fbStore.collection("User").document(userID).collection("Likes").document(refCakeID)
+//                            .update("isLiked", false);
+//
+//                    // Update collection "LIKES" di User field: "likes"
+//                    fbStore.collection("User").document(userID).collection("Likes").document(refCakeID)
+//                            .update("likes", likeCount);
+//                }
+//            });
+
+        }
+
+        public void setCakeID(String cakeID){
+            this.refCakeID = cakeID;
+
+            LikeButton likeButton = mView.findViewById(R.id.btnLike);
+
+            likeButton.setOnLikeListener(new OnLikeListener() {
+                @Override
+                public void liked(LikeButton likeButton) {
+                    Toast.makeText(mContext, "Added to favorites: " + cakeID, Toast.LENGTH_LONG).show();
+                    likeCount += 1;
+                    fbStore.collection("Cakes").document(refCakeID)
+                            .update("likes", likeCount);
+
+                    // Update collection "LIKES" di User field: "isLiked"
+                    fbStore.collection("User").document(userID).collection("Likes").document(refCakeID)
+                            .update("isLiked", true);
+
+                    // Update collection "LIKES" di User field: "likes"
+                    fbStore.collection("User").document(userID).collection("Likes").document(refCakeID)
+                            .update("likes", likeCount);
+                }
+
+                @Override
+                public void unLiked(LikeButton likeButton) {
+                    Toast.makeText(mContext, "Removed to favorites: " + cakeID, Toast.LENGTH_LONG).show();
+                    likeCount -= 1;
+                    fbStore.collection("Cakes").document(refCakeID)
+                            .update("likes", likeCount);
+
+                    // Update collection "LIKES" di User
+                    fbStore.collection("User").document(userID).collection("Likes").document(refCakeID)
+                            .update("isLiked", false);
+
+                    // Update collection "LIKES" di User field: "likes"
+                    fbStore.collection("User").document(userID).collection("Likes").document(refCakeID)
+                            .update("likes", likeCount);
+
+                }
+            });
         }
     }
 
@@ -149,7 +326,7 @@ class adapterSpecific extends FirestoreRecyclerAdapter<class_cake, adapterSpecif
         void OnItemClick(DocumentSnapshot documentSnapshot, int position);
     }
 
-    public void setOnItemClickListener(CakeAdapter.OnItemClickListener listener){
+    public void setOnItemClickListener(OnItemClickListener listener){
         this.listener = listener;
     }
 }

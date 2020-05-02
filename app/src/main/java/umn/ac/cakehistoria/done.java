@@ -140,7 +140,7 @@ class OrderAdapter extends FirestoreRecyclerAdapter<class_order2, OrderAdapter.O
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        Picasso.get().load((String) document.get("imageURL")).into(holder.imgDone);
+//                        Picasso.get().load((String) document.get("imageURL")).into(holder.imgDone);
                         Map subdoc = document.getData();
                         Map testimony = (Map) subdoc.get("testimony");
 

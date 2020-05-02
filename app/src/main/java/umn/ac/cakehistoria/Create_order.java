@@ -238,6 +238,8 @@ public class Create_order extends AppCompatActivity {
 
                             RadioButton rb;
 
+
+
                             int selectedRbId = rg.getCheckedRadioButtonId();
                             rb = currView.findViewById(selectedRbId);
 
@@ -915,6 +917,7 @@ public class Create_order extends AppCompatActivity {
                 cakeColl.put("likes", likes);
                 cakeColl.put("cakePrice", cakePrice);
                 cakeColl.put("orderID", orderID);
+                cakeColl.put("cakeID", cakeID);
                 cakeColl.put("cakeCategory", cakeCategory);
                 cakeColl.put("isPosted", "no");
 
@@ -1003,7 +1006,13 @@ public class Create_order extends AppCompatActivity {
                 // INSERT LIKE'S DATA
                 Map<String, Object> likeItems = new HashMap<>();
                 likeItems.put("cakeID", cakeID);
-                likeItems.put("like", false);
+                likeItems.put("isLiked", false);
+                likeItems.put("cakeID", cakeID);
+                likeItems.put("cakeCategory", cakeCategory);
+                likeItems.put("owner", ownerName);
+                likeItems.put("likes", likes);
+                likeItems.put("cakePrice", cakePrice);
+                likeItems.put("imageURL", imageURL);
 
                 for(int i = 0; i < userList.size(); i++){
                     db.collection("User").document(userList.get(i)).collection("Likes").document(cakeID)

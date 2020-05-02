@@ -30,17 +30,35 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <Button
+<!--            <Button-->
+<!--                android:id="@+id/btnLike"-->
+<!--                android:layout_width="34dp"-->
+<!--                android:layout_height="34dp"-->
+<!--                android:background="@drawable/bg_small_heart_button"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintHorizontal_bias="0.765"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintVertical_bias="0.035" />-->
+
+            <com.like.LikeButton
                 android:id="@+id/btnLike"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:background="@drawable/bg_small_heart_button"
+                app:icon_type="heart"
+                app:icon_size="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:circle_start_color="@color/colorPrimary"
+                app:dots_primary_color="@color/colorAccent"
+                app:dots_secondary_color="@color/colorPrimary"
+                app:circle_end_color="@color/colorAccent"
+                app:anim_scale_factor="2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.765"
+                app:layout_constraintHorizontal_bias="0.83"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.035" />
+                app:layout_constraintVertical_bias="0.012"/>
 
             <Button
                 android:id="@+id/btnUser"
@@ -50,10 +68,10 @@
                 android:backgroundTint="@color/Light"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.235"
+                app:layout_constraintHorizontal_bias="0.205"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.035" />
+                app:layout_constraintVertical_bias="0.045" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

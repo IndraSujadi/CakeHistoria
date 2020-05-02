@@ -180,7 +180,7 @@ public class individual extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 DocumentSnapshot document = task.getResult();
-                isLiked = document.get("like", Boolean.class);  //kalo yang ini gw nyalain error
+                isLiked = document.get("isLiked", Boolean.class);  //kalo yang ini gw nyalain error
                 Log.d("CobaData", "is liked: " + isLiked);
 
                 if(isLiked){
@@ -197,9 +197,13 @@ public class individual extends AppCompatActivity {
                 fbStore.collection("Cakes").document(cakeID)
                         .update("likes", likeCount);
 
-                // Update collection "LIKES" di User
+                // Update collection "LIKES" di User field: "isLiked"
                 fbStore.collection("User").document(userID).collection("Likes").document(cakeID)
-                        .update("like", true);
+                        .update("isLiked", true);
+
+                // Update collection "LIKES" di User field: "likes"
+                fbStore.collection("User").document(userID).collection("Likes").document(cakeID)
+                        .update("likes", likeCount);
 
                 tampilData();
             }
@@ -213,7 +217,11 @@ public class individual extends AppCompatActivity {
 
                 // Update collection "LIKES" di User
                 fbStore.collection("User").document(userID).collection("Likes").document(cakeID)
-                        .update("like", false);
+                        .update("isLiked", false);
+
+                // Update collection "LIKES" di User field: "likes"
+                fbStore.collection("User").document(userID).collection("Likes").document(cakeID)
+                        .update("likes", likeCount);
 
                 tampilData();
             }
