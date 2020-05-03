@@ -157,6 +157,8 @@ class LikeAdapter extends FirestoreRecyclerAdapter<class_cake2, LikeAdapter.Like
         holder.txt_namaUser.setText(model.getOwner());
         holder.txtLikes.setText(String.valueOf(model.getLikes()));
         holder.txtHarga.setText("Rp " + String.format("%, d", Integer.parseInt(String.valueOf(model.getCakePrice()))));
+
+
         if (model.getImageURL() != "") {
             Picasso.get().load(model.getImageURL()).into(holder.imgCake);
         } else {

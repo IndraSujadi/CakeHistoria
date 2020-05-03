@@ -98,7 +98,14 @@ public class Review_Activity extends AppCompatActivity {
                         Map subdoc = document.getData();
                         Map cakeDetails = (Map) subdoc.get("CakeDetails");
 
-//                        Picasso.get().load((String) document.get("imageURL")).into(img_cake_pict);
+                        if ((String) document.get("imageURL") != null) {
+                            Picasso.get().load((String) document.get("imageURL")).into(img_cake_pict);
+                        } else {
+                            Picasso.get()
+                                    .load("https://firebasestorage.googleapis.com/v0/b/historiacake.appspot.com/o/no.png?alt=media&token=edcf1cca-322a-4dd6-be66-34522f5e71e0")
+                                    .into(img_cake_pict);
+                        }
+
                         txt_Title.setText((String) document.get("cakeCategory") + " Custom Cake");
                         txt_cake_category.setText((String) document.get("cakeCategory"));
                     } else {

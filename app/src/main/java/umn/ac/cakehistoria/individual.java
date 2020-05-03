@@ -188,9 +188,11 @@ public class individual extends AppCompatActivity {
             }
         });
 
+
         btnLike.setOnLikeListener(new OnLikeListener() {
             @Override
             public void liked(LikeButton likeButton) {
+                // ambil mage URL
                 likeCount += 1;
 //                Toast.makeText(getApplicationContext(), "Like:" + String.valueOf(likeCount), Toast.LENGTH_LONG).show();
                 fbStore.collection("Cakes").document(cakeID)

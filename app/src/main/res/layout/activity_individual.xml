@@ -257,17 +257,18 @@
 
                     <TextView
                         android:id="@+id/txtCakePrice"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
+                        android:textAlignment="center"
                         android:fontFamily="@font/gotham_bold"
                         android:textColor="@color/primaryBrown"
                         android:text="Rp.560.000"
                         android:textSize="25sp"
                         />
 
-                    <Button
+                    <!--<Button
                         android:id="@+id/btnOrderSimilar"
                         android:layout_width="132dp"
                         android:layout_height="40dp"
@@ -279,7 +280,7 @@
                         android:fontFamily="@font/gotham_medium"
                         android:text="Order similar"
                         android:textColor="@color/Light"
-                        android:textSize="12sp" />
+                        android:textSize="12sp" /> -->
 
                 </RelativeLayout>
 
