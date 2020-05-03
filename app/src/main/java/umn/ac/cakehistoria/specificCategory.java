@@ -145,6 +145,9 @@ class adapterSpecific extends FirestoreRecyclerAdapter<class_cake, adapterSpecif
                     .into(holder.imgSpecific);
         }
 
+        holder.categoryS.setText(model.getCakeCategory());
+        holder.HargaS.setText("Rp " + String.format("%, d", Integer.parseInt(String.valueOf(model.getCakePrice()))));
+
 //        // Kalo udah dilike pas masuk ke activity button like nya udah liked.
 //        DocumentReference docLikes = fbStore.collection("User").document(userID)
 //                .collection("Likes").document(model.getCakeID());
@@ -220,25 +223,29 @@ class adapterSpecific extends FirestoreRecyclerAdapter<class_cake, adapterSpecif
     @NonNull
     @Override
     public specificViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_specific, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_likes, parent, false);
         return new specificViewHolder(view);
     }
 
     public class specificViewHolder extends RecyclerView.ViewHolder{
         ImageView imgSpecific;
-        LikeButton btnLike;
+        Button categoryS, HargaS;
+        //LikeButton btnLike;
 
         Context mContext;
         View mView;
 
-        private String refCakeID;
-        private int likeCount = 0;
+        //private String refCakeID;
+        //private int likeCount = 0;
 
         public specificViewHolder(@NonNull View itemView) {
             super(itemView);
             mView = itemView;
             mContext = itemView.getContext();
-            imgSpecific = itemView.findViewById(R.id.imgSpesific);
+            imgSpecific = itemView.findViewById(R.id.imgLikes);
+            categoryS = itemView.findViewById(R.id.kategoriS);
+            HargaS = itemView.findViewById(R.id.hargaS);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

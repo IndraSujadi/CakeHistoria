@@ -323,8 +323,8 @@
                     android:id="@+id/footerLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_gravity="end"
                     android:orientation="vertical"
-                    android:layout_marginTop="20dp"
                     android:background="@drawable/shadow"
                     android:paddingVertical="5dp">
 

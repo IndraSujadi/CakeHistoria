@@ -38,8 +38,8 @@
                 android:id="@+id/img_cake_pict"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:srcCompat="@drawable/review_picture_ex" />
+                android:layout_gravity="center"/>
+                <!--app:srcCompat="@drawable/review_picture_ex" -->
 
             <TextView
                 android:id="@+id/txt_cake_category"

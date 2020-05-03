@@ -32,8 +32,8 @@
                     android:id="@+id/imgCake"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="6dp"
-                    android:src="@drawable/maxime" />
+                    android:padding="6dp"/>
+                    <!--android:src="" -->
 
                 <ImageView
                     android:layout_width="match_parent"
