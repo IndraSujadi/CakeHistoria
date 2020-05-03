@@ -11,7 +11,7 @@
         android:id="@+id/cakeCard"
         android:layout_width="310dp"
         android:layout_height="180dp"
-        android:layout_marginRight="2dp"
+        android:layout_marginLeft="12dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="5dp"
         app:cardMaxElevation="10dp"
