@@ -2,6 +2,7 @@ package umn.ac.cakehistoria;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -55,7 +56,6 @@ public class fragHome extends Fragment implements CakeAdapter.OnItemClickListene
     private CakeAdapter weddingCakeAdapter;
     private CakeAdapter valentineCakeAdapter;
     private CakeAdapter othersCakeAdapter;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -240,7 +240,7 @@ public class fragHome extends Fragment implements CakeAdapter.OnItemClickListene
         i.putExtra("orderID", orderID);
         i.putExtra("kategori", cakeCategory);
         startActivity(i);
-        getActivity().finish();
+//        getActivity().finish();
     }
 }
 
@@ -258,6 +258,7 @@ class CakeAdapter extends FirestoreRecyclerAdapter<class_cake, CakeAdapter.Birth
         holder.txt_namaUser.setText(model.getOwner());
         holder.txtLikes.setText(String.valueOf(model.getLikes()));
         holder.txtHarga.setText("Rp " + String.format("%, d", Integer.parseInt(String.valueOf(model.getCakePrice()))));
+
         if (model.getImageURL() != "") {
             Picasso.get().load(model.getImageURL()).into(holder.imgCake);
         } else {

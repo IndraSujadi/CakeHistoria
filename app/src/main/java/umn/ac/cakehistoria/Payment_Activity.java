@@ -3,11 +3,14 @@ package umn.ac.cakehistoria;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +39,7 @@ import com.midtrans.sdk.corekit.models.snap.TransactionResult;
 import com.midtrans.sdk.uikit.SdkUIFlowBuilder;
 
 
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -58,6 +62,8 @@ public class Payment_Activity extends AppCompatActivity implements TransactionFi
     private boolean includeLettercard;
 
     private String orderID, cakeID;
+
+    private TextView btnCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +96,7 @@ public class Payment_Activity extends AppCompatActivity implements TransactionFi
             @Override
             public void onClick(View v) {
                 clickPay();
+                finish();
             }
         });
 
@@ -179,10 +186,36 @@ public class Payment_Activity extends AppCompatActivity implements TransactionFi
             }
         });
 
+        btnCancel = findViewById(R.id.btnCancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(Payment_Activity.this);
+                dialog.setTitle("Cancel Order");
+                dialog.setMessage("Are you sure you want to cancel the order?");
+                dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        db.collection("Cakes").document(cakeID).delete();
+                        db.collection("Orders").document(orderID).delete();
+                        finish();
+                    }
+                });
+                dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                dialog.show();
+            }
+        });
+
     }
 
     private void clickPay(){
-        MidtransSDK.getInstance().setTransactionRequest(transactionRequest("101", 2000, 1,  "Custom Cake"));
+        Log.d("CobaPayment", "Cake Price: " + refTotal1);
+        MidtransSDK.getInstance().setTransactionRequest(transactionRequest("101", refTotal1, 1,  refCakeType + " Custom Cake"));
         MidtransSDK.getInstance().startPaymentUiFlow(Payment_Activity.this );
 
 //        Toast.makeText(this, "Coba Click" , Toast.LENGTH_LONG).show();
@@ -209,7 +242,7 @@ public class Payment_Activity extends AppCompatActivity implements TransactionFi
     }
 
     public static TransactionRequest transactionRequest(String id, double price, int qty, String name){
-        TransactionRequest request =  new TransactionRequest(System.currentTimeMillis() + " " , 2000 );
+        TransactionRequest request =  new TransactionRequest(System.currentTimeMillis() + " " , price );
         request.setCustomerDetails(customerDetails());
         ItemDetails details = new ItemDetails(id, price, qty, name);
 

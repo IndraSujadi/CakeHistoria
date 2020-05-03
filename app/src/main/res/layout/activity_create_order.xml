@@ -144,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:gravity="center"
-                android:text="Additional Figures"
+                android:text="Cake Reference"
                 android:textAppearance="@style/SubTitle" />
 
             <TextView
@@ -153,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:gravity="center"
-                android:text="Upload the figure image that you want to attached in your cake too"
+                android:text="Upload your cake's reference image if it's needed."
                 android:textAppearance="@style/Paragraph" />
 
 

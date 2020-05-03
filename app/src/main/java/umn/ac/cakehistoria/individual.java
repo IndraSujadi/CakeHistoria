@@ -8,6 +8,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +50,9 @@ public class individual extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_individual);
 
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         Intent i = getIntent();
         cakeID = i.getStringExtra("cakeID");
         orderID = i.getStringExtra("orderID");
@@ -58,8 +62,8 @@ public class individual extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
+//                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+//                startActivity(i);
                 finish();
             }
         });
@@ -248,7 +252,9 @@ public class individual extends AppCompatActivity {
                         Map cakeDetails = (Map) subdoc.get("CakeDetails");
                         Map testimony = (Map) subdoc.get("testimony");
 
-                        if ((String) document.get("imageURL") != "") {
+                        String imageURL = (String) document.get("imageURL");
+
+                        if (imageURL != null && !imageURL.trim().isEmpty()) {
                             Picasso.get().load((String) document.get("imageURL") ).into(imgCake_individual);
                         } else {
                             Picasso.get()

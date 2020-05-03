@@ -317,6 +317,20 @@
                         android:layout_marginTop="12dp"
                         />-->
 
+                    <TextView
+                        android:id="@+id/btnCancel"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:text="Cancel"
+                        android:fontFamily="@font/gotham_bold"
+                        android:textColor="#CC4D4D"
+                        android:textSize="18dp"
+                        android:textAlignment="center"
+                        android:background="@drawable/background"
+                        android:paddingVertical="10dp"/>
+
                 </LinearLayout>
 
                 <LinearLayout

@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,6 +59,9 @@ public class likes extends AppCompatActivity implements LikeAdapter.OnItemClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_likes);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         Log.d("CobaData", "User ID: " + userID);
 
@@ -159,7 +163,8 @@ class LikeAdapter extends FirestoreRecyclerAdapter<class_cake2, LikeAdapter.Like
         holder.txtHarga.setText("Rp " + String.format("%, d", Integer.parseInt(String.valueOf(model.getCakePrice()))));
 
 
-        if (model.getImageURL() != "") {
+        String imageURL = model.getImageURL();
+        if (imageURL != null && !imageURL.trim().isEmpty()) {
             Picasso.get().load(model.getImageURL()).into(holder.imgCake);
         } else {
             Picasso.get()

@@ -56,6 +56,8 @@ public class Review_Activity extends AppCompatActivity {
     private int rating = 0;
     private String testimonyText = "";
 
+    ImageButton btnBack;
+
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,8 @@ public class Review_Activity extends AppCompatActivity {
         Intent i = getIntent();
         cakeID = i.getStringExtra("cakeID");
         orderID = i.getStringExtra("orderID");
+
+        btnBack = findViewById(R.id.btnBack);
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //untuk add action, harus ke manifest "android:parentActivityName"
 //
@@ -98,7 +102,9 @@ public class Review_Activity extends AppCompatActivity {
                         Map subdoc = document.getData();
                         Map cakeDetails = (Map) subdoc.get("CakeDetails");
 
-                        if ((String) document.get("imageURL") != null) {
+                        String imageURL = (String) document.get("imageURL");
+
+                        if (imageURL != null && !imageURL.trim().isEmpty()) {
                             Picasso.get().load((String) document.get("imageURL")).into(img_cake_pict);
                         } else {
                             Picasso.get()
@@ -265,6 +271,7 @@ public class Review_Activity extends AppCompatActivity {
 
 
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
                 finish();
             }

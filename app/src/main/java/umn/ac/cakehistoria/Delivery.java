@@ -3,6 +3,8 @@ package umn.ac.cakehistoria;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -212,6 +214,7 @@ public class Delivery extends AppCompatActivity {
                 i.putExtra("cakeID", cakeID);
                 i.putExtra("orderID", orderID);
                 startActivity(i);
+                finish();
             }
         });
     }
@@ -403,6 +406,28 @@ public class Delivery extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(Delivery.this);
+        dialog.setTitle("Cancel Order");
+        dialog.setMessage("Are you sure you want to cancel the order?");
+        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                db.collection("Cakes").document(cakeID).delete();
+                db.collection("Orders").document(orderID).delete();
+                finish();
+            }
+        });
+        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        dialog.show();
+    }
 }
 
 

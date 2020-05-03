@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -44,7 +45,8 @@ public class Frag_Account extends Fragment {
 
     GoogleSignInClient mGoogleSignInClient;
 
-
+    private TextView txtPriceSchema;
+    private FloatingActionButton btnWA;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -80,6 +82,28 @@ public class Frag_Account extends Fragment {
                 startActivity(i);
             }
         });*/
+
+        txtPriceSchema = view.findViewById(R.id.txtPriceSchema);
+        txtPriceSchema.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://docs.google.com/spreadsheets/d/18r_boUkoiOrFHTH0phkFy4zx9c7BnkNfBga3x_Cc-EA/edit?usp=sharing"));
+                startActivity(browserIntent);
+            }
+        });
+
+        btnWA = view.findViewById(R.id.btnWA);
+        btnWA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String number = "6281297138561";
+                String url = "https://api.whatsapp.com/send?phone="+number;
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
+
 
         btnSign_Out.setOnClickListener(new View.OnClickListener() {
             @Override

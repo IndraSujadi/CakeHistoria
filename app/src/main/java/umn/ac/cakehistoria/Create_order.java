@@ -1032,11 +1032,12 @@ public class Create_order extends AppCompatActivity {
                 }
 
                 // GO TO NEXT PAGE
-                Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_LONG).show();
                 Intent i = new Intent( Create_order.this, Delivery.class);
                 i.putExtra("cakeID", cakeID);
                 i.putExtra("orderID", orderID);
                 startActivity(i);
+                finish();
             }
         });
 
