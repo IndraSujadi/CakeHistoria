@@ -28,6 +28,7 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -51,6 +52,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
@@ -71,7 +73,7 @@ public class Create_order extends AppCompatActivity {
     FirebaseStorage storage;
     StorageReference storageReference;
     public Uri imgUri;
-    private StorageTask uploadTask;
+    private StorageTask uploadTask, selectTask;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth fbAuth;
     FirebaseUser fbUser;
@@ -90,6 +92,7 @@ public class Create_order extends AppCompatActivity {
     EditText edtLetterMessage;
     TextView txtCakePrice;
     Button btnNext;
+    ImageView imageFig;
 
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
@@ -196,6 +199,7 @@ public class Create_order extends AppCompatActivity {
         edtLetterMessage = findViewById(R.id.edtLetterMessage);
         txtCakePrice = findViewById(R.id.txtCakePrice);
         btnNext_toDelivery = findViewById(R.id.btnNext_toDelivery);
+        imageFig = findViewById(R.id.imageFig);
 
         ArrayAdapter <CharSequence> categoryAdapter = ArrayAdapter.createFromResource(this, R.array.cake_category_lists, android.R.layout.simple_spinner_item);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -709,6 +713,7 @@ public class Create_order extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectImage();
+
             }
         });
 
@@ -1152,6 +1157,10 @@ public class Create_order extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imgUri = data.getData();
+
+            Picasso.get().load(imgUri).into(imageFig);
+            imageFig.setImageURI(imgUri);
+
         }
     }
 }

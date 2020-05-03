@@ -157,6 +157,13 @@
                 android:textAppearance="@style/Paragraph" />
 
 
+            <ImageView
+                android:id="@+id/imageFig"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/no" />
+
             <Button
                 android:id="@+id/btnSelect"
                 android:layout_width="83dp"
