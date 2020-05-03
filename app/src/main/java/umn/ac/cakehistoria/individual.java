@@ -58,10 +58,7 @@ public class individual extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                /*Intent i = new Intent(getApplicationContext(), specificCategory.class);
-                i.putExtra("series",kategori);*/
-                startActivity(i);
+                finish();
             }
         });
 
@@ -231,9 +228,7 @@ public class individual extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(i);
-        finish();
+        return;
     }
 
     public void tampilData () {

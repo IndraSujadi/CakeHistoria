@@ -18,6 +18,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -123,6 +124,7 @@ public class Create_order extends AppCompatActivity {
     private int likes = 0;
     private String imageURL = "";
     private int cakePrice = 0;
+    private int changingCakePrice = 0; // Gak jadi kepake
 
     private String requestDate = "";
     private Date orderDateTime;
@@ -142,6 +144,12 @@ public class Create_order extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_order);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+//        txtCakePrice = findViewById(R.id.txtCakePrice);
+//        txtCakePrice.setText(String.valueOf(cakePrice));
 
         db.collection("User").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -237,8 +245,6 @@ public class Create_order extends AppCompatActivity {
                             rg = currView.findViewById(R.id.type);
 
                             RadioButton rb;
-
-
 
                             int selectedRbId = rg.getCheckedRadioButtonId();
                             rb = currView.findViewById(selectedRbId);
@@ -578,7 +584,6 @@ public class Create_order extends AppCompatActivity {
 
                             Spinner spinTier = currView.findViewById(R.id.spinTiers);
 
-
                             int selectedRbId = rg.getCheckedRadioButtonId();
                             rb = currView.findViewById(selectedRbId);
 
@@ -593,6 +598,7 @@ public class Create_order extends AppCompatActivity {
                                     if(selectedRbId == R.id.multi){
                                         nTier = " " + spinTier.getSelectedItem().toString();
                                         cakeTier = rb.getText().toString() + nTier;
+
                                         Log.d(TAG, "cakeTier pas baru masuk rb Multi: " + cakeTier);
                                         spinTier.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                             @Override
@@ -618,6 +624,7 @@ public class Create_order extends AppCompatActivity {
                                     Log.d(TAG, "Cake Tier: " + cakeTier);
                                 }
                             });
+
                             cakeTier = rb.getText().toString() + nTier;
                             Log.d(TAG, "Cake Tier Akhir: " + cakeTier);
 

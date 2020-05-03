@@ -11,13 +11,45 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar3"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            android:background="@color/Light"
+            android:theme="@style/AppTheme">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background"
+                android:backgroundTint="@color/Light"
+                android:orientation="horizontal"
+                android:paddingVertical="14dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="5dp">
+
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/back_icon_dark"
+                    android:background="@color/Light"/>
+
+                <TextView
+                    android:id="@+id/txtWelcome"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/gotham_bold"
+                    android:gravity="center_vertical"
+                    android:text="Order's Detail"
+                    android:textColor="@color/Dark"
+                    android:textSize="25dp" />
+            </LinearLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -51,7 +83,7 @@
                         android:id="@+id/txtOrderID"
                         style="@style/Paragraph"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="29dp"
                         android:layout_weight="2"
                         android:text="Loading... "

@@ -287,9 +287,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_marginTop="12dp"
-                        android:background="@drawable/btn_pay"
-
-                       />
+                        android:text="Payment Methods >"
+                        android:background="@color/light_gray"
+                        android:fontFamily="@font/gotham_medium"
+                        android:textAllCaps="false"
+                        android:textAlignment="viewStart"
+                        android:paddingLeft="15dp" />
 
    <!--                 <Button
                         android:id="@+id/btnOvo"

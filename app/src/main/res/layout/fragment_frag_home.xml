@@ -63,28 +63,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
-        android:id="@+id/CupCake"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@color/Light"
-        android:gravity="center">
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="6dp"
-                android:src="@drawable/brooke_lark_unsplash" />
-
-        </FrameLayout>
-
-    </LinearLayout>
-
 
     <ScrollView
         android:layout_width="match_parent"
@@ -95,11 +73,18 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="10dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="6dp"
+                android:src="@drawable/brooke_lark_unsplash" />
             <!-- ========================================= RECYCLER VIEW BIRTHDAY SERIES ======================= -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="24dp">
+                android:paddingHorizontal="24dp"
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:id="@+id/txtBirthday"

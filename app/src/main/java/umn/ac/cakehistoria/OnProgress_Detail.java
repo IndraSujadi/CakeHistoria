@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -37,10 +39,15 @@ public class OnProgress_Detail extends AppCompatActivity {
     private String orderID, cakeID;
     private String orderStatus;
 
+    private ImageButton btnBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.on_progress__detail);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         Intent i = getIntent();
         orderID = i.getStringExtra("orderID");
@@ -65,6 +72,14 @@ public class OnProgress_Detail extends AppCompatActivity {
 
         txtLetterCard.setVisibility(View.GONE);
         receiveContainer.setVisibility(View.GONE);
+
+        btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         DocumentReference dbCakes = db.collection("Cakes").document(cakeID);
         dbCakes.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

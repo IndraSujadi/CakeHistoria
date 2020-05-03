@@ -67,8 +67,9 @@ public class likes extends AppCompatActivity implements LikeAdapter.OnItemClickL
         imgBack_Likes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
+//                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+//                startActivity(i);
+                finish();
             }
         });
 
@@ -138,7 +139,6 @@ public class likes extends AppCompatActivity implements LikeAdapter.OnItemClickL
         i.putExtra("orderID", orderID);
         i.putExtra("kategori", cakeCategory);
         startActivity(i);
-        finish();
     }
 }
 

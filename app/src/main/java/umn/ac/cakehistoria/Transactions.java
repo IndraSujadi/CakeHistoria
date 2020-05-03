@@ -25,13 +25,16 @@ public class Transactions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transactions);
 
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-                //finish();
+//                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+//                startActivity(i);
+                finish();
             }
         });
 
@@ -111,8 +114,7 @@ public class Transactions extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
     }
 
     @Override

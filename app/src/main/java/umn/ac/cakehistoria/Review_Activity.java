@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -60,6 +61,9 @@ public class Review_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         Intent i = getIntent();
         cakeID = i.getStringExtra("cakeID");
@@ -251,7 +255,6 @@ public class Review_Activity extends AppCompatActivity {
 
                 db.collection("Cakes").document(cakeID)
                         .update("isPosted", "yes");
-
 
 
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);

@@ -302,35 +302,35 @@
                 android:padding="16dp"
                 android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/subDelivery"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="35dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:text="Cake Price"
-                android:textAppearance="@style/TitleText"/>
+<!--            <TextView-->
+<!--                android:id="@+id/subDelivery"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="35dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Cake Price"-->
+<!--                android:textAppearance="@style/TitleText"/>-->
 
-            <TextView
-                android:id="@+id/txtCakePrice"
-                android:layout_width="188dp"
-                android:layout_height="34dp"
-                android:layout_gravity="center"
-                android:background="@color/Cream"
-                android:fontFamily="@font/gotham_bold"
-                android:gravity="center"
-                android:text="TextView"
-                android:textColor="@color/primaryBrown" />
+<!--            <TextView-->
+<!--                android:id="@+id/txtCakePrice"-->
+<!--                android:layout_width="188dp"-->
+<!--                android:layout_height="34dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:background="@color/Cream"-->
+<!--                android:fontFamily="@font/gotham_bold"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Rp 0"-->
+<!--                android:textColor="@color/primaryBrown" />-->
 
-            <TextView
-                android:id="@+id/textView29"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:gravity="center"
-                android:text="Include Packaging"
-                android:textAppearance="@style/Paragraph" />
+<!--            <TextView-->
+<!--                android:id="@+id/textView29"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="6dp"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Include Packaging"-->
+<!--                android:textAppearance="@style/Paragraph" />-->
 
             <LinearLayout
                 android:layout_width="match_parent"

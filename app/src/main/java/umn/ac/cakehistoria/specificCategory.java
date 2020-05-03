@@ -12,8 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -44,10 +46,15 @@ public class specificCategory extends AppCompatActivity implements adapterSpecif
 
     FirebaseFirestore DB;
 
+    private TextView txtTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_specific_category);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         recyclerSpecific = findViewById(R.id.recyclerSpecific);
         imgback = findViewById(R.id.imgBack_specific);
@@ -55,14 +62,16 @@ public class specificCategory extends AppCompatActivity implements adapterSpecif
         imgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
+                finish();
             }
         });
 
 //==================================================BAGIAN RECYCLER VIEW=================================================================
         Bundle extras = getIntent().getExtras();
         kategori = extras.getString(KEY);
+
+        txtTitle = findViewById(R.id.txtTitle);
+        txtTitle.setText(kategori);
 
         DB = FirebaseFirestore.getInstance();
 

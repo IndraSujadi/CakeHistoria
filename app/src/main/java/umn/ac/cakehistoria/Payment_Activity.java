@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,6 +63,9 @@ public class Payment_Activity extends AppCompatActivity implements TransactionFi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         Intent i = getIntent();
         orderID = i.getStringExtra("orderID");
@@ -177,6 +181,14 @@ public class Payment_Activity extends AppCompatActivity implements TransactionFi
 
     }
 
+    private void clickPay(){
+        MidtransSDK.getInstance().setTransactionRequest(transactionRequest("101", 2000, 1,  "Custom Cake"));
+        MidtransSDK.getInstance().startPaymentUiFlow(Payment_Activity.this );
+
+//        Toast.makeText(this, "Coba Click" , Toast.LENGTH_LONG).show();
+
+    }
+
     private void makePayment(){
         SdkUIFlowBuilder.init()
                 .setContext(this)
@@ -188,17 +200,9 @@ public class Payment_Activity extends AppCompatActivity implements TransactionFi
                 .buildSDK();
     }
 
-    private void clickPay(){
-        MidtransSDK.getInstance().setTransactionRequest(transactionRequest("101",2000, 1, "susus murni"));
-        MidtransSDK.getInstance().startPaymentUiFlow(Payment_Activity.this );
-
-//        Toast.makeText(this, "Coba Click" , Toast.LENGTH_LONG).show();
-
-    }
-
     public static CustomerDetails customerDetails(){
         CustomerDetails cd = new CustomerDetails();
-        cd.setFirstName("YOUR_PRODUCT");
+        cd.setFirstName("YOUR PRODUCT");
         cd.setEmail("your_email@gmail.com");
         cd.setPhone("your_phone");
         return cd;

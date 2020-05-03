@@ -44,6 +44,7 @@ public class Frag_Account extends Fragment {
 
     GoogleSignInClient mGoogleSignInClient;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

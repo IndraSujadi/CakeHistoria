@@ -203,27 +203,35 @@
                    android:fontFamily="@font/gotham_medium"
                    android:text="Asuransi Pengiriman"
                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Biaya pengiriman (+) Rp 1.000"
+                    style="@style/Paragraph"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="25dp"/>
            </LinearLayout>
 
-           <TextView
-               android:id="@+id/subDelivery"
-               style="@style/SubTitle"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_marginBottom="10dp"
-               android:gravity="center"
-               android:text="DELIVERY PRICE" />
+<!--           <TextView-->
+<!--               android:id="@+id/subDelivery"-->
+<!--               style="@style/SubTitle"-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:layout_marginBottom="10dp"-->
+<!--               android:gravity="center"-->
+<!--               android:text="DELIVERY PRICE" />-->
 
-           <TextView
-               android:id="@+id/txtHargaDeliv"
-               android:layout_width="188dp"
-               android:layout_height="34dp"
-               android:layout_gravity="center"
-               android:background="@color/Cream"
-               android:fontFamily="@font/gotham_bold"
-               android:gravity="center"
-               android:text="TextView"
-               android:textColor="@color/primaryBrown" />
+<!--           <TextView-->
+<!--               android:id="@+id/txtHargaDeliv"-->
+<!--               android:layout_width="188dp"-->
+<!--               android:layout_height="34dp"-->
+<!--               android:layout_gravity="center"-->
+<!--               android:background="@color/Cream"-->
+<!--               android:fontFamily="@font/gotham_bold"-->
+<!--               android:gravity="center"-->
+<!--               android:text="TextView"-->
+<!--               android:textColor="@color/primaryBrown" />-->
 
            <LinearLayout
                android:layout_width="match_parent"
