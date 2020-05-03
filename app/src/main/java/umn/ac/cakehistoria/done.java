@@ -140,12 +140,20 @@ class OrderAdapter extends FirestoreRecyclerAdapter<class_order2, OrderAdapter.O
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
+                        if (document.get("imageURL") != "") {
+                            Picasso.get().load((String) document.get("imageURL")).into(holder.imgDone);
+                        } else {
+                            Picasso.get()
+                                    .load("https://firebasestorage.googleapis.com/v0/b/historiacake.appspot.com/o/no.png?alt=media&token=edcf1cca-322a-4dd6-be66-34522f5e71e0")
+                                    .into(holder.imgDone);
+                        }
 //                        Picasso.get().load((String) document.get("imageURL")).into(holder.imgDone);
                         Map subdoc = document.getData();
                         Map testimony = (Map) subdoc.get("testimony");
 
                         holder.txtTestimony.setText("'" + (String) testimony.get("testimonyText") + "'");
                         Log.d("CobaData", "Document is exist");
+
 
                         int rating = ((Long) testimony.get("rating")).intValue();
                         switch (rating) {

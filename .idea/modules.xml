@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CakeHistoria.iml" filepath="$PROJECT_DIR$/CakeHistoria.iml" group="CakeHistoria" />
       <module fileurl="file://$PROJECT_DIR$/app/CakeHistoria-app.iml" filepath="$PROJECT_DIR$/app/CakeHistoria-app.iml" group="CakeHistoria/app" />
+      <module fileurl="file://$PROJECT_DIR$/E-Business-ProjectEB-CakeHistoria.iml" filepath="$PROJECT_DIR$/E-Business-ProjectEB-CakeHistoria.iml" group="CakeHistoria" />
       <module fileurl="file://$PROJECT_DIR$/ProjectEB-CakeHistoria.iml" filepath="$PROJECT_DIR$/ProjectEB-CakeHistoria.iml" group="CakeHistoria" />
+      <module fileurl="file://$PROJECT_DIR$/app/ProjectEB-CakeHistoria-app.iml" filepath="$PROJECT_DIR$/app/ProjectEB-CakeHistoria-app.iml" group="CakeHistoria/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="CakeHistoria/app" />
       <module fileurl="file://$PROJECT_DIR$/apps-CakeHistoria.iml" filepath="$PROJECT_DIR$/apps-CakeHistoria.iml" group="CakeHistoria" />
     </modules>
