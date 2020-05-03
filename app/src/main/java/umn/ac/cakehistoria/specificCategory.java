@@ -214,7 +214,7 @@ class adapterSpecific extends FirestoreRecyclerAdapter<class_cake, adapterSpecif
 //            }
 //        });
 
-        holder.setCakeID(model.getCakeID());
+        //holder.setCakeID(model.getCakeID());
     }
 
     @NonNull
@@ -289,7 +289,7 @@ class adapterSpecific extends FirestoreRecyclerAdapter<class_cake, adapterSpecif
 
         }
 
-        public void setCakeID(String cakeID){
+        /*public void setCakeID(String cakeID){
             this.refCakeID = cakeID;
 
             LikeButton likeButton = mView.findViewById(R.id.btnLike);
@@ -328,7 +328,7 @@ class adapterSpecific extends FirestoreRecyclerAdapter<class_cake, adapterSpecif
 
                 }
             });
-        }
+        }*/
     }
 
     public interface OnItemClickListener{

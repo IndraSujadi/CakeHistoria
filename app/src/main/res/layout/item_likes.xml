@@ -43,7 +43,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.040"/>
 
-            <Button
+            <!--<Button
                 android:layout_width="34dp"
                 android:layout_height="34dp"
                 android:background="@drawable/bg_small_heart_button"
@@ -52,7 +52,7 @@
                 app:layout_constraintHorizontal_bias="0.765"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.035"/>
+                app:layout_constraintVertical_bias="0.035"/> -->
 
             <Button
                 android:layout_width="100dp"

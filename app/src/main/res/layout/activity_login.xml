@@ -44,7 +44,7 @@
             android:layout_marginHorizontal="75dp"
             android:textSize="18sp" />
 
-        <ImageButton
+        <!--<ImageButton
             android:id="@+id/imgBt_facebookaccount"
             android:layout_marginRight="100dp"
             android:layout_marginLeft="100dp"
@@ -52,7 +52,7 @@
             android:layout_height="46dp"
             android:background="@color/Light"
             app:srcCompat="@drawable/signinfb"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"/> -->
 
         <ProgressBar
             android:visibility="invisible"

@@ -13,6 +13,18 @@
         android:orientation="vertical"
         android:layout_marginBottom="20dp">
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="5dp"
+            app:cardMaxElevation="10dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
+
+
+        </androidx.cardview.widget.CardView>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -40,7 +52,7 @@
 <!--                app:layout_constraintHorizontal_bias="0.765"-->
 <!--                app:layout_constraintStart_toStartOf="parent"-->
 <!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintVertical_bias="0.035" />-->
+<!--                app:layout_constraintVertical_bias="0.035" />
 
             <com.like.LikeButton
                 android:id="@+id/btnLike"
@@ -58,7 +70,7 @@
                 app:layout_constraintHorizontal_bias="0.83"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.012"/>
+                app:layout_constraintVertical_bias="0.012"/>-->
 
             <Button
                 android:id="@+id/btnUser"

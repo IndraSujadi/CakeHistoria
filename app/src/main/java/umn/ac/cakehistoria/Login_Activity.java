@@ -39,7 +39,7 @@ import java.util.Map;
 
 public class Login_Activity extends AppCompatActivity {
 
-    ImageButton btn_FBLogin;
+    //ImageButton btn_FBLogin;
     ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
@@ -56,7 +56,7 @@ public class Login_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        btn_FBLogin = findViewById(R.id.imgBt_facebookaccount);
+        //btn_FBLogin = findViewById(R.id.imgBt_facebookaccount);
         progressBar = findViewById(R.id.pBar_Login);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
