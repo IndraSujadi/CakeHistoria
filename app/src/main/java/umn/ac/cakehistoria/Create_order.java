@@ -135,7 +135,7 @@ public class Create_order extends AppCompatActivity {
 
     // Untuk nampung semua id document dari collection "Users", begitu ada cake baru, langsung diwrite ke semua subdoc "Likes"
     // dari collectiion USER.
-    List<String> userList = new ArrayList<>();
+    private List<String> userList = new ArrayList<>();
 
     // MASTER CLASS:
     class_cake Cake = new class_cake();
@@ -171,8 +171,6 @@ public class Create_order extends AppCompatActivity {
                 }
             }
         });
-
-
 
         ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
