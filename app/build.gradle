@@ -85,4 +85,7 @@ dependencies {
     //implementation 'com.midtrans:uikit:1.23.1'
     implementation 'com.midtrans:uikit:1.23.1-SANDBOX'
 
+    // Firebase Cloud Messaging
+    implementation 'com.google.firebase:firebase-messaging:20.1.7'
+
 }

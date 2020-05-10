@@ -11,6 +11,7 @@ import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -33,6 +34,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,10 +53,38 @@ public class Login_Activity extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    private Button btnTestFCM;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        btnTestFCM = findViewById(R.id.btnTestFCM);
+        btnTestFCM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseInstanceId.getInstance().getInstanceId()
+                        .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                                if (!task.isSuccessful()) {
+                                    Log.w("FCM", "getInstanceId failed", task.getException());
+                                    return;
+                                }
+
+                                // Get new Instance ID Token
+                                String token = task.getResult().getToken();
+
+                                // Log and Toast
+//                                String msg = getString(R.string.msg_token_fmt, token);
+                                Log.d("FCM", token);
+                                Toast.makeText(getApplicationContext(), token, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
+
 
 
         //btn_FBLogin = findViewById(R.id.imgBt_facebookaccount);

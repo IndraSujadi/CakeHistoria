@@ -152,6 +152,8 @@ public class individual extends AppCompatActivity {
                             .update("likes", likeCount);
                 }
 
+                Toast.makeText(getApplicationContext(), "Added to Favorites", Toast.LENGTH_SHORT).show();
+
                 tampilData();
             }
 
@@ -172,6 +174,7 @@ public class individual extends AppCompatActivity {
                             .update("likes", likeCount);
                 }
 
+                Toast.makeText(getApplicationContext(), "Removed from Favorites", Toast.LENGTH_SHORT).show();
                 tampilData();
             }
         });
